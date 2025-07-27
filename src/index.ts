@@ -16,3 +16,5 @@ export type {
   QPMButtonProps,
   QPMInputProps,
 } from "./components";
+
+export { QPMThemeProvider, useTheme } from "./theme";
