@@ -1,0 +1,40 @@
+/* Base styles */
+.badge {
+  display: inline-block;
+  font-weight: 500;
+  border-radius: 9999px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Variants */
+.success {
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.warning {
+  background: hsl(45, 90%, 85%);
+  color: hsl(45, 90%, 25%);
+}
+
+.error {
+  background: hsl(0, 70%, 85%);
+  color: hsl(0, 70%, 25%);
+}
+
+.info {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* Sizes */
+.sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.md {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
