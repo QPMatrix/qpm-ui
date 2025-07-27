@@ -1,0 +1,59 @@
+.container {
+  margin-bottom: 1rem;
+  border: none;
+  padding: 0;
+}
+
+.labelStyle {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-background-primary);
+  border-radius: 6px;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.errorBorder {
+  border: 1px solid var(--color-border-error);
+}
+
+.successBorder {
+  border: 1px solid var(--color-border-primary);
+}
+
+.focus {
+  border-color: var(--color-border-focus) !important;
+  box-shadow: 0 0 0 3px
+    hsla(
+      var(--primary-hue),
+      var(--primary-saturation),
+      var(--primary-lightness),
+      0.1
+    ) !important;
+}
+
+.errorBlur {
+  border-color: var(--color-border-error) !important;
+}
+
+.blur {
+  border-color: var(--color-border-primary) !important;
+  box-shadow: none !important;
+}
+
+.errorMessage {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-error);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,408 @@
+:root {
+  /* Primary Colors (Blue from magnifying glass) */
+  --primary-hue: 195;
+  --primary-saturation: 100%;
+  --primary-lightness: 50%;
+
+  /* Secondary Colors (Green from medical cross) */
+  --secondary-hue: 150;
+  --secondary-saturation: 70%;
+  --secondary-lightness: 45%;
+
+  /* Neutral Colors */
+  --neutral-hue: 210;
+  --neutral-saturation: 10%;
+}
+
+[data-theme="light"] {
+  /* Primary Color Variants */
+  --color-primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
+  --color-primary-hover: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    45%
+  );
+  --color-primary-active: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    40%
+  );
+  --color-primary-disabled: hsl(var(--primary-hue), 30%, 70%);
+  --color-primary-light: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    85%
+  );
+  --color-primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 30%);
+
+  /* Secondary Color Variants */
+  --color-secondary: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    var(--secondary-lightness)
+  );
+  --color-secondary-hover: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    40%
+  );
+  --color-secondary-active: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    35%
+  );
+  --color-secondary-disabled: hsl(var(--secondary-hue), 30%, 65%);
+  --color-secondary-light: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    80%
+  );
+  --color-secondary-dark: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    25%
+  );
+
+  /* Background Colors */
+  --color-background-primary: hsl(0, 0%, 100%);
+  --color-background-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    98%
+  );
+  --color-background-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    95%
+  );
+  --color-background-elevated: hsl(0, 0%, 100%);
+  --color-background-overlay: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.5
+  );
+
+  /* Text Colors */
+  --color-text-primary: hsl(var(--neutral-hue), var(--neutral-saturation), 15%);
+  --color-text-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    45%
+  );
+  --color-text-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    65%
+  );
+  --color-text-disabled: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    75%
+  );
+  --color-text-inverse: hsl(0, 0%, 100%);
+
+  /* Border Colors */
+  --color-border-primary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    85%
+  );
+  --color-border-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    90%
+  );
+  --color-border-focus: var(--color-primary);
+  --color-border-error: hsl(0, 70%, 50%);
+  --color-border-success: var(--color-secondary);
+
+  /* Status Colors */
+  --color-success: var(--color-secondary);
+  --color-warning: hsl(45, 90%, 50%);
+  --color-error: hsl(0, 70%, 50%);
+  --color-info: var(--color-primary);
+
+  /* Shadow Colors */
+  --color-shadow-sm: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.08
+  );
+  --color-shadow-md: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.12
+  );
+  --color-shadow-lg: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.16
+  );
+}
+/* ===== DARK MODE THEME ===== */
+[data-theme="dark"] {
+  /* Primary Color Variants */
+  --color-primary: hsl(var(--primary-hue), var(--primary-saturation), 60%);
+  --color-primary-hover: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    65%
+  );
+  --color-primary-active: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    70%
+  );
+  --color-primary-disabled: hsl(var(--primary-hue), 30%, 40%);
+  --color-primary-light: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    75%
+  );
+  --color-primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 45%);
+
+  /* Secondary Color Variants */
+  --color-secondary: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    55%
+  );
+  --color-secondary-hover: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    60%
+  );
+  --color-secondary-active: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    65%
+  );
+  --color-secondary-disabled: hsl(var(--secondary-hue), 30%, 35%);
+  --color-secondary-light: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    70%
+  );
+  --color-secondary-dark: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    40%
+  );
+
+  /* Background Colors */
+  --color-background-primary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    8%
+  );
+  --color-background-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    12%
+  );
+  --color-background-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    16%
+  );
+  --color-background-elevated: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    14%
+  );
+  --color-background-overlay: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    5%,
+    0.7
+  );
+
+  /* Text Colors */
+  --color-text-primary: hsl(var(--neutral-hue), var(--neutral-saturation), 92%);
+  --color-text-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    70%
+  );
+  --color-text-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    50%
+  );
+  --color-text-disabled: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    35%
+  );
+  --color-text-inverse: hsl(var(--neutral-hue), var(--neutral-saturation), 8%);
+
+  /* Border Colors */
+  --color-border-primary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    25%
+  );
+  --color-border-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%
+  );
+  --color-border-focus: var(--color-primary);
+  --color-border-error: hsl(0, 70%, 60%);
+  --color-border-success: var(--color-secondary);
+
+  /* Status Colors */
+  --color-success: var(--color-secondary);
+  --color-warning: hsl(45, 90%, 60%);
+  --color-error: hsl(0, 70%, 60%);
+  --color-info: var(--color-primary);
+
+  /* Shadow Colors */
+  --color-shadow-sm: hsla(0, 0%, 0%, 0.15);
+  --color-shadow-md: hsla(0, 0%, 0%, 0.25);
+  --color-shadow-lg: hsla(0, 0%, 0%, 0.35);
+}
+
+/* ===== DEFAULT THEME (Light) ===== */
+:root:not([data-theme]) {
+  /* Apply light theme as default */
+  --color-primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
+  --color-primary-hover: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    45%
+  );
+  --color-primary-active: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    40%
+  );
+  --color-primary-disabled: hsl(var(--primary-hue), 30%, 70%);
+  --color-primary-light: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    85%
+  );
+  --color-primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 30%);
+
+  --color-secondary: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    var(--secondary-lightness)
+  );
+  --color-secondary-hover: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    40%
+  );
+  --color-secondary-active: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    35%
+  );
+  --color-secondary-disabled: hsl(var(--secondary-hue), 30%, 65%);
+  --color-secondary-light: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    80%
+  );
+  --color-secondary-dark: hsl(
+    var(--secondary-hue),
+    var(--secondary-saturation),
+    25%
+  );
+
+  --color-background-primary: hsl(0, 0%, 100%);
+  --color-background-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    98%
+  );
+  --color-background-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    95%
+  );
+  --color-background-elevated: hsl(0, 0%, 100%);
+  --color-background-overlay: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.5
+  );
+
+  --color-text-primary: hsl(var(--neutral-hue), var(--neutral-saturation), 15%);
+  --color-text-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    45%
+  );
+  --color-text-tertiary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    65%
+  );
+  --color-text-disabled: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    75%
+  );
+  --color-text-inverse: hsl(0, 0%, 100%);
+
+  --color-border-primary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    85%
+  );
+  --color-border-secondary: hsl(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    90%
+  );
+  --color-border-focus: var(--color-primary);
+  --color-border-error: hsl(0, 70%, 50%);
+  --color-border-success: var(--color-secondary);
+
+  --color-success: var(--color-secondary);
+  --color-warning: hsl(45, 90%, 50%);
+  --color-error: hsl(0, 70%, 50%);
+  --color-info: var(--color-primary);
+
+  --color-shadow-sm: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.08
+  );
+  --color-shadow-md: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.12
+  );
+  --color-shadow-lg: hsla(
+    var(--neutral-hue),
+    var(--neutral-saturation),
+    20%,
+    0.16
+  );
+}
+body {
+  min-height: 100vh;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
