@@ -29,13 +29,12 @@ export const QPMInput: FC<QPMInputProps> = ({
           className
         )}
         onFocus={(e) => {
-          e.currentTarget.classList.add(styles.focus);
+          e.currentTarget.classList.add(clsx(styles.focus));
         }}
         onBlur={(e) => {
-          e.currentTarget.classList.remove(styles.focus);
-          e.currentTarget.classList.add(
-            errorMessage ? styles.errorBlur : styles.blur
-          );
+          e.currentTarget.classList.remove(clsx(styles.focus));
+          errorMessage ? clsx(styles.errorBlur) : styles.blur;
+          e.currentTarget.classList.add();
         }}
         {...props}
       />

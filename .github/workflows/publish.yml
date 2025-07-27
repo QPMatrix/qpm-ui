@@ -1,0 +1,50 @@
+name: 📦 Auto-bump & Publish to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump-build-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push version bump
+      packages: write
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+          scope: "@qpmatrix" # 👈 your org/user
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔼 Bump patch version
+        run: |
+          npm version patch --no-git-tag-version
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "🔖 Bump version"
+          git push
+      - name: 🔖 Tag version
+        run: |
+          version=$(jq -r .version package.json)
+          git tag "v$version"
+          git push origin "v$version"
+
+      - name: 🛠 Build package
+        run: npm run build
+
+      - name: 🚀 Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
