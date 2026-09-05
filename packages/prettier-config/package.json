@@ -1,0 +1,33 @@
+{
+  "name": "@qpmatrix/prettier-config",
+  "version": "0.1.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QPMatrix/qpm-ui.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@qpmatrix/typescript-config": "workspace:*",
+    "prettier": "^3.9.6"
+  },
+  "scripts": {
+    "build": "bun --bun tsc --build --pretty false",
+    "test": "echo 'No tests for prettier-config'"
+  }
+}

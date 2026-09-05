@@ -1,0 +1,25 @@
+{
+  "name": "@qpmatrix/typescript-config",
+  "version": "0.2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QPMatrix/qpm-ui.git"
+  },
+  "files": [
+    "*.json"
+  ],
+  "exports": {
+    "./base.json": "./base.json",
+    "./api.json": "./api.json",
+    "./nextjs.json": "./nextjs.json",
+    "./react-library.json": "./react-library.json"
+  },
+  "scripts": {
+    "build": "echo 'No build required for typescript-config'",
+    "test": "echo 'No tests for typescript-config'"
+  }
+}

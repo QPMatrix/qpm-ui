@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@qpmatrix/typescript-config/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "target": "ES2023",
+    "types": ["bun"]
+  },
+  "include": ["src", "tests", "tests/fixtures/**/*.json"],
+  "exclude": []
+}

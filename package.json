@@ -20,6 +20,7 @@
     "clean": "rm -rf packages/*/dist packages/*/*.tsbuildinfo *.tsbuildinfo"
   },
   "devDependencies": {
+    "@qpmatrix/prettier-config": "workspace:*",
     "@types/bun": "^1.4.0",
     "oxlint": "^1.81.0",
     "oxlint-tsgolint": "^7.0.2001",

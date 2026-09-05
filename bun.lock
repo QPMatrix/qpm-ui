@@ -5,12 +5,47 @@
     "": {
       "name": "qpm-ui",
       "devDependencies": {
+        "@qpmatrix/prettier-config": "workspace:*",
         "@types/bun": "^1.4.0",
         "oxlint": "^1.81.0",
         "oxlint-tsgolint": "^7.0.2001",
         "prettier": "^3.9.6",
         "typescript": "6.0.3",
       },
+    },
+    "packages/oxlint-config": {
+      "name": "@qpmatrix/oxlint-config",
+      "version": "0.1.0",
+      "devDependencies": {
+        "oxlint": "^1.81.0",
+      },
+      "peerDependencies": {
+        "oxlint": ">=1.0.0",
+      },
+    },
+    "packages/prettier-config": {
+      "name": "@qpmatrix/prettier-config",
+      "version": "0.1.0",
+      "devDependencies": {
+        "@qpmatrix/typescript-config": "workspace:*",
+        "prettier": "^3.9.6",
+      },
+      "peerDependencies": {
+        "prettier": ">=3.0.0",
+      },
+    },
+    "packages/tokens": {
+      "name": "@qpmatrix/tokens",
+      "version": "0.3.0",
+      "devDependencies": {
+        "@qpmatrix/tokens": "workspace:*",
+        "@qpmatrix/typescript-config": "workspace:*",
+        "@types/bun": "^1.4.0",
+      },
+    },
+    "packages/typescript-config": {
+      "name": "@qpmatrix/typescript-config",
+      "version": "0.2.0",
     },
   },
   "packages": {
@@ -63,6 +98,14 @@
     "@oxlint/binding-win32-ia32-msvc": ["@oxlint/binding-win32-ia32-msvc@1.81.0", "", { "os": "win32", "cpu": "ia32" }, "sha512-ksqPP5jbFXcYreEQ7zdJh06rJQBymCTyGRCdaXjfcf2aG4f8KxUWY5wcgYHmaTK+FJ4bPG5sUAdOX+6trnH1JA=="],
 
     "@oxlint/binding-win32-x64-msvc": ["@oxlint/binding-win32-x64-msvc@1.81.0", "", { "os": "win32", "cpu": "x64" }, "sha512-IZuUCwGw9emG5JtCp+fYGB+Z4OWEoeEcM8R5BA1pYw63/ieYFVdcU2ylxTpHbVHSenZnsYE+ZZ20uHAJszQ4cA=="],
+
+    "@qpmatrix/oxlint-config": ["@qpmatrix/oxlint-config@workspace:packages/oxlint-config"],
+
+    "@qpmatrix/prettier-config": ["@qpmatrix/prettier-config@workspace:packages/prettier-config"],
+
+    "@qpmatrix/tokens": ["@qpmatrix/tokens@workspace:packages/tokens"],
+
+    "@qpmatrix/typescript-config": ["@qpmatrix/typescript-config@workspace:packages/typescript-config"],
 
     "@types/bun": ["@types/bun@1.4.1", "", { "dependencies": { "bun-types": "1.4.1" } }, "sha512-0AVGiTXGajf1rgKom3N+c5L7CBxuoyyv1i44M0nX4UDK0G/fnRAMiri93nHuVPIb429KKtAgj7HatVmmOjeQLA=="],
 

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "extends": ["./base.json"],
+  "plugins": ["typescript", "unicorn", "oxc", "import", "react", "jsx-a11y"],
+  "env": {
+    "builtin": true,
+    "browser": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    "react/jsx-boolean-value": "error",
+    "react/no-array-index-key": "error",
+    "react/no-danger": "warn",
+    "react/no-unstable-nested-components": "error",
+    "react/self-closing-comp": "error",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "@mui/*",
+          "@mui/**",
+          "@emotion/*",
+          "@emotion/**",
+          "@base-ui/react",
+          "@base-ui/react/*",
+          "@base-ui/react/**"
+        ]
+      }
+    ]
+  }
+}
