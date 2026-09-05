@@ -1,18 +1,116 @@
 #!/bin/sh
-# Starter gate from repo birth — EXTEND ME as the repo grows content.
-# Hook = CI = this file (parity rule). Fetch BEFORE check, ALWAYS
-# (QPMSEC-436 review round 2, finding 2): a fresh clone carries no
-# .cache/ (gitignored), so instructions.py itself does not exist on
-# disk until scripts/qp-skills-fetch.sh vendors it — this order is the
-# only one that can ever work, and a fetch failure surfaces as that
-# script's own clear git error, never a Python stack trace for a file
-# that is not there yet. --require-sources (finding 4): CI must never
-# silently accept the qpsb-agents local-stand-in fallback — a laptop
-# path cannot exist on a runner anyway, so this turns a silent gap into
-# a clear, named failure instead.
+# Gate for qpm-ui — EXTENDED past the repo-birth starter as packages
+# landed (QPMSEC-433). Hook = CI = this file (parity rule). Fetch BEFORE
+# check, ALWAYS (QPMSEC-436 review round 2, finding 2): a fresh clone
+# carries no .cache/ (gitignored), so instructions.py itself does not
+# exist on disk until scripts/qp-skills-fetch.sh vendors it — this order
+# is the only one that can ever work, and a fetch failure surfaces as
+# that script's own clear git error, never a Python stack trace for a
+# file that is not there yet. --require-sources (finding 4): CI must
+# never silently accept the qpsb-agents local-stand-in fallback — a
+# laptop path cannot exist on a runner anyway, so this turns a silent
+# gap into a clear, named failure instead.
 set -e
 sh scripts/qp-skills-fetch.sh
 sh scripts/qp-agents-fetch.sh
 python3 .cache/qp-skills/skills/repo-instructions/scripts/instructions.py check . --require-sources
-find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -exec sh -n {} +
+find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './node_modules/*' -not -path './packages/*/node_modules/*' -exec sh -n {} +
+
+# Stages (QPMSEC-433 ENVELOPE: fmt|lint|typecheck|test|build, no image —
+# this repo has no Dockerfile). `./check <stage>` runs exactly that
+# stage; `./check` with no argument runs every stage in the order below
+# (repo-gates-and-hooks rule 12). The reusable ts-gate.yml caller
+# (.github/workflows/ci.yml) calls `./check fmt`, `./check lint` and
+# `./check test` as three parallel jobs — it never calls `./check
+# typecheck` or `./check build` by name, so `./check test` runs
+# typecheck and build itself first: every workspace package's
+# `package.json` "exports" points consumers at "./dist" (bun's own
+# module resolution for a workspace dependency reads that field, same
+# as npm's would), so `@qpmatrix/ui`'s tests cannot even resolve
+# `@qpmatrix/tokens` until tokens has been built — this is a real
+# ordering requirement, not just a rule-4 nicety. This is why the
+# no-argument order below is fmt, lint, typecheck, build, test (build
+# before test) even though the envelope text lists the stage names as
+# fmt|lint|typecheck|test|build — nothing the hook checks goes
+# unchecked by CI once `./check test` covers typecheck+build too.
+stage="${1:-all}"
+
+# `bun --filter='*' run build`/`run test` hard-error ("No workspace
+# packages matched the filter") when packages/ is empty — true only for
+# this repo's own bootstrap commit (workspace scaffold lands before any
+# package does, QPMSEC-433 commit 1). A no-package tree genuinely has
+# nothing to build or test; guard rather than let that honest state
+# fail the gate.
+has_packages() {
+  for pkg in packages/*/package.json; do
+    if [ -f "$pkg" ]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+run_fmt() {
+  bun run fmt
+}
+
+run_lint() {
+  bun run lint
+}
+
+run_typecheck() {
+  bun run typecheck
+}
+
+run_build() {
+  if has_packages; then
+    bun run build
+  else
+    echo "check: no workspace packages yet, nothing to build"
+  fi
+}
+
+run_test() {
+  run_typecheck
+  run_build
+  if has_packages; then
+    bun run test
+  else
+    echo "check: no workspace packages yet, nothing to test"
+  fi
+}
+
+case "$stage" in
+  fmt)
+    run_fmt
+    ;;
+  lint)
+    run_lint
+    ;;
+  typecheck)
+    run_typecheck
+    ;;
+  build)
+    run_build
+    ;;
+  test)
+    run_test
+    ;;
+  all)
+    run_fmt
+    run_lint
+    run_typecheck
+    run_build
+    if has_packages; then
+      bun run test
+    else
+      echo "check: no workspace packages yet, nothing to test"
+    fi
+    ;;
+  *)
+    echo "unknown stage: $stage (expected one of: fmt lint typecheck build test)" >&2
+    exit 1
+    ;;
+esac
+
 echo "check: green"

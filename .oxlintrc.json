@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "builtin": true
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.wrangler/**",
+    "**/.turbo/**",
+    "**/.cache/**",
+    "**/.githooks/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/*.generated.*"
+  ],
+  "rules": {
+    "curly": "error",
+    "eqeqeq": "error",
+    "no-alert": "error",
+    "no-debugger": "error",
+    "no-duplicate-imports": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+
+    "typescript/consistent-type-exports": "error",
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-non-null-assertion": "error",
+
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
+    "import/no-duplicates": "error",
+    "import/no-self-import": "error"
+  }
+}

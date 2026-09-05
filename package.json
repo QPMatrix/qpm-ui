@@ -4,10 +4,26 @@
   "private": true,
   "type": "module",
   "packageManager": "bun@1.4.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "bun": ">=1.4"
   },
+  "scripts": {
+    "fmt": "bun --bun prettier . --check",
+    "fmt:write": "bun --bun prettier . --write",
+    "lint": "bun --bun oxlint --type-aware -c .oxlintrc.json .",
+    "typecheck": "bun --bun tsc --build --pretty false",
+    "build": "bun --filter='*' run build",
+    "test": "bun --filter='*' run test",
+    "clean": "rm -rf packages/*/dist packages/*/*.tsbuildinfo *.tsbuildinfo"
+  },
   "devDependencies": {
+    "@types/bun": "^1.4.0",
+    "oxlint": "^1.81.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "prettier": "^3.9.6",
     "typescript": "6.0.3"
   }
 }
