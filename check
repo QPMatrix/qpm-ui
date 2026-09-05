@@ -43,13 +43,34 @@ find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './
 #     `dist/index.d.ts` on disk before tsc starts, which a from-scratch
 #     `tsc --build` cannot produce for itself in the same pass.
 # `ensure_build` is therefore an unconditional prerequisite for every
-# stage that isn't `build` itself (`build` — `bun --filter='*' run
-# build` — already builds every package correctly in one pass on a
-# clean tree, each package's own tsconfig.build.json project references
-# pulling in what it depends on, e.g. `ui` building `tokens` first).
-# `tsc --build`/`bun run build` are both incremental and idempotent, so
-# calling `ensure_build` before a stage that has ALREADY been built
-# costs a fast no-op recheck, not a rebuild.
+# stage that isn't `build` itself. `tsc --build`/`bun run build` are
+# both incremental and idempotent, so calling `ensure_build` before a
+# stage that has ALREADY been built costs a fast no-op recheck, not a
+# rebuild.
+#
+# `build` itself (root `package.json`'s "build" script) runs every
+# package's own `build` script in EXPLICIT dependency order — tokens,
+# then the three tooling configs, then query-fetcher, then ui — chained
+# with `&&`, never `bun --filter='*' run build`. That plain filter form
+# was this repo's original approach and PASSED LOCALLY (QPMSEC-433 round
+# 3, PR #1 gate): a fresh hosted runner still failed
+# `src/lib/theme.ts(1,35): error TS2307: Cannot find module
+# '@qpmatrix/tokens'` building `ui`, because `bun --filter='*'`'s
+# per-package execution order is not a topological-by-workspace-
+# dependency guarantee — a local session's leftover `dist/` from an
+# earlier run masked the gap every time it was tried by hand. The
+# DEEPER bug this also fixed: `packages/ui/tsconfig.build.json` (the
+# file `ui`'s `build` script actually invokes) had no `"references"` of
+# its own — `extends` does NOT propagate TypeScript's `references`
+# field, so `tsconfig.json`'s reference to `../tokens/tsconfig.build.json`
+# never reached the build-time config, and `tsc --build` had zero
+# knowledge it needed to build `tokens` first; it just tried ordinary
+# node_modules resolution and failed whenever tokens' dist didn't
+# already exist. Fixed at both layers: `tsconfig.build.json` now
+# repeats the reference explicitly (so `tsc --build` on that file alone
+# is correct from any starting state, independent of invocation order),
+# and this script's own build order removes the non-determinism
+# entirely rather than depending on tsc alone to save it every time.
 stage="${1:-all}"
 
 # `bun --filter='*' run build`/`run test` hard-error ("No workspace
