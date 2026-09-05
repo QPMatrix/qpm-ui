@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>QPMatrix a11y sweep</title>
+    <style>
+      body {
+        font:
+          14px/1.5 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        margin: 0;
+        padding: 1rem;
+        background: #0b0d10;
+        color: #e6e8eb;
+      }
+      #status {
+        margin: 0 0 0.75rem;
+        font-variant-numeric: tabular-nums;
+      }
+      #summary {
+        margin: 0 0 1rem;
+        white-space: pre-wrap;
+        font-family: ui-monospace, monospace;
+        font-size: 12px;
+      }
+      iframe {
+        border: 1px solid #242a32;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="status">idle</p>
+    <pre id="summary"></pre>
+    <iframe id="frame" width="1200" height="800"></iframe>
+    <script>
+      /*
+       * Runs axe against EVERY story, in a real browser.
+       *
+       * This exists because happy-dom — which the unit suite renders into —
+       * has no layout engine and no compositing, so axe's `color-contrast`
+       * rule always returns `incomplete` there. The suite is structurally
+       * blind to the single most common WCAG failure, and the token-layer
+       * checker only sees combinations somebody remembered to declare.
+       *
+       * Running this found four real defects that every other gate passed:
+       * the default Button, the Composer's submit control and the user message
+       * bubble all rendered body text at 4.04:1, and the brand ProductBadge
+       * tint at 4.23:1.
+       *
+       * Two implementation notes, both learned the hard way:
+       *
+       *   1. axe must run INSIDE the story frame. Calling the parent window's
+       *      axe with a node from the frame throws "arguments are invalid" —
+       *      and if that throw is swallowed, the sweep reports zero violations
+       *      across every story and looks like a clean pass.
+       *   2. Stories need a beat after load. Base UI portals and Motion
+       *      entrances both settle after first paint.
+       *
+       * Results land on `window.__sweep` for a driver to read.
+       */
+      window.__sweep = { done: false, index: 0, total: 0, results: [] };
+
+      const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
+
+      function summarise() {
+        const pairs = {};
+        for (const story of window.__sweep.results) {
+          for (const violation of story.violations ?? []) {
+            const match =
+              /contrast of ([\d.]+) \(foreground color: (#\w+), background color: (#\w+)/.exec(
+                violation.summary,
+              );
+            const key = match
+              ? `${violation.rule} ${match[1]} ${match[2]} on ${match[3]}`
+              : violation.rule;
+            (pairs[key] ??= []).push(story.id);
+          }
+        }
+        const lines = Object.entries(pairs).map(
+          ([key, ids]) => `${String(ids.length).padStart(3)} x  ${key}\n         e.g. ${ids[0]}`,
+        );
+        document.getElementById("summary").textContent =
+          lines.length === 0 ? "no violations" : lines.join("\n");
+      }
+
+      async function runSweep(ids) {
+        const frame = document.getElementById("frame");
+        const status = document.getElementById("status");
+        window.__sweep.total = ids.length;
+
+        for (const [index, id] of ids.entries()) {
+          window.__sweep.index = index + 1;
+          status.textContent = `${index + 1}/${ids.length}  ${id}`;
+
+          await new Promise((resolve) => {
+            frame.onload = () => {
+              resolve();
+            };
+            frame.src = `./iframe.html?id=${encodeURIComponent(id)}&viewMode=story`;
+          });
+          await new Promise((resolve) => {
+            setTimeout(resolve, 200);
+          });
+
+          try {
+            const doc = frame.contentDocument;
+            const win = frame.contentWindow;
+            const root = doc?.querySelector("#storybook-root") ?? doc?.body;
+            if (root === null || root === undefined || win === null) {
+              window.__sweep.results.push({ id, error: "no root" });
+              continue;
+            }
+
+            if (win.axe === undefined) {
+              await new Promise((resolve, reject) => {
+                const script = doc.createElement("script");
+                script.src = "./axe.min.js";
+                script.onload = resolve;
+                script.onerror = reject;
+                doc.head.appendChild(script);
+              });
+            }
+
+            const run = await win.axe.run(root, {
+              resultTypes: ["violations"],
+              // QPMatrix ships against WCAG 2.2 AA. Best-practice rules are
+              // opinions, and including them would make this advisory rather
+              // than a gate.
+              runOnly: { type: "tag", values: WCAG_TAGS },
+            });
+            window.__sweep.results.push({
+              id,
+              violations: run.violations.map((violation) => ({
+                rule: violation.id,
+                impact: violation.impact,
+                nodes: violation.nodes.length,
+                summary: (violation.nodes[0]?.failureSummary ?? "").slice(0, 240),
+              })),
+            });
+          } catch (error) {
+            window.__sweep.results.push({ id, error: String(error).slice(0, 200) });
+          }
+
+          if (index % 10 === 0) {
+            summarise();
+          }
+        }
+
+        window.__sweep.done = true;
+        status.textContent = `done — ${ids.length} stories`;
+        summarise();
+      }
+
+      fetch("./index.json")
+        .then((response) => response.json())
+        .then((index) =>
+          runSweep(
+            Object.values(index.entries)
+              .filter((entry) => entry.type === "story")
+              .map((entry) => entry.id),
+          ),
+        );
+    </script>
+  </body>
+</html>

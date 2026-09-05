@@ -1,0 +1,44 @@
+__USE_CLIENT__import { cn, isRenderable } from "../../lib/utils";
+__PRIMITIVE_IMPORT__import { __COMPONENT_CAMEL__Variants } from "./__COMPONENT_KEBAB__.constants";
+import type { __COMPONENT_NAME__Props } from "./__COMPONENT_KEBAB__.types";
+
+/**
+ * __COMPONENT_NAME__ — __DESCRIPTION__
+ *
+ * TODO(scaffold): replace this paragraph with what a consumer actually gets,
+ * and name the `./ui/*` primitive that supplies the behaviour. Delete every
+ * `TODO(scaffold)` marker before running `bun run registry:check __COMPONENT_KEBAB__`.
+ *
+ * This file holds MARKUP ONLY. Class maps live in `.constants.ts`, the props
+ * interface in `.types.ts`, and pure logic in `.utils.ts`
+ * (docs/standards/component-definition-of-done.md, "Folder layout"). If you
+ * find yourself writing a `cva(...)` call or a branchy helper here, it belongs
+ * in one of those three.
+ *
+ * House rules:
+ *   - It is a UI kit: every user-visible string, icon and dimension is a prop.
+ *   - Tailwind classes only. No `style={{}}`, no hex/rgb, no `dark:` colour forks.
+ *   - Named React imports. `import * as React` is lint-banned.
+ *   - Relative imports. `@/…` never appears in committed packages/ui source.
+ *   - `cn()` merges `className` LAST so a consumer wins a tailwind-merge conflict.
+ *   - `...props` (including `ref`) reaches the root element untouched.
+ */
+export function __COMPONENT_NAME__({
+  label,
+  children,
+  tone,
+  size,
+  className,
+  ...props
+}: __COMPONENT_NAME__Props) {
+  return (
+    <__ROOT_OPEN__
+      data-slot="__COMPONENT_KEBAB__"
+      className={cn(__COMPONENT_CAMEL__Variants({ tone, size }), className)}
+      {...props}
+    >
+      <span data-slot="__COMPONENT_KEBAB__-label">{label}</span>
+      {isRenderable(children) ? children : null}
+    </__ROOT_CLOSE__>
+  );
+}

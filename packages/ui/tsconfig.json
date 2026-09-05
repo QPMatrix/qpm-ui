@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@qpmatrix/typescript-config/react-library.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "types": ["bun"],
+    // `@/*` exists so `shadcn add` and editors resolve freshly-added upstream
+    // files. Committed source under src/ must NOT use it: `tsc --build` does
+    // not rewrite path aliases on emit, so an `@/` specifier would survive into
+    // dist/ and break at runtime for npm consumers. `bun run registry:validate`
+    // enforces this (rule: no-alias-imports-in-source).
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "scripts", ".storybook/**/*.ts"],
+  "references": [{ "path": "../tokens/tsconfig.build.json" }]
+}

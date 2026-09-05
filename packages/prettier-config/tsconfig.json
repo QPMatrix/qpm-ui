@@ -11,6 +11,7 @@
     "outDir": "dist",
     "rootDir": ".",
     "target": "ES2023",
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo",
     "types": ["bun"]
   },
   "include": ["*.ts"],

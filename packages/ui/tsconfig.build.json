@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "tsBuildInfoFile": "tsconfig.build.tsbuildinfo"
+  },
+  // Mirrors packages/tokens' split. What ships to npm is the component surface
+  // only — the registry authoring tools and the accessibility test helpers are
+  // build-time/dev-time concerns whose dependencies (zod, axe-core,
+  // @testing-library/*) must never become runtime dependencies of
+  // @qpmatrix/ui. They are still typechecked and linted via tsconfig.json.
+  "include": ["src"],
+  "exclude": ["src/registry", "src/testing", "**/*.test.ts", "**/*.test.tsx", "src/test-setup.ts"]
+}

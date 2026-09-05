@@ -1,0 +1,42 @@
+{
+  "name": "@qpmatrix/query-fetcher",
+  "version": "0.3.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QPMatrix/qpm-ui.git"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@qpmatrix/typescript-config": "workspace:*",
+    "@tanstack/react-query": "^5.101.4",
+    "@types/bun": "^1.4.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "scripts": {
+    "build": "bun --bun tsc --build tsconfig.build.json --pretty false",
+    "test": "bun test"
+  }
+}

@@ -1,0 +1,92 @@
+import "../../test-setup";
+
+import { cleanup, render } from "@testing-library/react";
+import { afterEach, describe, expect, mock, test } from "bun:test";
+
+import { __COMPONENT_NAME__ } from "./__COMPONENT_KEBAB__";
+
+/**
+ * The MANDATORY contract every @qpmatrix/ui component is tested against.
+ * Cases below are pre-written from the component's archetype; fill in the
+ * TODO(scaffold) blocks and ADD cases, but do not delete a case — each one
+ * maps to a rule in docs/standards/component-definition-of-done.md.
+ *
+ * Queries come from each `render()` call's own return value, never the
+ * `@testing-library/dom` `screen` singleton, which binds `document` at
+ * module-evaluation time (see ../../test-setup for why that is not safe here).
+ */
+
+async function setupUser() {
+  const { default: userEvent } = await import("@testing-library/user-event");
+  return userEvent.setup();
+}
+
+afterEach(() => {
+  cleanup();
+});
+
+describe("__COMPONENT_NAME__", () => {
+  test("renders the label it is given", () => {
+    const { getByText } = render(<__COMPONENT_NAME__ label="Scaffolded label" />);
+
+    expect(getByText("Scaffolded label")).toBeInTheDocument();
+  });
+
+  test("copy is a prop — no English string is baked in", () => {
+    // A non-Latin, RTL string: if this passes, nothing in the component is
+    // hardcoding or transforming user-visible text.
+    const { getByText } = render(<__COMPONENT_NAME__ label="نص عربي" />);
+
+    expect(getByText("نص عربي")).toBeInTheDocument();
+  });
+
+  test("exposes its data-slot so consumers and tests can target it", () => {
+    const { container } = render(<__COMPONENT_NAME__ label="Slot" />);
+
+    expect(container.querySelector('[data-slot="__COMPONENT_KEBAB__"]')).toBeInTheDocument();
+  });
+
+  test("className merges last and does not clobber the component's own classes", () => {
+    const { container } = render(<__COMPONENT_NAME__ label="Merge" className="ms-4 w-40" />);
+
+    const root = container.querySelector('[data-slot="__COMPONENT_KEBAB__"]');
+    expect(root?.className).toContain("ms-4");
+    expect(root?.className).toContain("w-40");
+  });
+
+  test("variants select token roles rather than literal colours", () => {
+    const { container } = render(<__COMPONENT_NAME__ label="Tone" tone="accent" />);
+
+    const root = container.querySelector('[data-slot="__COMPONENT_KEBAB__"]');
+    // Token-role classes only. A hex or rgb() value here is a standards failure
+    // the `hardcoded-color` registry rule would also catch.
+    expect(root?.className).toContain("bg-brand-subtle");
+  });
+
+  test("forwards unknown props and ref to the root element", () => {
+    let node: HTMLElement | null = null;
+    const { container } = render(
+      <__COMPONENT_NAME__
+        label="Forward"
+        id="scaffold-root"
+        data-testid="scaffold"
+        ref={(element: HTMLElement | null) => {
+          node = element;
+        }}
+      />,
+    );
+
+    const root = container.querySelector("#scaffold-root");
+    expect(root).toHaveAttribute("data-testid", "scaffold");
+    expect(node).toBe(root);
+  });
+
+  __INTERACTIVE_TESTS__
+  test("has no axe violations in its default state", async () => {
+    const { runAxe } = await import("../../testing/axe");
+    const { container } = render(<__COMPONENT_NAME__ label="Audited" />);
+
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

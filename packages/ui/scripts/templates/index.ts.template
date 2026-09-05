@@ -1,0 +1,12 @@
+/**
+ * __COMPONENT_NAME__ — public surface of this folder.
+ *
+ * The barrel exports all four modules, so `@qpmatrix/ui` consumers reach the
+ * component, its types, its class maps and its helpers through one path and
+ * never have to know the file split exists. Import from the folder, not from
+ * a file inside it.
+ */
+export * from "./__COMPONENT_KEBAB__";
+export * from "./__COMPONENT_KEBAB__.constants";
+export * from "./__COMPONENT_KEBAB__.types";
+export * from "./__COMPONENT_KEBAB__.utils";

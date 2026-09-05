@@ -1,0 +1,35 @@
+import { __COMPONENT_CONST__DEFAULT_LABELS } from "./__COMPONENT_KEBAB__.constants";
+
+/**
+ * __COMPONENT_NAME__ — pure helpers.
+ *
+ * Anything the component computes that is not JSX lives here: label
+ * resolution, prop normalisation, event predicates. Two reasons, both
+ * practical:
+ *
+ *   1. These are the parts with actual branching, so they are the parts worth
+ *      unit-testing directly — no render, no DOM, no act() warnings.
+ *   2. Keeping them out of the component body means the component file reads
+ *      as a description of the markup rather than a mix of logic and layout.
+ *
+ * Every function here MUST be pure: no hooks, no DOM access, no module state.
+ * If a helper needs `useState` or `useEffect` it is not a util — it is either
+ * part of the component or a hook under `src/hooks/`.
+ *
+ * Helpers shared by more than one component do NOT belong here. `cn` and
+ * `isRenderable` live in `src/lib/utils.ts`; import them from there rather than
+ * re-deriving a local copy.
+ */
+
+/**
+ * Resolve the screen-reader label, honouring the caller's override.
+ *
+ * The fallback is English on purpose and is ALWAYS reachable by a prop — a
+ * default a caller cannot replace is a localisation bug waiting to happen.
+ *
+ * TODO(scaffold): keep this only if the component has such a string; delete it
+ * (and the constants object it reads) otherwise.
+ */
+export function __COMPONENT_RESOLVER__(override?: string): string {
+  return override ?? __COMPONENT_CONST__DEFAULT_LABELS.busy;
+}
