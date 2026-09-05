@@ -9,7 +9,7 @@ import { $ } from "bun";
  * recognise) is the exact failure mode `oxlint --print-config` catches
  * without running a single lint pass.
  */
-describe("@qpmatrix/oxlint-config", () => {
+describe("@qpmtx/oxlint-config", () => {
   test("base.json is accepted by oxlint", async () => {
     const result = await $`bun --bun oxlint -c ${import.meta.dir}/../base.json --print-config`
       .quiet()

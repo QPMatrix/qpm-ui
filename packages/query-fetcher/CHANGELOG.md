@@ -1,4 +1,4 @@
-# @qpmatrix/query-fetcher
+# @qpmtx/query-fetcher
 
 ## 0.3.0
 

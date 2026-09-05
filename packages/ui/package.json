@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/ui",
+  "name": "@qpmtx/ui",
   "version": "1.1.0",
   "type": "module",
   "publishConfig": {
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
-    "@qpmatrix/tokens": "workspace:*",
+    "@qpmtx/tokens": "workspace:*",
     "@shadcn/react": "^0.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^20.11.1",
-    "@qpmatrix/typescript-config": "workspace:*",
+    "@qpmtx/typescript-config": "workspace:*",
     "@storybook/addon-a11y": "^10.5.7",
     "@storybook/addon-docs": "^10.5.7",
     "@storybook/react-vite": "^10.5.7",

@@ -42,7 +42,7 @@ export const Default: Story = {
   args: { children: "The quick brown fox jumps over the lazy dog." },
 };
 
-/** The whole QPMatrix type ramp, straight from @qpmatrix/tokens. */
+/** The whole QPMatrix type ramp, straight from @qpmtx/tokens. */
 export const Ramp: Story = {
   args: { children: "" },
   render: () => (

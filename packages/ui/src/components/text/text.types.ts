@@ -8,7 +8,7 @@ import type { qpTextVariants } from "./text.constants";
  */
 
 /**
- * The QPMatrix type ramp, straight from @qpmatrix/tokens.
+ * The QPMatrix type ramp, straight from @qpmtx/tokens.
  *
  * Each name resolves to a Tailwind `text-*` utility that carries size, line
  * height, letter spacing AND weight together, so a type style cannot be
@@ -83,7 +83,7 @@ export interface QPTextProps
   /**
    * Font family override. Defaults to the inherited `font-sans`.
    *
-   * `arabic` and `hebrew` exist because @qpmatrix/tokens ships script-specific
+   * `arabic` and `hebrew` exist because @qpmtx/tokens ships script-specific
    * families with their own size and line-height adjustments — Arabic set at
    * a Latin font's metrics is legible but visibly cramped.
    */

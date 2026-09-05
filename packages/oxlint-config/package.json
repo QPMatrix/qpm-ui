@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/oxlint-config",
+  "name": "@qpmtx/oxlint-config",
   "version": "0.1.0",
   "publishConfig": {
     "access": "public"

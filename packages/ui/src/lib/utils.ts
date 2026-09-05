@@ -92,7 +92,7 @@ const twMerge = extendTailwindMerge({
 /**
  * Merge Tailwind class names, with later classes winning conflicts.
  *
- * The one styling escape hatch @qpmatrix/ui components expose: every component
+ * The one styling escape hatch @qpmtx/ui components expose: every component
  * takes `className` and runs it through `cn()` last, so a consumer can adjust
  * *layout* (margin, width, grid placement) without being able to accidentally
  * end up with two competing `bg-*` classes. Consumers must not use it to

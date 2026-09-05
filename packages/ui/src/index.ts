@@ -1,24 +1,24 @@
 /**
- * @qpmatrix/ui — public barrel.
+ * @qpmtx/ui — public barrel.
  *
  * The only module QPMatrix apps import components from (ADR-005). The package
  * is a shadcn/ui source-owned library: Base UI primitives underneath, Tailwind
  * v4 on top, and every colour/size/motion value resolved from
- * @qpmatrix/tokens through the adapter in `styles/qpmatrix.css`.
+ * @qpmtx/tokens through the adapter in `styles/qpmatrix.css`.
  *
  * MUI is gone. There is no theme provider to mount: dark is `:root` and light
- * is `[data-theme="light"]`, both defined by @qpmatrix/tokens, so switching
+ * is `[data-theme="light"]`, both defined by @qpmtx/tokens, so switching
  * themes is a single attribute on `<html>` — see `resolveThemeSelection` /
  * `themeAttributes` below.
  *
  * Apps must import the stylesheet once, at the app root:
  *
  * ```css
- * @import "@qpmatrix/ui/css";
+ * @import "@qpmtx/ui/css";
  * ```
  *
- * It pulls in Tailwind, shadcn's variants, and @qpmatrix/tokens in the order
- * the cascade requires. Do not import `@qpmatrix/tokens/css` separately.
+ * It pulls in Tailwind, shadcn's variants, and @qpmtx/tokens in the order
+ * the cascade requires. Do not import `@qpmtx/tokens/css` separately.
  *
  * ## The QP prefix
  *

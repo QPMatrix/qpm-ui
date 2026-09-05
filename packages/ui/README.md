@@ -1,15 +1,15 @@
-# @qpmatrix/ui
+# @qpmtx/ui
 
 The QPMatrix component library — **the only module QPMatrix apps import
 components from** (ADR-005).
 
 A shadcn/ui source-owned library: [Base UI](https://base-ui.com) primitives
 underneath, Tailwind v4 on top, [Motion](https://motion.dev) for animation, and
-every colour, size and duration resolved from `@qpmatrix/tokens` through the
+every colour, size and duration resolved from `@qpmtx/tokens` through the
 adapter in `styles/qpmatrix.css`.
 
 Raw `@mui/*`, `@emotion/*` and `@base-ui/react` imports are lint-banned in
-application code (see [`@qpmatrix/oxlint-config`'s `react.json`](../oxlint-config/react.json),
+application code (see [`@qpmtx/oxlint-config`'s `react.json`](../oxlint-config/react.json),
 `../../docs/lint.md`): a primitive imported straight into an app is
 unstyled, untokenised, and outside the accessibility gates this package
 applies.
@@ -22,22 +22,22 @@ and the shared library modules. 165 Storybook stories.
 Within the monorepo:
 
 ```jsonc
-{ "dependencies": { "@qpmatrix/ui": "workspace:*" } }
+{ "dependencies": { "@qpmtx/ui": "workspace:*" } }
 ```
 
 Then, **once, at the app root**:
 
 ```css
-@import "@qpmatrix/ui/css";
+@import "@qpmtx/ui/css";
 ```
 
-That pulls in Tailwind, shadcn's variants and `@qpmatrix/tokens` in the order
-the cascade requires. Do **not** import `@qpmatrix/tokens/css` separately.
+That pulls in Tailwind, shadcn's variants and `@qpmtx/tokens` in the order
+the cascade requires. Do **not** import `@qpmtx/tokens/css` separately.
 
 ## Using it
 
 ```tsx
-import { QPMetricCard, QPSection, QPPageContainer, QPButton } from "@qpmatrix/ui";
+import { QPMetricCard, QPSection, QPPageContainer, QPButton } from "@qpmtx/ui";
 
 export function Dashboard() {
   return (
@@ -68,11 +68,11 @@ applied at the package boundary in `src/index.ts` instead.
 ### Theming
 
 There is **no theme provider to mount**. Dark is `:root` and light is
-`[data-theme="light"]`, both defined by `@qpmatrix/tokens` — so switching themes
+`[data-theme="light"]`, both defined by `@qpmtx/tokens` — so switching themes
 is one attribute on `<html>`, settable server-side with no hydration flash:
 
 ```tsx
-import { resolveThemeSelection, themeAttributes } from "@qpmatrix/ui";
+import { resolveThemeSelection, themeAttributes } from "@qpmtx/ui";
 
 <html lang={locale} {...themeAttributes(resolveThemeSelection(serverTheme))}>
 ```
@@ -109,7 +109,7 @@ before it's pushed) still works the same way it always did:
 
 ```sh
 # in this repo
-bun run --filter @qpmatrix/ui registry:preview -- --namespace @qp
+bun run --filter @qpmtx/ui registry:preview -- --namespace @qp
 ```
 
 ```jsonc
@@ -125,7 +125,7 @@ Browse what ships, with install commands, token dependencies and accessibility
 status:
 
 ```sh
-bun run --filter @qpmatrix/ui registry:preview     # → http://localhost:4321
+bun run --filter @qpmtx/ui registry:preview     # → http://localhost:4321
 ```
 
 ## Developing

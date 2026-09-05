@@ -5,7 +5,7 @@
     "": {
       "name": "qpm-ui",
       "devDependencies": {
-        "@qpmatrix/prettier-config": "workspace:*",
+        "@qpmtx/prettier-config": "workspace:*",
         "@types/bun": "^1.4.0",
         "oxlint": "^1.81.0",
         "oxlint-tsgolint": "^7.0.2001",
@@ -14,7 +14,7 @@
       },
     },
     "packages/oxlint-config": {
-      "name": "@qpmatrix/oxlint-config",
+      "name": "@qpmtx/oxlint-config",
       "version": "0.1.0",
       "devDependencies": {
         "oxlint": "^1.81.0",
@@ -24,10 +24,10 @@
       },
     },
     "packages/prettier-config": {
-      "name": "@qpmatrix/prettier-config",
+      "name": "@qpmtx/prettier-config",
       "version": "0.1.0",
       "devDependencies": {
-        "@qpmatrix/typescript-config": "workspace:*",
+        "@qpmtx/typescript-config": "workspace:*",
         "prettier": "^3.9.6",
       },
       "peerDependencies": {
@@ -35,13 +35,13 @@
       },
     },
     "packages/query-fetcher": {
-      "name": "@qpmatrix/query-fetcher",
+      "name": "@qpmtx/query-fetcher",
       "version": "0.3.0",
       "dependencies": {
         "zod": "^4.4.3",
       },
       "devDependencies": {
-        "@qpmatrix/typescript-config": "workspace:*",
+        "@qpmtx/typescript-config": "workspace:*",
         "@tanstack/react-query": "^5.101.4",
         "@types/bun": "^1.4.0",
         "@types/react": "^19.0.0",
@@ -53,24 +53,24 @@
       },
     },
     "packages/tokens": {
-      "name": "@qpmatrix/tokens",
+      "name": "@qpmtx/tokens",
       "version": "0.3.0",
       "devDependencies": {
-        "@qpmatrix/tokens": "workspace:*",
-        "@qpmatrix/typescript-config": "workspace:*",
+        "@qpmtx/tokens": "workspace:*",
+        "@qpmtx/typescript-config": "workspace:*",
         "@types/bun": "^1.4.0",
       },
     },
     "packages/typescript-config": {
-      "name": "@qpmatrix/typescript-config",
+      "name": "@qpmtx/typescript-config",
       "version": "0.2.0",
     },
     "packages/ui": {
-      "name": "@qpmatrix/ui",
+      "name": "@qpmtx/ui",
       "version": "1.1.0",
       "dependencies": {
         "@base-ui/react": "^1.7.0",
-        "@qpmatrix/tokens": "workspace:*",
+        "@qpmtx/tokens": "workspace:*",
         "@shadcn/react": "^0.3.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -88,7 +88,7 @@
       },
       "devDependencies": {
         "@happy-dom/global-registrator": "^20.11.1",
-        "@qpmatrix/typescript-config": "workspace:*",
+        "@qpmtx/typescript-config": "workspace:*",
         "@storybook/addon-a11y": "^10.5.7",
         "@storybook/addon-docs": "^10.5.7",
         "@storybook/react-vite": "^10.5.7",
@@ -410,17 +410,17 @@
 
     "@oxlint/binding-win32-x64-msvc": ["@oxlint/binding-win32-x64-msvc@1.81.0", "", { "os": "win32", "cpu": "x64" }, "sha512-IZuUCwGw9emG5JtCp+fYGB+Z4OWEoeEcM8R5BA1pYw63/ieYFVdcU2ylxTpHbVHSenZnsYE+ZZ20uHAJszQ4cA=="],
 
-    "@qpmatrix/oxlint-config": ["@qpmatrix/oxlint-config@workspace:packages/oxlint-config"],
+    "@qpmtx/oxlint-config": ["@qpmtx/oxlint-config@workspace:packages/oxlint-config"],
 
-    "@qpmatrix/prettier-config": ["@qpmatrix/prettier-config@workspace:packages/prettier-config"],
+    "@qpmtx/prettier-config": ["@qpmtx/prettier-config@workspace:packages/prettier-config"],
 
-    "@qpmatrix/query-fetcher": ["@qpmatrix/query-fetcher@workspace:packages/query-fetcher"],
+    "@qpmtx/query-fetcher": ["@qpmtx/query-fetcher@workspace:packages/query-fetcher"],
 
-    "@qpmatrix/tokens": ["@qpmatrix/tokens@workspace:packages/tokens"],
+    "@qpmtx/tokens": ["@qpmtx/tokens@workspace:packages/tokens"],
 
-    "@qpmatrix/typescript-config": ["@qpmatrix/typescript-config@workspace:packages/typescript-config"],
+    "@qpmtx/typescript-config": ["@qpmtx/typescript-config@workspace:packages/typescript-config"],
 
-    "@qpmatrix/ui": ["@qpmatrix/ui@workspace:packages/ui"],
+    "@qpmtx/ui": ["@qpmtx/ui@workspace:packages/ui"],
 
     "@radix-ui/primitive": ["@radix-ui/primitive@1.1.7", "", {}, "sha512-rqWnm76nYT8HoNNqEjpgJ7Pw/DrBj5iBTrmEPo6HTX5+VJyBNOqTdv4g89G63HuR5g0AaENoAcH7Is5fF2kZ8Q=="],
 

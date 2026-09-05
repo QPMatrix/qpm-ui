@@ -78,7 +78,7 @@ export const Conversation: Story = {
     <div className="flex w-full max-w-md flex-col gap-2">
       <QPMessageBubble author="user">Which package owns the design tokens?</QPMessageBubble>
       <QPMessageBubble author="assistant">
-        {"@qpmatrix/tokens. @qpmatrix/ui consumes them through styles/qpmatrix.css."}
+        {"@qpmtx/tokens. @qpmtx/ui consumes them through styles/qpmatrix.css."}
       </QPMessageBubble>
       <QPMessageBubble author="user" pending>
         Can I add one?

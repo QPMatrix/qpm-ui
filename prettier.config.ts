@@ -1,1 +1,1 @@
-export { default } from "@qpmatrix/prettier-config";
+export { default } from "@qpmtx/prettier-config";

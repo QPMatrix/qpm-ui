@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 /**
  * `bun run a11y:audit` (packages/ui/package.json).
  *
- * Runs @qpmatrix/ui's automated accessibility test suite (the `bun test`
+ * Runs @qpmtx/ui's automated accessibility test suite (the `bun test`
  * suites that call `expectNoAxeViolations` / the `src/testing/a11y.ts`
  * assertions from within each component's `*.test.tsx`), then prints an
  * explicit manual-verification checklist for everything automation cannot

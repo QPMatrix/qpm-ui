@@ -1,9 +1,9 @@
 # The QPMatrix shadcn Registry
 
-`@qpmatrix/ui` distributes components **two ways at once**, from one set of
+`@qpmtx/ui` distributes components **two ways at once**, from one set of
 files:
 
-1. As a **published npm package** — `import { QPMetricCard } from "@qpmatrix/ui"`.
+1. As a **published npm package** — `import { QPMetricCard } from "@qpmtx/ui"`.
 2. As a **shadcn source registry** — `bunx --bun shadcn@latest add QPMatrix/qpm-ui/metric-card`,
    which copies the source into the consuming app.
 
@@ -32,7 +32,7 @@ path. Shipping both lets each consumer choose, per component.
 ## The layering
 
 ```
- @qpmatrix/tokens          canonical design tokens.  Knows nothing about
+ @qpmtx/tokens          canonical design tokens.  Knows nothing about
         │                  CSS frameworks, React, or shadcn.
         ▼
  styles/qpmatrix.css       THE ADAPTER. Binds shadcn's variable names
@@ -53,7 +53,7 @@ This is the single most important rule in the package.
 
 shadcn components reference `--background`, `--primary`, `--ring`, `--input`.
 Those names are a **consumption vocabulary** so upstream components drop in
-unmodified. They are **not** the design system. `@qpmatrix/tokens` is, and its
+unmodified. They are **not** the design system. `@qpmtx/tokens` is, and its
 roles (`--surface-primary`, `--brand-primary`, `--border-focus`) are the names
 QPMatrix code writes.
 
@@ -68,11 +68,11 @@ web-CSS names that mean nothing there.
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@qpmatrix/tokens/css";
+@import "@qpmtx/tokens/css";
 ```
 
 `@import "tailwindcss"` puts Tailwind's theme variables inside `@layer theme`.
-`@qpmatrix/tokens/css` is **unlayered**, and unlayered declarations beat layered
+`@qpmtx/tokens/css` is **unlayered**, and unlayered declarations beat layered
 ones in the CSS cascade regardless of source order.
 
 That is why `--radius-*` and `--font-sans` are deliberately **not** redeclared
@@ -95,7 +95,7 @@ vocabulary, validated with zod:
 | `dependencies`                           | npm packages the source imports at runtime                                 |
 | `registryDependencies`                   | Other items a consumer must also install                                   |
 | `aliases`                                | The consumer-side alias paths this item needs configured                   |
-| `tokenDependencies`                      | Which `@qpmatrix/tokens` roles it consumes                                 |
+| `tokenDependencies`                      | Which `@qpmtx/tokens` roles it consumes                                    |
 | `accessibility`                          | WCAG posture: audited/partial, interactive, keyboard-tested, focus-managed |
 | `supportedPlatforms`                     | web / react-native / desktop / server                                      |
 | `tags`                                   | Discovery                                                                  |
@@ -146,20 +146,20 @@ so a broken registry cannot be published.
 `loadSnapshot()` first, which means the rules are unit-testable against a
 hand-built snapshot and a validation run can never observe a half-changed tree.
 
-| Rule                             | Catches                                           |
-| -------------------------------- | ------------------------------------------------- |
-| `schema`                         | An item that does not match the zod schema        |
-| `duplicate-name`                 | Two items claiming the same name                  |
-| `missing-file`                   | A declared file that does not exist               |
-| `unclaimed-file`                 | A shippable source file no item ships             |
-| `unresolved-registry-dependency` | A dependency that is not a valid address          |
-| `invalid-alias`                  | An alias that is not a `@/…` consumer path        |
-| `no-alias-imports-in-source`     | A `@/` import that would survive `tsc` emit       |
-| `banned-dependency`              | `@mui/*`, `@emotion/*` creeping back in           |
-| `hardcoded-color`                | A literal colour bypassing the token system       |
-| `unknown-token`                  | A declared token `@qpmatrix/tokens` does not ship |
-| `incomplete-token-dependencies`  | Tokens the source uses but does not declare       |
-| `missing-accessibility`          | A missing or self-contradictory a11y block        |
+| Rule                             | Catches                                        |
+| -------------------------------- | ---------------------------------------------- |
+| `schema`                         | An item that does not match the zod schema     |
+| `duplicate-name`                 | Two items claiming the same name               |
+| `missing-file`                   | A declared file that does not exist            |
+| `unclaimed-file`                 | A shippable source file no item ships          |
+| `unresolved-registry-dependency` | A dependency that is not a valid address       |
+| `invalid-alias`                  | An alias that is not a `@/…` consumer path     |
+| `no-alias-imports-in-source`     | A `@/` import that would survive `tsc` emit    |
+| `banned-dependency`              | `@mui/*`, `@emotion/*` creeping back in        |
+| `hardcoded-color`                | A literal colour bypassing the token system    |
+| `unknown-token`                  | A declared token `@qpmtx/tokens` does not ship |
+| `incomplete-token-dependencies`  | Tokens the source uses but does not declare    |
+| `missing-accessibility`          | A missing or self-contradictory a11y block     |
 
 `unclaimed-file` is the rule that makes the others meaningful: it means adding a
 component without registering it is a **hard error** rather than a silent gap.
@@ -255,7 +255,7 @@ per-item JSON at `/r/{name}.json` with file content inlined — the shape a host
 registry returns — and rewrites local dependencies to the namespace you give it.
 
 ```sh
-bun run --filter @qpmatrix/ui registry:preview -- --namespace @qp
+bun run --filter @qpmtx/ui registry:preview -- --namespace @qp
 ```
 
 ```jsonc
@@ -277,12 +277,12 @@ bunx --bun shadcn@latest add QPMatrix/qpm-ui/metric-card
 
 ```tsx
 // Package: the app does not own the files
-import { QPMetricCard } from "@qpmatrix/ui";
+import { QPMetricCard } from "@qpmtx/ui";
 ```
 
 ```css
 /* Either way, once at the app root */
-@import "@qpmatrix/ui/css";
+@import "@qpmtx/ui/css";
 ```
 
 ## What is deliberately NOT here
@@ -291,7 +291,7 @@ import { QPMetricCard } from "@qpmatrix/ui";
   build/install-time artefact. A component that looked itself up in a manifest
   would be unshakeable dead weight in every consumer's bundle.
 - **No theme provider.** Dark is `:root` and light is `[data-theme="light"]`,
-  both from `@qpmatrix/tokens`, so switching themes is one attribute on `<html>`
+  both from `@qpmtx/tokens`, so switching themes is one attribute on `<html>`
   — settable server-side, with no hydration flash and no React context.
-- **No `@qpmatrix/tokens` coupling to CSS/React/shadcn.** The tokens package
+- **No `@qpmtx/tokens` coupling to CSS/React/shadcn.** The tokens package
   stays a plain data module. Everything web-specific lives in the adapter.

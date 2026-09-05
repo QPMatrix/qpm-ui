@@ -3,7 +3,7 @@ import { z } from "zod";
 import { qpRegistryItemSchema, SEMVER_PATTERN } from "./registry-item.schema";
 
 /**
- * The QPMatrix canonical registry: metadata plus every item @qpmatrix/ui
+ * The QPMatrix canonical registry: metadata plus every item @qpmtx/ui
  * distributes. The shadcn manifests in `registry.json` are generated *from*
  * this; nothing reads them back.
  */

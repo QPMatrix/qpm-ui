@@ -6,7 +6,7 @@ import { afterEach, describe, expect, mock, test } from "bun:test";
 import { __COMPONENT_NAME__ } from "./__COMPONENT_KEBAB__";
 
 /**
- * The MANDATORY contract every @qpmatrix/ui component is tested against.
+ * The MANDATORY contract every @qpmtx/ui component is tested against.
  * Cases below are pre-written from the component's archetype; fill in the
  * TODO(scaffold) blocks and ADD cases, but do not delete a case — each one
  * maps to a rule in docs/standards/component-definition-of-done.md.

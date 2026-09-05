@@ -3,7 +3,7 @@ import { z } from "zod";
 /**
  * The QPMatrix canonical registry item schema.
  *
- * This vocabulary is the source of truth for what @qpmatrix/ui distributes.
+ * This vocabulary is the source of truth for what @qpmtx/ui distributes.
  * shadcn's `registry:*` type names are a *projection target* only — see
  * `../utils/project-shadcn.ts`. Nothing in this file may be widened to make a
  * shadcn concept fit; the projection adapts, not the canon.
@@ -96,7 +96,7 @@ export const qpKnownDefectSchema = z.strictObject({
   }),
   /** What actually fails, specifically enough for a reader to reproduce it. */
   summary: z.string().min(1, { error: "`summary` must not be empty." }),
-  /** Who has to fix it: `@qpmatrix/ui`, or the upstream package that owns it. */
+  /** Who has to fix it: `@qpmtx/ui`, or the upstream package that owns it. */
   owner: z.string().min(1, { error: "`owner` must name who has to fix the defect." }),
 });
 
@@ -151,7 +151,7 @@ const qpRegistryItemShape = z.strictObject({
   registryDependencies: z.array(z.string().min(1)).default([]),
   /** Alias kind (`ui`, `lib`, `utils`, ...) -> the consumer alias path it needs. */
   aliases: z.record(z.string().regex(KEBAB_CASE_PATTERN), aliasPathSchema),
-  /** @qpmatrix/tokens custom-property names, WITHOUT the leading `--`. */
+  /** @qpmtx/tokens custom-property names, WITHOUT the leading `--`. */
   tokenDependencies: z.array(z.string().min(1)).default([]),
   accessibility: qpAccessibilitySchema,
   supportedPlatforms: z

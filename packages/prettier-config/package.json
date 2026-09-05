@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/prettier-config",
+  "name": "@qpmtx/prettier-config",
   "version": "0.1.0",
   "type": "module",
   "publishConfig": {
@@ -22,7 +22,7 @@
     "prettier": ">=3.0.0"
   },
   "devDependencies": {
-    "@qpmatrix/typescript-config": "workspace:*",
+    "@qpmtx/typescript-config": "workspace:*",
     "prettier": "^3.9.6"
   },
   "scripts": {

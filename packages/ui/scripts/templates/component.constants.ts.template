@@ -26,7 +26,7 @@ import type { __COMPONENT_NAME__Tone } from "./__COMPONENT_KEBAB__.types";
 /**
  * Fallback copy.
  *
- * @qpmatrix/ui ships no product strings, so this exists only for the
+ * @qpmtx/ui ships no product strings, so this exists only for the
  * screen-reader-only text a caller might reasonably forget. It is English and
  * it is ALWAYS overridable by a prop — a default a caller cannot replace is a
  * localisation bug waiting to happen.

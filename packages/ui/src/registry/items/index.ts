@@ -84,7 +84,7 @@ import { typingIndicator } from "./typing-indicator";
 import { useMobile } from "./use-mobile";
 
 /**
- * Every item @qpmatrix/ui distributes, listed EXPLICITLY.
+ * Every item @qpmtx/ui distributes, listed EXPLICITLY.
  *
  * This is deliberately not a filesystem glob: the registry manifests are
  * generated from this array, and a glob would make their contents depend on

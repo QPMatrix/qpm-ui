@@ -12,7 +12,7 @@ export const themeContract: QpRegistryItem = {
       path: "packages/ui/src/lib/theme.ts",
     },
   ],
-  dependencies: ["@qpmatrix/tokens"],
+  dependencies: ["@qpmtx/tokens"],
   registryDependencies: [],
   aliases: {
     lib: "@/lib",

@@ -1,18 +1,18 @@
-# @qpmatrix/query-fetcher
+# @qpmtx/query-fetcher
 
 The one typed way QPMatrix frontends talk to the API. Wraps `fetch` with zod-validated
 request/response bodies, the standard error envelope, and abort/timeout support, plus a thin
 TanStack Query integration layer (typed query keys, `queryOptions`/`mutationOptions` helpers,
 SSR-safe `QueryClient` + prefetch/hydration flow for the Next.js App Router).
 
-Per ADR-005 and the `@qpmatrix/ui`-only pattern for MUI: **apps never call `fetch` or import
+Per ADR-005 and the `@qpmtx/ui`-only pattern for MUI: **apps never call `fetch` or import
 from `@tanstack/react-query` directly.** Everything — the fetcher, the query client, `useQuery`,
 `useMutation`, `HydrationBoundary`, all of it — comes from this package.
 
 ## Install
 
 ```sh
-bun add @qpmatrix/query-fetcher @tanstack/react-query react
+bun add @qpmtx/query-fetcher @tanstack/react-query react
 ```
 
 `@tanstack/react-query` and `react` are peer dependencies — the app's own versions are used.
@@ -21,7 +21,7 @@ bun add @qpmatrix/query-fetcher @tanstack/react-query react
 
 ```ts
 // lib/api.ts
-import { createFetcher } from "@qpmatrix/query-fetcher";
+import { createFetcher } from "@qpmtx/query-fetcher";
 
 export const apiFetcher = createFetcher({
   baseUrl: process.env.NEXT_PUBLIC_API_URL!,
@@ -34,7 +34,7 @@ export const apiFetcher = createFetcher({
 ```ts
 // features/notes/notes.queries.ts
 import { z } from "zod";
-import { defineQuery, queryKey } from "@qpmatrix/query-fetcher";
+import { defineQuery, queryKey } from "@qpmtx/query-fetcher";
 import { apiFetcher } from "@/lib/api";
 
 const NoteSchema = z.object({ id: z.string(), title: z.string() });
@@ -47,7 +47,7 @@ export const noteQuery = defineQuery<z.infer<typeof NoteSchema>, [id: string]>(a
 
 ```tsx
 // app/notes/[id]/note-view.tsx  ("use client")
-import { useQuery } from "@qpmatrix/query-fetcher";
+import { useQuery } from "@qpmtx/query-fetcher";
 import { noteQuery } from "@/features/notes/notes.queries";
 
 export function NoteView({ id }: { id: string }) {
@@ -64,7 +64,7 @@ export function NoteView({ id }: { id: string }) {
 ```ts
 // features/notes/notes.mutations.ts
 import { z } from "zod";
-import { defineMutation } from "@qpmatrix/query-fetcher";
+import { defineMutation } from "@qpmtx/query-fetcher";
 import { apiFetcher } from "@/lib/api";
 
 const NoteSchema = z.object({ id: z.string(), title: z.string() });
@@ -87,7 +87,7 @@ export const createNoteMutation = defineMutation<
 
 ```tsx
 // app/notes/new/create-note-form.tsx  ("use client")
-import { useMutation, useQueryClient } from "@qpmatrix/query-fetcher";
+import { useMutation, useQueryClient } from "@qpmtx/query-fetcher";
 import { createNoteMutation } from "@/features/notes/notes.mutations";
 
 export function CreateNoteForm() {
@@ -116,7 +116,7 @@ in the browser, both from the same `getQueryClient()` call.
 
 ```ts
 // lib/query-client.ts
-import { getQueryClient } from "@qpmatrix/query-fetcher";
+import { getQueryClient } from "@qpmtx/query-fetcher";
 export { getQueryClient };
 ```
 
@@ -124,7 +124,7 @@ Prefetch in a Server Component, then hydrate the client tree:
 
 ```tsx
 // app/notes/[id]/page.tsx
-import { HydrationBoundary, dehydrateState, prefetchQuery } from "@qpmatrix/query-fetcher";
+import { HydrationBoundary, dehydrateState, prefetchQuery } from "@qpmtx/query-fetcher";
 import { getQueryClient } from "@/lib/query-client";
 import { noteQuery } from "@/features/notes/notes.queries";
 import { NoteView } from "./note-view";
@@ -158,7 +158,7 @@ The root layout still needs one `QueryClientProvider` for Client Components to r
 
 ```tsx
 // app/providers.tsx  ("use client")
-import { QueryClientProvider } from "@qpmatrix/query-fetcher";
+import { QueryClientProvider } from "@qpmtx/query-fetcher";
 import { getQueryClient } from "@/lib/query-client";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -177,7 +177,7 @@ errors are parsed from the standard envelope (`docs/architecture.md` Section 7):
 ```
 
 ```ts
-import { QueryFetcherError } from "@qpmatrix/query-fetcher";
+import { QueryFetcherError } from "@qpmtx/query-fetcher";
 
 try {
   await apiFetcher.request({ path: "/notes/missing", responseSchema: NoteSchema });

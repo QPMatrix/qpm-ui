@@ -1,8 +1,8 @@
 /**
- * @qpmatrix/tokens — framework-agnostic QPMatrix design token system.
+ * @qpmtx/tokens — framework-agnostic QPMatrix design token system.
  *
  * Ships two aligned deliverables generated from the same design source:
- *   - CSS custom properties: import "@qpmatrix/tokens/css" (see tokens.css)
+ *   - CSS custom properties: import "@qpmtx/tokens/css" (see tokens.css)
  *   - Typed token objects: the named exports below
  *
  * See README.md for the consumption model and

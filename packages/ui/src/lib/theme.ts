@@ -1,4 +1,4 @@
-import type { TokenVarName } from "@qpmatrix/tokens";
+import type { TokenVarName } from "@qpmtx/tokens";
 
 /**
  * Server-driven theme contract for QPMatrix apps.
@@ -9,16 +9,16 @@ import type { TokenVarName } from "@qpmatrix/tokens";
  * server component, an edge handler, a React Native bridge, or a plain script.
  * The Zod schema that validates a selection arriving over the wire lives in
  * `src/registry/schemas/theme-contract.schema.ts` (tooling/test-side only), so
- * `@qpmatrix/ui`'s published runtime never gains a validation dependency.
+ * `@qpmtx/ui`'s published runtime never gains a validation dependency.
  *
  * IMPORTANT — this file does not *invent* theme values. Every approved mode and
- * accent below must resolve to tokens that already exist in @qpmatrix/tokens
+ * accent below must resolve to tokens that already exist in @qpmtx/tokens
  * (see `.agents/skills/tokens/SKILL.md`'s transcription rule). Adding an accent
  * here without adding its tokens first is a validation failure, not a feature.
  */
 
 /**
- * Modes @qpmatrix/tokens actually ships. `dark` is the `:root` default;
+ * Modes @qpmtx/tokens actually ships. `dark` is the `:root` default;
  * `light` is the `[data-theme="light"]` override block in tokens.css.
  */
 export const QP_THEME_MODES = ["dark", "light"] as const;
@@ -28,7 +28,7 @@ export type QpThemeMode = (typeof QP_THEME_MODES)[number];
 /**
  * Accents a user may select. Exactly one today: the token set the design source
  * defines. This is a contract surface, not a palette generator — a second
- * accent becomes selectable only once @qpmatrix/tokens transcribes its four
+ * accent becomes selectable only once @qpmtx/tokens transcribes its four
  * roles from the design source.
  */
 export const QP_THEME_ACCENTS = ["brand"] as const;

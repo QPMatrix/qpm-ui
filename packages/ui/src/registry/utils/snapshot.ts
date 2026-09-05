@@ -15,7 +15,7 @@ export interface RegistrySnapshot {
   readonly registryFiles: readonly string[];
   /** Every committed `.ts`/`.tsx` under `packages/ui/src`. */
   readonly sourceFiles: readonly string[];
-  /** Custom-property names @qpmatrix/tokens ships, without the leading `--`. */
+  /** Custom-property names @qpmtx/tokens ships, without the leading `--`. */
   readonly knownTokens: ReadonlySet<string>;
 }
 

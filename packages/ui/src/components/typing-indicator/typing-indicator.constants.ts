@@ -28,7 +28,7 @@ export const qpTypingIndicatorVariants = cva(
 /**
  * The bounce is gated behind `motion-safe:` so a user with
  * `prefers-reduced-motion: reduce` gets static dots and the `role="status"`
- * announcement instead of an animation. Duration comes from a @qpmatrix/tokens
+ * announcement instead of an animation. Duration comes from a @qpmtx/tokens
  * motion token through an arbitrary property, because Tailwind has no
  * `animation-duration` utility bound to the token scale.
  */

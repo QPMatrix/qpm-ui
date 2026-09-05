@@ -17,7 +17,7 @@ export const TOKENS_GROUPS_DIR = resolve(GIT_ROOT, "packages", "tokens", "src", 
 /** Repo-root-relative prefix of the package that owns the registry. */
 export const UI_PACKAGE_PREFIX = "packages/ui/";
 
-/** The token adapter that maps shadcn CSS var names onto @qpmatrix/tokens roles. */
+/** The token adapter that maps shadcn CSS var names onto @qpmtx/tokens roles. */
 export const UI_CSS_PATH = "packages/ui/styles/qpmatrix.css";
 
 /** Where the generated shadcn manifests live. */

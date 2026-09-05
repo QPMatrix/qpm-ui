@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react-vite";
 
 // The real stylesheet an app imports — Tailwind, shadcn's variants, and
-// @qpmatrix/tokens in the exact order the cascade requires. Importing anything
+// @qpmtx/tokens in the exact order the cascade requires. Importing anything
 // narrower here would make the preview lie about what consumers get.
 import "../styles/qpmatrix.css";
 

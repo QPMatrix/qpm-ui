@@ -43,7 +43,7 @@ export const text: QpRegistryItem = {
     keyboardTested: false,
     focusManaged: false,
     notes:
-      "Audited. Separates the type step (`variant`) from the element (`as`) so a visual heading cannot silently become a document heading — conflating them is how a page ends up with an outline no screen-reader user can navigate (SC 1.3.1). Ships script-specific font families with the size and line-height adjustments @qpmatrix/tokens defines.",
+      "Audited. Separates the type step (`variant`) from the element (`as`) so a visual heading cannot silently become a document heading — conflating them is how a page ends up with an outline no screen-reader user can navigate (SC 1.3.1). Ships script-specific font families with the size and line-height adjustments @qpmtx/tokens defines.",
   },
   supportedPlatforms: ["web"],
   tags: ["typography"],

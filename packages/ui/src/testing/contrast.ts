@@ -2,22 +2,22 @@ import {
   colorsAndGradients,
   type ColorsAndGradientsVarName,
   type TokenVarName,
-} from "@qpmatrix/tokens";
+} from "@qpmtx/tokens";
 
 import { QP_ACCENT_TOKEN_ROLES, QP_THEME_ACCENTS, type QpThemeMode } from "../lib/theme";
 
 /**
- * Token-level WCAG 2.2 contrast evaluation for @qpmatrix/ui.
+ * Token-level WCAG 2.2 contrast evaluation for @qpmtx/ui.
  *
  * WHY THIS EXISTS SEPARATELY FROM axe-core: axe's `color-contrast` rule needs a
  * real layout + computed-style engine to resolve `var(--token)` chains. Under
  * happy-dom it returns `incomplete`, never `pass`/`violation` (reproduced
  * directly — see `src/testing/axe.ts`). So colour is checked here, at the token
- * layer, against @qpmatrix/tokens' own `resolved` values, for every approved
+ * layer, against @qpmtx/tokens' own `resolved` values, for every approved
  * theme mode. axe covers structure; this covers colour. Neither alone is a
  * compliance claim (docs/standards/accessibility.md, "Automated vs manual").
  *
- * Everything here is pure arithmetic over @qpmatrix/tokens — no DOM, no React.
+ * Everything here is pure arithmetic over @qpmtx/tokens — no DOM, no React.
  */
 
 export interface Rgba {
@@ -33,7 +33,7 @@ const RGB_FUNCTIONAL =
   /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/i;
 
 /**
- * Parse the CSS colour forms @qpmatrix/tokens actually emits: `#RGB`,
+ * Parse the CSS colour forms @qpmtx/tokens actually emits: `#RGB`,
  * `#RRGGBB`, `#RRGGBBAA`, `rgb(r,g,b)` and `rgba(r,g,b,a)`. Returns `null` for
  * anything else (notably `linear-gradient(...)` — gradients are excluded from
  * contrast pairs on purpose; a gradient has no single background colour, so its
@@ -184,12 +184,12 @@ export interface ContrastPair {
    */
   readonly modes?: readonly QpThemeMode[];
   readonly usage: ContrastUsage;
-  /** Where in @qpmatrix/ui this pair actually renders. */
+  /** Where in @qpmtx/ui this pair actually renders. */
   readonly where: string;
 }
 
 /**
- * Every semantic foreground/background combination @qpmatrix/ui renders that
+ * Every semantic foreground/background combination @qpmtx/ui renders that
  * carries meaning. This list is the definition of "approved theme
  * combinations" in docs/standards/accessibility.md — a component may not
  * introduce a new meaningful colour pair without adding it here.
@@ -563,7 +563,7 @@ function opaqueColor(
 
 /**
  * Narrow the accent-role contract's `TokenVarName` (the union of every token
- * @qpmatrix/tokens ships, across every group) down to `ColorsAndGradientsVarName`
+ * @qpmtx/tokens ships, across every group) down to `ColorsAndGradientsVarName`
  * (the subset `opaqueColor`/`resolveTokenColor` can actually look up). Accent
  * roles are documented as colour tokens (`theme.ts`'s `QpAccentRoles`), but
  * their declared type is the wider `TokenVarName`, so this is a genuine
@@ -578,7 +578,7 @@ function isColorToken(name: string): name is ColorsAndGradientsVarName {
 function assertColorToken(name: TokenVarName): ColorsAndGradientsVarName {
   if (!isColorToken(name)) {
     throw new Error(
-      `Accent role token "${name}" is not a colour token in @qpmatrix/tokens' ` +
+      `Accent role token "${name}" is not a colour token in @qpmtx/tokens' ` +
         "colors-and-gradients group; accent base/strong/foreground/subtle roles must resolve to colours.",
     );
   }

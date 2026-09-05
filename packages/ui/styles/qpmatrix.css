@@ -1,13 +1,13 @@
 /*
- * @qpmatrix/ui — Tailwind v4 + shadcn theme layer.
+ * @qpmtx/ui — Tailwind v4 + shadcn theme layer.
  *
  * Import ONCE at the app root:
  *
- *   @import "@qpmatrix/ui/css";
+ *   @import "@qpmtx/ui/css";
  *
  * This file is the ADAPTER described in docs/architecture/shadcn-registry.md.
  * It does not define a single colour, size, or duration of its own — every
- * value below is an alias onto a semantic role in @qpmatrix/tokens, which
+ * value below is an alias onto a semantic role in @qpmtx/tokens, which
  * stays the canonical token architecture. shadcn's variable names
  * (--background, --primary, --ring, ...) are a *consumption vocabulary* so
  * upstream shadcn/Base UI components drop in unmodified; they are not the
@@ -15,12 +15,12 @@
  *
  * ---------------------------------------------------------------------------
  * IMPORT ORDER MATTERS. `@import "tailwindcss"` puts Tailwind's own theme
- * variables inside `@layer theme`. `@qpmatrix/tokens/css` is UNLAYERED, and
+ * variables inside `@layer theme`. `@qpmtx/tokens/css` is UNLAYERED, and
  * unlayered declarations beat layered ones in the CSS cascade regardless of
  * source order. That is why Tailwind's `--radius-sm|md|lg|xl`, `--font-sans`
  * and `--font-mono` namespaces are deliberately NOT redeclared below: the
  * utilities Tailwind generates already resolve `var(--radius-md)` /
- * `var(--font-sans)`, and @qpmatrix/tokens' unlayered values win. So
+ * `var(--font-sans)`, and @qpmtx/tokens' unlayered values win. So
  * `rounded-md` IS `--radius-md` (8px) and `font-sans` IS the QPMatrix sans
  * stack, with zero duplication. Re-declaring them in `@theme` here would
  * create a `var()` reference cycle and silently blank the property.
@@ -30,10 +30,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@qpmatrix/tokens/css";
+@import "@qpmtx/tokens/css";
 
 /*
- * QPMatrix is dark-first: @qpmatrix/tokens' `:root` block IS the dark theme and
+ * QPMatrix is dark-first: @qpmtx/tokens' `:root` block IS the dark theme and
  * `[data-theme="light"]` overrides it. shadcn ships `.dark`-class dark mode, so
  * the `dark:` variant is redefined to mean "not inside a light subtree".
  *
@@ -45,7 +45,7 @@
 @custom-variant dark (&:not([data-theme="light"] *));
 
 /*
- * shadcn semantic names -> @qpmatrix/tokens semantic roles.
+ * shadcn semantic names -> @qpmtx/tokens semantic roles.
  * Unlayered on purpose (see import-order note above).
  */
 :root {
@@ -101,7 +101,7 @@
   --input: var(--border-interactive);
   --ring: var(--border-focus);
 
-  /* Data visualisation — the five hues @qpmatrix/tokens already defines. */
+  /* Data visualisation — the five hues @qpmtx/tokens already defines. */
   --chart-1: var(--violet-500);
   --chart-2: var(--cyan-500);
   --chart-3: var(--blue-500);
@@ -318,7 +318,7 @@
   /*
    * Font families, exposed as `font-display` / `font-mono` / `font-arabic` /
    * `font-hebrew`. `--font-sans` is deliberately NOT redeclared here: it is
-   * already the unlayered @qpmatrix/tokens value, and re-pointing it at itself
+   * already the unlayered @qpmtx/tokens value, and re-pointing it at itself
    * inside `@theme inline` would create a `var()` reference cycle (see the
    * header comment on import order).
    */

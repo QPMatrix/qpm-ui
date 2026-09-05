@@ -1,9 +1,9 @@
 # Publish every package in this workspace to npmjs.org, PUBLIC, under the
-# @qpmatrix scope — owner decision, 2026-09-05 (haiku review round 1,
+# @qpmtx scope — owner decision, 2026-09-05 (haiku review round 1,
 # finding 3, superseding this repo's earlier GitHub-Packages plan). NEVER
 # runs on push to main: only a manual dispatch or a `v*` tag, and only when
 # the `NPM_TOKEN` secret actually exists — the owner has not yet created
-# the npmjs.org @qpmatrix org or minted that secret (OWNER-REQUIRED item
+# the npmjs.org @qpmtx org or minted that secret (OWNER-REQUIRED item
 # 44), so this workflow is wired but inert until they do. No commit to
 # this repo can make it fire on its own.
 #
@@ -51,7 +51,7 @@ jobs:
             echo "has-token=true" >> "$GITHUB_OUTPUT"
           else
             echo "has-token=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::NPM_TOKEN is not set — publish skipped (OWNER-REQUIRED item 44: owner must create the npmjs.org @qpmatrix org and mint this secret)."
+            echo "::warning::NPM_TOKEN is not set — publish skipped (OWNER-REQUIRED item 44: owner must create the npmjs.org @qpmtx org and mint this secret)."
           fi
 
   publish:
@@ -75,6 +75,6 @@ jobs:
         run: |
           set -e
           for pkg in typescript-config prettier-config oxlint-config tokens query-fetcher ui; do
-            echo "==> publishing @qpmatrix/$pkg"
+            echo "==> publishing @qpmtx/$pkg"
             (cd "packages/$pkg" && bun publish --access public --tolerate-republish)
           done

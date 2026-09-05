@@ -31,9 +31,9 @@ const article = (
     </p>
     <h2>Tokens are the contract</h2>
     <p>
-      Every colour, size and duration resolves from <code>@qpmatrix/tokens</code>. Components
-      consume semantic roles — <code>bg-surface-secondary</code>, not a hex value — so a theme
-      change is a token change.
+      Every colour, size and duration resolves from <code>@qpmtx/tokens</code>. Components consume
+      semantic roles — <code>bg-surface-secondary</code>, not a hex value — so a theme change is a
+      token change.
     </p>
     <ul>
       <li>No hard-coded product colours in shared components.</li>

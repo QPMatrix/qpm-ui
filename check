@@ -33,11 +33,11 @@ find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './
 # workspace dependency for a plain TS/JS import — not just at runtime.
 # Two more places hit this beyond the test suite:
 #   - `fmt`: the root `prettier.config.ts` does `export { default } from
-#     "@qpmatrix/prettier-config"`, which fails to resolve
+#     "@qpmtx/prettier-config"`, which fails to resolve
 #     ("Cannot find package") until that package's dist/index.js exists.
 #   - `typecheck`: the root `tsc --build` compiles every package
-#     including `@qpmatrix/tokens`'s own test suite, which does `await
-#     import("@qpmatrix/tokens")` to assert the package's public export
+#     including `@qpmtx/tokens`'s own test suite, which does `await
+#     import("@qpmtx/tokens")` to assert the package's public export
 #     shape — a self-reference that resolves through node_modules (not
 #     a tsc project reference), so it needs tokens' own already-built
 #     `dist/index.d.ts` on disk before tsc starts, which a from-scratch
@@ -55,7 +55,7 @@ find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './
 # was this repo's original approach and PASSED LOCALLY (QPMSEC-433 round
 # 3, PR #1 gate): a fresh hosted runner still failed
 # `src/lib/theme.ts(1,35): error TS2307: Cannot find module
-# '@qpmatrix/tokens'` building `ui`, because `bun --filter='*'`'s
+# '@qpmtx/tokens'` building `ui`, because `bun --filter='*'`'s
 # per-package execution order is not a topological-by-workspace-
 # dependency guarantee — a local session's leftover `dist/` from an
 # earlier run masked the gap every time it was tried by hand. The

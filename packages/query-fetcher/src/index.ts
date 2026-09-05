@@ -29,7 +29,7 @@ export { defineMutation } from "./mutation";
 export type { DefineMutationConfig } from "./mutation";
 
 // The only sanctioned way to reach TanStack Query's own primitives — apps import them from
-// here, never from `@tanstack/react-query` directly (same boundary pattern as `@qpmatrix/ui`
+// here, never from `@tanstack/react-query` directly (same boundary pattern as `@qpmtx/ui`
 // for MUI, ADR-005).
 export {
   QueryClient,

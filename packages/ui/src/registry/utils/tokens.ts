@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { TOKENS_GROUPS_DIR, UI_CSS_PATH, readTextIfExists } from "./paths";
 
 /**
- * Resolution of a component's styling back to the @qpmatrix/tokens roles it
+ * Resolution of a component's styling back to the @qpmtx/tokens roles it
  * actually depends on.
  *
  * Components are written in shadcn's *consumption vocabulary* (`bg-card`,
@@ -47,7 +47,7 @@ const MAX_ALIAS_HOPS = 8;
 export interface TokenLookup {
   /** `--x: var(--y)` edges, keyed without the leading `--`. */
   readonly aliases: ReadonlyMap<string, string>;
-  /** Every custom-property name @qpmatrix/tokens ships, without `--`. */
+  /** Every custom-property name @qpmtx/tokens ships, without `--`. */
   readonly known: ReadonlySet<string>;
   /** Tailwind colour role names (`card`, `status-error`, ...). */
   readonly colorRoles: readonly string[];
@@ -58,7 +58,7 @@ export interface TokenLookup {
 /**
  * Read token names straight from `packages/tokens/src/groups/*.ts`.
  *
- * Deliberately textual rather than `import "@qpmatrix/tokens"`: the registry
+ * Deliberately textual rather than `import "@qpmtx/tokens"`: the registry
  * must validate in a clean checkout where `packages/tokens/dist` has not been
  * built yet.
  */
@@ -78,7 +78,7 @@ export async function loadKnownTokenNames(): Promise<Set<string>> {
 
   if (names.size === 0) {
     throw new Error(
-      `No design tokens found in ${TOKENS_GROUPS_DIR}. @qpmatrix/tokens is missing or its ` +
+      `No design tokens found in ${TOKENS_GROUPS_DIR}. @qpmtx/tokens is missing or its ` +
         "group files changed shape — refusing to validate against an empty token set.",
     );
   }
@@ -126,7 +126,7 @@ export async function loadTokenLookup(): Promise<TokenLookup> {
 }
 
 /**
- * Follow `--a -> --b -> --c` until a name @qpmatrix/tokens actually defines is
+ * Follow `--a -> --b -> --c` until a name @qpmtx/tokens actually defines is
  * reached. Returns `null` for names that never bottom out in a real token
  * (Tailwind's own scale, one-off vars, typos).
  */
@@ -154,7 +154,7 @@ function buildRoleRegex(prefixes: readonly string[], roles: readonly string[]): 
 }
 
 /**
- * Every @qpmatrix/tokens role a source file depends on, derived from what it
+ * Every @qpmtx/tokens role a source file depends on, derived from what it
  * actually writes: Tailwind colour/shadow/radius/font utilities and raw
  * `var(--x)` references. Sorted and de-duplicated so the result is stable.
  */
@@ -196,7 +196,7 @@ export function extractTokenDependencies(source: string, lookup: TokenLookup): s
   }
 
   // `rounded-md` resolves to `--radius-md` directly: the adapter deliberately
-  // does NOT redeclare Tailwind's radius namespace, so @qpmatrix/tokens' own
+  // does NOT redeclare Tailwind's radius namespace, so @qpmtx/tokens' own
   // unlayered `--radius-*` values win.
   const radiusRegex = new RegExp(
     `(?<![\\w-])rounded(?:-${RADIUS_SIDES})?-([a-z0-9]+)(?![\\w-])`,

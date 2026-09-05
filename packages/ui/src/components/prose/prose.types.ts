@@ -48,7 +48,7 @@ export interface QPProseProps
  *
  * ```tsx
  * import { MDXProvider } from "@mdx-js/react";
- * import { QPProse, qpMdxComponents } from "@qpmatrix/ui";
+ * import { QPProse, qpMdxComponents } from "@qpmtx/ui";
  *
  * <MDXProvider components={qpMdxComponents}>
  *   <QPProse><Content /></QPProse>

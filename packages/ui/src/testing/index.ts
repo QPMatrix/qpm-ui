@@ -1,5 +1,5 @@
 /**
- * Internal accessibility-testing barrel for @qpmatrix/ui.
+ * Internal accessibility-testing barrel for @qpmtx/ui.
  *
  * Excluded from the published build (`tsconfig.build.json` excludes
  * `src/testing`) — everything here, and everything it depends on

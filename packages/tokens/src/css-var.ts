@@ -7,7 +7,7 @@ import type { TypographyVarName } from "./groups/typography";
 
 /**
  * Union of every CSS custom-property name (without the leading `--`) shipped
- * by @qpmatrix/tokens. Kept in sync with the token group objects — see
+ * by @qpmtx/tokens. Kept in sync with the token group objects — see
  * packages/.agents/skills/tokens/SKILL.md for how to add a token.
  */
 export type TokenVarName =
@@ -27,7 +27,7 @@ export type TokenVarName =
  *
  * @example
  * ```ts
- * import { cssVar } from "@qpmatrix/tokens";
+ * import { cssVar } from "@qpmtx/tokens";
  *
  * const style = { color: cssVar("fg-primary") }; // -> { color: "var(--fg-primary)" }
  * ```

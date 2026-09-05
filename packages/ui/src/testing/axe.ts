@@ -1,7 +1,7 @@
 import type { AxeResults, ImpactValue, NodeResult, Result } from "axe-core";
 
 /**
- * axe-core integration for @qpmatrix/ui's test suite.
+ * axe-core integration for @qpmtx/ui's test suite.
  *
  * WHY THE DYNAMIC IMPORT: this repo's happy-dom registration
  * (`src/test-setup.ts`) must finish running before axe-core's module body

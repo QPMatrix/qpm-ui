@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/query-fetcher",
+  "name": "@qpmtx/query-fetcher",
   "version": "0.3.0",
   "type": "module",
   "publishConfig": {
@@ -25,7 +25,7 @@
     "react": ">=18.0.0"
   },
   "devDependencies": {
-    "@qpmatrix/typescript-config": "workspace:*",
+    "@qpmtx/typescript-config": "workspace:*",
     "@tanstack/react-query": "^5.101.4",
     "@types/bun": "^1.4.0",
     "@types/react": "^19.0.0",

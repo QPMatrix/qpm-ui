@@ -11,13 +11,13 @@
   // only — the registry authoring tools and the accessibility test helpers are
   // build-time/dev-time concerns whose dependencies (zod, axe-core,
   // @testing-library/*) must never become runtime dependencies of
-  // @qpmatrix/ui. They are still typechecked and linted via tsconfig.json.
+  // @qpmtx/ui. They are still typechecked and linted via tsconfig.json.
   "include": ["src"],
   "exclude": ["src/registry", "src/testing", "**/*.test.ts", "**/*.test.tsx", "src/test-setup.ts"],
   // `extends` does NOT propagate `references` — TypeScript's project-reference
   // graph is per-file, not inherited (QPMSEC-433, PR #1 gate finding, round 3:
   // a fresh runner failed `src/lib/theme.ts(1,35): error TS2307: Cannot find
-  // module '@qpmatrix/tokens'` because `tsc --build tsconfig.build.json` —
+  // module '@qpmtx/tokens'` because `tsc --build tsconfig.build.json` —
   // the file `bun run build` actually invokes — had NO idea it needed
   // `tokens` built first; `tsconfig.json`'s own `references` entry for tokens
   // never reached this file through `extends`). Repeating it here, not
