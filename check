@@ -21,18 +21,35 @@ find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './
 # stage; `./check` with no argument runs every stage in the order below
 # (repo-gates-and-hooks rule 12). The reusable ts-gate.yml caller
 # (.github/workflows/ci.yml) calls `./check fmt`, `./check lint` and
-# `./check test` as three parallel jobs — it never calls `./check
-# typecheck` or `./check build` by name, so `./check test` runs
-# typecheck and build itself first: every workspace package's
-# `package.json` "exports" points consumers at "./dist" (bun's own
-# module resolution for a workspace dependency reads that field, same
-# as npm's would), so `@qpmatrix/ui`'s tests cannot even resolve
-# `@qpmatrix/tokens` until tokens has been built — this is a real
-# ordering requirement, not just a rule-4 nicety. This is why the
-# no-argument order below is fmt, lint, typecheck, build, test (build
-# before test) even though the envelope text lists the stage names as
-# fmt|lint|typecheck|test|build — nothing the hook checks goes
-# unchecked by CI once `./check test` covers typecheck+build too.
+# `./check test` as three parallel jobs — never `./check typecheck` or
+# `./check build` by name — each in its OWN fresh runner checkout, so
+# every stage must be self-sufficient from a clean clone, not just the
+# aggregate `./check` run.
+#
+# EVERY stage below needs the workspace already built, not only
+# test/build (haiku review round 1, finding 1, 2026-09-05): every
+# workspace package's `package.json` "exports" points consumers at
+# "./dist", which is how Bun's module resolution ALSO resolves a
+# workspace dependency for a plain TS/JS import — not just at runtime.
+# Two more places hit this beyond the test suite:
+#   - `fmt`: the root `prettier.config.ts` does `export { default } from
+#     "@qpmatrix/prettier-config"`, which fails to resolve
+#     ("Cannot find package") until that package's dist/index.js exists.
+#   - `typecheck`: the root `tsc --build` compiles every package
+#     including `@qpmatrix/tokens`'s own test suite, which does `await
+#     import("@qpmatrix/tokens")` to assert the package's public export
+#     shape — a self-reference that resolves through node_modules (not
+#     a tsc project reference), so it needs tokens' own already-built
+#     `dist/index.d.ts` on disk before tsc starts, which a from-scratch
+#     `tsc --build` cannot produce for itself in the same pass.
+# `ensure_build` is therefore an unconditional prerequisite for every
+# stage that isn't `build` itself (`build` — `bun --filter='*' run
+# build` — already builds every package correctly in one pass on a
+# clean tree, each package's own tsconfig.build.json project references
+# pulling in what it depends on, e.g. `ui` building `tokens` first).
+# `tsc --build`/`bun run build` are both incremental and idempotent, so
+# calling `ensure_build` before a stage that has ALREADY been built
+# costs a fast no-op recheck, not a rebuild.
 stage="${1:-all}"
 
 # `bun --filter='*' run build`/`run test` hard-error ("No workspace
@@ -50,15 +67,24 @@ has_packages() {
   return 1
 }
 
+ensure_build() {
+  if has_packages; then
+    bun run build
+  fi
+}
+
 run_fmt() {
+  ensure_build
   bun run fmt
 }
 
 run_lint() {
+  ensure_build
   bun run lint
 }
 
 run_typecheck() {
+  ensure_build
   bun run typecheck
 }
 
@@ -71,8 +97,7 @@ run_build() {
 }
 
 run_test() {
-  run_typecheck
-  run_build
+  ensure_build
   if has_packages; then
     bun run test
   else
