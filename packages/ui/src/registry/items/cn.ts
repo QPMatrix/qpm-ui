@@ -1,11 +1,11 @@
 import { type QpRegistryItem } from "../schemas/registry-item.schema";
 
-/** Tailwind class merge helper: the single styling escape hatch every @qpmatrix/ui component runs `className` through. */
+/** Tailwind class merge helper: the single styling escape hatch every @qpmtx/ui component runs `className` through. */
 export const cn: QpRegistryItem = {
   name: "cn",
   type: "utility",
   description:
-    "Tailwind class merge helper: the single styling escape hatch every @qpmatrix/ui component runs `className` through.",
+    "Tailwind class merge helper: the single styling escape hatch every @qpmtx/ui component runs `className` through.",
   version: "0.1.0",
   files: [
     {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@qpmatrix/typescript-config/react-library.json",
+  "extends": "@qpmtx/typescript-config/react-library.json",
   "compilerOptions": {
     "composite": true,
     "declaration": true,

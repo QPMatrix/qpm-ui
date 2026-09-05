@@ -1,6 +1,6 @@
 # Component Definition of Done
 
-A component in `@qpmatrix/ui` is **done** when every item below is true. Not
+A component in `@qpmtx/ui` is **done** when every item below is true. Not
 "mostly true" — the list exists because each entry corresponds to a defect that
 has actually shipped from a component that looked finished.
 
@@ -66,7 +66,7 @@ on `shadcn update`; giving them folders would break every upstream upgrade.
   `text-body-sm`, `text-label` — never `text-2xl` or `text-sm`, which know
   nothing about the QPMatrix scale.
 - **No `dark:` colour forks.** Light mode already follows from
-  `[data-theme="light"]` in `@qpmatrix/tokens`. A `dark:` colour override means
+  `[data-theme="light"]` in `@qpmtx/tokens`. A `dark:` colour override means
   the token is wrong.
 - **Directional spacing is logical**: `ms-*`/`me-*`/`ps-*`/`pe-*`,
   `start-*`/`end-*`, `text-start`/`text-end`, `border-s`/`border-e`. QPMatrix
@@ -94,7 +94,7 @@ on `shadcn update`; giving them folders would break every upstream upgrade.
   survive into `dist/` and break for npm consumers. The registry's
   `no-alias-imports-in-source` rule enforces it.
 - **No direct `@base-ui/react` or `motion/react` imports in app code.** Both are
-  banned by `@qpmatrix/oxlint-config (react.json)` for the same reason: a primitive
+  banned by `@qpmtx/oxlint-config (react.json)` for the same reason: a primitive
   imported straight into an app is unstyled, untokenised and outside the
   accessibility gates this package applies.
 

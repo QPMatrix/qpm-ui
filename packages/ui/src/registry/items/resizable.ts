@@ -1,11 +1,11 @@
 import { type QpRegistryItem } from "../schemas/registry-item.schema";
 
-/** Base UI resizable primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s). */
+/** Base UI resizable primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s). */
 export const resizable: QpRegistryItem = {
   name: "resizable",
   type: "primitive",
   description:
-    "Base UI resizable primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+    "Base UI resizable primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s).",
   version: "0.1.0",
   files: [{ path: "packages/ui/src/components/ui/resizable.tsx" }],
   dependencies: ["react-resizable-panels"],
@@ -30,7 +30,7 @@ export const resizable: QpRegistryItem = {
       },
     ],
     notes:
-      'Installed unmodified from shadcn/ui on Base UI. Its @qpmatrix/ui colours resolve through styles/qpmatrix.css, so the token layer is covered by bun run a11y:contrast. The recorded SC 2.1.1 defect belongs to react-resizable-panels, not to this package: do not mark this item "audited" until it is fixed upstream or the dependency is replaced.',
+      'Installed unmodified from shadcn/ui on Base UI. Its @qpmtx/ui colours resolve through styles/qpmatrix.css, so the token layer is covered by bun run a11y:contrast. The recorded SC 2.1.1 defect belongs to react-resizable-panels, not to this package: do not mark this item "audited" until it is fixed upstream or the dependency is replaced.',
   },
   supportedPlatforms: ["web"],
   tags: ["layout"],

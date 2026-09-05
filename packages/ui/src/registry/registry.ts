@@ -11,10 +11,10 @@ import { qpRegistrySchema, type QpRegistry } from "./schemas/registry.schema";
  * validate a registry that is not the registry it later writes to disk.
  *
  * The version tracks the package version rather than being maintained
- * separately: a registry is only ever published as part of a `@qpmatrix/ui`
+ * separately: a registry is only ever published as part of a `@qpmtx/ui`
  * release, so two numbers would only ever be an opportunity to disagree.
  */
-export const QP_REGISTRY_NAME = "@qpmatrix/ui";
+export const QP_REGISTRY_NAME = "@qpmtx/ui";
 export const QP_REGISTRY_HOMEPAGE = "https://github.com/QPMatrix/qpm-ui";
 
 export const QP_REGISTRY_VALUE = {

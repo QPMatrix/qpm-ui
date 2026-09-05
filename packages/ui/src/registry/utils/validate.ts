@@ -57,7 +57,7 @@ export interface ValidationIssue {
   readonly message: string;
 }
 
-/** Dependency scopes @qpmatrix/ui may never take (ADR-005: the MUI era is over). */
+/** Dependency scopes @qpmtx/ui may never take (ADR-005: the MUI era is over). */
 export const BANNED_DEPENDENCY_SCOPES: readonly string[] = ["@mui/", "@emotion/"];
 
 /** `@scope/name` or `@scope/name/sub-item` — a configured-registry address. */
@@ -384,7 +384,7 @@ function checkBannedDependencies(
           issue(
             "error",
             "banned-dependency",
-            `Item declares banned dependency ${JSON.stringify(dependency)}. @qpmatrix/ui is built on Base UI + Tailwind; MUI and Emotion are not permitted.`,
+            `Item declares banned dependency ${JSON.stringify(dependency)}. @qpmtx/ui is built on Base UI + Tailwind; MUI and Emotion are not permitted.`,
             { itemName: item.name },
           ),
         );
@@ -403,7 +403,7 @@ function checkBannedDependencies(
             issue(
               "error",
               "banned-dependency",
-              `Source imports banned package ${JSON.stringify(specifier)}. @qpmatrix/ui is built on Base UI + Tailwind; MUI and Emotion are not permitted.`,
+              `Source imports banned package ${JSON.stringify(specifier)}. @qpmtx/ui is built on Base UI + Tailwind; MUI and Emotion are not permitted.`,
               { itemName: item.name, file: file.path },
             ),
           );
@@ -432,7 +432,7 @@ function checkHardcodedColors(
           issue(
             "error",
             "hardcoded-color",
-            `${file.path}:${String(match.line)} contains a literal colour value. Use a @qpmatrix/tokens role instead: ${match.text}`,
+            `${file.path}:${String(match.line)} contains a literal colour value. Use a @qpmtx/tokens role instead: ${match.text}`,
             { itemName: item.name, file: file.path },
           ),
         );
@@ -456,7 +456,7 @@ function checkUnknownTokens(
           issue(
             "error",
             "unknown-token",
-            `tokenDependencies entry "${token}" is not a custom property shipped by @qpmatrix/tokens. Add the token to packages/tokens first, or fix the name (values are written without the leading "--").`,
+            `tokenDependencies entry "${token}" is not a custom property shipped by @qpmtx/tokens. Add the token to packages/tokens first, or fix the name (values are written without the leading "--").`,
             { itemName: item.name },
           ),
         );

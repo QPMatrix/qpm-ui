@@ -1,4 +1,4 @@
-# @qpmatrix/prettier-config
+# @qpmtx/prettier-config
 
 ## 0.1.0
 
@@ -10,6 +10,9 @@
   `.d.ts` output. No formatting rules changed; the version number
   restarts at 0.1.0 for this repo's own release history rather than
   continuing qpmatrix-packages' numbering.
+- Publish scope moved from `@qpmatrix/*` to `@qpmtx/*` (QPMSEC-433,
+  owner ruling 2026-09-05 — `@qpmtx` is the npm account the owner
+  holds). No code changed; published as `@qpmtx/prettier-config`.
 
 ## 0.1.1 (qpmatrix-packages)
 

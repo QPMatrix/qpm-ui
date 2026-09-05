@@ -103,7 +103,7 @@ describe("cssVar helper", () => {
 
 describe("package exports map", () => {
   test("'.' resolves to the token barrel", async () => {
-    const pkg = await import("@qpmatrix/tokens");
+    const pkg = await import("@qpmtx/tokens");
     expect(pkg.colorsAndGradients).toBeDefined();
     expect(pkg.typography).toBeDefined();
     expect(pkg.spacingAndLayout).toBeDefined();
@@ -114,7 +114,7 @@ describe("package exports map", () => {
   });
 
   test("'./css' resolves to a readable tokens.css file", async () => {
-    const resolved = Bun.resolveSync("@qpmatrix/tokens/css", import.meta.dir);
+    const resolved = Bun.resolveSync("@qpmtx/tokens/css", import.meta.dir);
     expect(resolved.endsWith("tokens.css")).toBe(true);
     const text = await Bun.file(resolved).text();
     expect(text).toContain(":root{");

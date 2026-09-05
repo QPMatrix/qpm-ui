@@ -7,7 +7,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./chart";
  * Chart — shadcn/Base UI primitive, source-owned by QPMatrix.
  *
  * The five series colours resolve from `--chart-1` … `--chart-5`, which
- * `styles/qpmatrix.css` binds to @qpmatrix/tokens hues — so a chart recolours
+ * `styles/qpmatrix.css` binds to @qpmtx/tokens hues — so a chart recolours
  * with the theme rather than carrying its own palette.
  */
 const meta = {

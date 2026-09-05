@@ -1,4 +1,4 @@
-# @qpmatrix/oxlint-config
+# @qpmtx/oxlint-config
 
 ## 0.1.0
 
@@ -18,3 +18,6 @@ architecture`'s `no-cross-module-import` (a custom AST rule with no
   oxlint plugin-rule port yet) and `react.ts`'s `no-restricted-syntax`
   selectors (inline `style={{ … }}` / `import * as React` bans — oxlint
   has no ESLint-`no-restricted-syntax`-equivalent AST-selector rule).
+- Publish scope moved from `@qpmatrix/*` to `@qpmtx/*` (QPMSEC-433,
+  owner ruling 2026-09-05 — `@qpmtx` is the npm account the owner
+  holds). No code changed; published as `@qpmtx/oxlint-config`.

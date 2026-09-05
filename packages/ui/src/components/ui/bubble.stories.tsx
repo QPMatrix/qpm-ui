@@ -28,7 +28,7 @@ export const Default: Story = {
         </Bubble>
         <Bubble>
           <BubbleContent>
-            @qpmatrix/tokens — the UI kit consumes them through the adapter.
+            @qpmtx/tokens — the UI kit consumes them through the adapter.
           </BubbleContent>
         </Bubble>
       </BubbleGroup>

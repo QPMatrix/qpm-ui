@@ -10,7 +10,7 @@ import { dirname, join, relative, resolve } from "node:path";
  * enforced standard — see `isUpstreamPrimitive` and `checkPrimitiveHonesty`.
  * Rules 4-5 apply to every file.
  *
- * Statically enforces @qpmatrix/ui's "interactive contract" over every
+ * Statically enforces @qpmtx/ui's "interactive contract" over every
  * component source file under `src/components/` (both the canonical shadcn
  * Base-UI primitives in `src/components/ui/` and the QPMatrix public
  * component files above it — walked recursively rather than assuming a fixed

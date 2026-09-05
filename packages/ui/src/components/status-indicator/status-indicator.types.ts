@@ -8,7 +8,7 @@ import type { qpStatusIndicatorVariants } from "./status-indicator.constants";
  */
 
 /**
- * The status vocabulary, split across the two @qpmatrix/tokens families that
+ * The status vocabulary, split across the two @qpmtx/tokens families that
  * model it: `status-*` for outcome states and `signal-*` for connection and
  * activity states.
  */

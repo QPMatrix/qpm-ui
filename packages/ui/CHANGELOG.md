@@ -1,4 +1,4 @@
-# @qpmatrix/ui
+# @qpmtx/ui
 
 ## 1.1.0
 
@@ -11,3 +11,6 @@
   Storybook stories, same registry/a11y tooling. No component
   behaviour or design changed; only the repo, toolchain (oxlint
   replaces eslint), and version numbering moved.
+- Publish scope moved from `@qpmatrix/*` to `@qpmtx/*` (QPMSEC-433,
+  owner ruling 2026-09-05 — `@qpmtx` is the npm account the owner
+  holds). No code changed; published as `@qpmtx/ui`.

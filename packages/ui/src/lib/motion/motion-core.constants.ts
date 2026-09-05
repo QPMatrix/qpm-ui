@@ -7,7 +7,7 @@ import type { Transition, Variants } from "motion/react";
  * *system*, defined once, so that a page transition, a section revealing on
  * scroll and a button responding to a press all read as the same surface
  * moving rather than three libraries fighting. Every number below resolves
- * from @qpmatrix/tokens, which is also what `styles/qpmatrix.css` feeds to
+ * from @qpmtx/tokens, which is also what `styles/qpmatrix.css` feeds to
  * Tailwind's `duration-*` / `ease-*` utilities — so a CSS transition and a
  * Motion animation on the same element agree by construction.
  *
@@ -23,7 +23,7 @@ import type { Transition, Variants } from "motion/react";
 /**
  * Token durations, in SECONDS.
  *
- * Motion takes seconds; @qpmatrix/tokens stores CSS milliseconds. Converting
+ * Motion takes seconds; @qpmtx/tokens stores CSS milliseconds. Converting
  * once, here, is what stops `0.28` and `280ms` from drifting apart the first
  * time somebody tunes the token.
  */
@@ -47,7 +47,7 @@ export type QPDurationName = keyof typeof QP_DURATION;
 /**
  * Token easings as Motion cubic-bezier arrays.
  *
- * The literal control points mirror `--ease-*` in @qpmatrix/tokens exactly.
+ * The literal control points mirror `--ease-*` in @qpmtx/tokens exactly.
  * `standard` and `out` are both strongly decelerating (a long tail) because
  * that is what makes an interface feel like it settles rather than stops.
  */

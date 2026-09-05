@@ -77,7 +77,7 @@ const axeSource = [
 
 if (axeSource === undefined) {
   console.error(
-    "Could not find axe-core/axe.min.js. Run `bun install` — axe-core is a devDependency of @qpmatrix/ui.",
+    "Could not find axe-core/axe.min.js. Run `bun install` — axe-core is a devDependency of @qpmtx/ui.",
   );
   process.exit(1);
 }

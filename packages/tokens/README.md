@@ -1,4 +1,4 @@
-# @qpmatrix/tokens
+# @qpmtx/tokens
 
 The QPMatrix design token system - colors, typography, spacing, radius,
 elevation/glow shadows, motion, and z-index - transcribed verbatim from the
@@ -7,10 +7,10 @@ framework-agnostic: no React, no MUI, no styling runtime. It ships two
 aligned deliverables generated from the same 246-token source so they can
 never drift apart:
 
-- CSS custom properties - `tokens.css`, importable via `@qpmatrix/tokens/css`
-- Typed token objects - const-asserted TS objects, importable via `@qpmatrix/tokens`
+- CSS custom properties - `tokens.css`, importable via `@qpmtx/tokens/css`
+- Typed token objects - const-asserted TS objects, importable via `@qpmtx/tokens`
 
-The MUI theme factory that consumes these tokens lives in `@qpmatrix/ui`
+The MUI theme factory that consumes these tokens lives in `@qpmtx/ui`
 (QPM-38), not here - this package only owns the token values themselves.
 
 ## Install
@@ -21,7 +21,7 @@ Within the monorepo, add it as a workspace dependency:
 // apps/*/package.json
 {
   "dependencies": {
-    "@qpmatrix/tokens": "workspace:*",
+    "@qpmtx/tokens": "workspace:*",
   },
 }
 ```
@@ -31,7 +31,7 @@ Within the monorepo, add it as a workspace dependency:
 Import the stylesheet once, at the app root (before any component styles):
 
 ```ts
-import "@qpmatrix/tokens/css";
+import "@qpmtx/tokens/css";
 ```
 
 This defines every `--var` on `:root` (dark theme, the default - QPMatrix's
@@ -65,7 +65,7 @@ Reference tokens by name instead of hardcoding CSS strings, so a renamed or
 removed token becomes a type error:
 
 ```ts
-import { cssVar, colorsAndGradients, radius } from "@qpmatrix/tokens";
+import { cssVar, colorsAndGradients, radius } from "@qpmtx/tokens";
 
 const style = {
   color: cssVar("fg-primary"),
@@ -120,5 +120,5 @@ and the exact steps to add a token (CSS + TS + test together).
 
 ```sh
 bun test packages/tokens
-bun run --filter @qpmatrix/tokens build
+bun run --filter @qpmtx/tokens build
 ```

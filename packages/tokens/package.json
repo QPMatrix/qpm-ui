@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/tokens",
+  "name": "@qpmtx/tokens",
   "version": "0.3.0",
   "type": "module",
   "publishConfig": {
@@ -23,8 +23,8 @@
     "./css": "./tokens.css"
   },
   "devDependencies": {
-    "@qpmatrix/tokens": "workspace:*",
-    "@qpmatrix/typescript-config": "workspace:*",
+    "@qpmtx/tokens": "workspace:*",
+    "@qpmtx/typescript-config": "workspace:*",
     "@types/bun": "^1.4.0"
   },
   "scripts": {

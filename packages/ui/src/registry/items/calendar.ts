@@ -1,11 +1,11 @@
 import { type QpRegistryItem } from "../schemas/registry-item.schema";
 
-/** Base UI calendar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s). */
+/** Base UI calendar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s). */
 export const calendar: QpRegistryItem = {
   name: "calendar",
   type: "primitive",
   description:
-    "Base UI calendar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+    "Base UI calendar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s).",
   version: "0.1.0",
   files: [{ path: "packages/ui/src/components/ui/calendar.tsx" }],
   dependencies: ["lucide-react", "react-day-picker"],
@@ -33,7 +33,7 @@ export const calendar: QpRegistryItem = {
     keyboardTested: true,
     focusManaged: false,
     notes:
-      'Installed unmodified from shadcn/ui on Base UI. Keyboard and ARIA behaviour is owned and tested upstream by Base UI; QPMatrix has not yet run its own audit against docs/standards/accessibility.md, so the status is "partial" rather than "audited". Its @qpmatrix/ui colours resolve through styles/qpmatrix.css, so the token layer is already covered by bun run a11y:contrast.',
+      'Installed unmodified from shadcn/ui on Base UI. Keyboard and ARIA behaviour is owned and tested upstream by Base UI; QPMatrix has not yet run its own audit against docs/standards/accessibility.md, so the status is "partial" rather than "audited". Its @qpmtx/ui colours resolve through styles/qpmatrix.css, so the token layer is already covered by bun run a11y:contrast.',
   },
   supportedPlatforms: ["web"],
   tags: ["forms", "date"],

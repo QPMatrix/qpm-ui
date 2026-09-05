@@ -1,4 +1,4 @@
-# @qpmatrix/tokens
+# @qpmtx/tokens
 
 ## 0.3.0
 
@@ -10,6 +10,9 @@
   `tokens.css` / typed-token-object split, same `cssVar()` helper.
   No token values or behaviour changed; only the repo, toolchain
   (oxlint replaces eslint), and version numbering moved.
+- Publish scope moved from `@qpmatrix/*` to `@qpmtx/*` (QPMSEC-433,
+  owner ruling 2026-09-05 — `@qpmtx` is the npm account the owner
+  holds). No code changed; published as `@qpmtx/tokens`.
 
 ## 0.2.1 (qpmatrix-packages)
 

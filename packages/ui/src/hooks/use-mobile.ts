@@ -3,7 +3,7 @@ import { useSyncExternalStore } from "react";
 /**
  * The viewport width below which the UI switches to its mobile arrangement.
  *
- * Matches `--breakpoint-tablet` in @qpmatrix/tokens. It is duplicated as a
+ * Matches `--breakpoint-tablet` in @qpmtx/tokens. It is duplicated as a
  * number here because a media query cannot read a CSS custom property — a
  * token cannot be interpolated into `matchMedia`. Change one, change both.
  */

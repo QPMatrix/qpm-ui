@@ -1,5 +1,5 @@
 {
-  "name": "@qpmatrix/typescript-config",
+  "name": "@qpmtx/typescript-config",
   "version": "0.2.0",
   "publishConfig": {
     "access": "public"

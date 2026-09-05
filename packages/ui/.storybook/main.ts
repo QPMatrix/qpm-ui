@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import type { StorybookConfig } from "@storybook/react-vite";
 
 /**
- * Storybook is @qpmatrix/ui's PREVIEW surface.
+ * Storybook is @qpmtx/ui's PREVIEW surface.
  *
  * It is not decoration: it is where a component is proven to work before it is
  * registered. `addon-a11y` runs axe against every story on render, catching the

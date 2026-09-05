@@ -2,7 +2,7 @@ import type { UserEvent } from "@testing-library/user-event";
 import { expect } from "bun:test";
 
 /**
- * Reusable, DOM-level assertions for @qpmatrix/ui's "interactive contract":
+ * Reusable, DOM-level assertions for @qpmtx/ui's "interactive contract":
  * every interactive component must be reachable and operable by keyboard,
  * must expose a correct accessible name, and must never rely on a positive
  * `tabindex` to get there. Framework-agnostic on purpose — these operate on
@@ -192,7 +192,7 @@ function findAssociatedLabel(element: HTMLElement): HTMLLabelElement | null {
 
 /**
  * Resolve `element`'s accessible name using the precedence order relevant to
- * @qpmatrix/ui's components: `aria-labelledby` -> `aria-label` -> associated
+ * @qpmtx/ui's components: `aria-labelledby` -> `aria-label` -> associated
  * `<label>` -> text content. This is a deliberately simplified subset of the
  * full W3C accname algorithm (no `aria-describedby`, no host-language title
  * fallback) — enough to catch the mistakes components in this package
@@ -267,7 +267,7 @@ function hasPositiveTabIndex(element: HTMLElement): boolean {
 /**
  * Fail if any element in `root` (root included) has a positive `tabindex`.
  * Positive tabindex overrides the natural DOM tab order, which reliably
- * produces a confusing keyboard experience (WCAG 2.4.3) — @qpmatrix/ui never
+ * produces a confusing keyboard experience (WCAG 2.4.3) — @qpmtx/ui never
  * needs it.
  */
 export function expectNoPositiveTabIndex(root: ParentNode): void {

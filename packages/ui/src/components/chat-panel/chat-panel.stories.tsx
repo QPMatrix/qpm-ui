@@ -31,7 +31,7 @@ const conversation = [
     Which package owns the design tokens?
   </QPMessageBubble>,
   <QPMessageBubble key="2" author="assistant">
-    {"@qpmatrix/tokens. @qpmatrix/ui consumes them through styles/qpmatrix.css."}
+    {"@qpmtx/tokens. @qpmtx/ui consumes them through styles/qpmatrix.css."}
   </QPMessageBubble>,
   <QPMessageBubble key="3" author="user">
     Can I add one without touching the UI package?

@@ -1,8 +1,8 @@
 # Lint: oxlint replaces eslint (QPMSEC-433)
 
-Reference for this repo's lint tooling — what `@qpmatrix/oxlint-config`
-covers from `qpmatrix-packages`' old `@qpmatrix/eslint-config` +
-`@qpmatrix/eslint-plugin-architecture` pair, and what it does not.
+Reference for this repo's lint tooling — what `@qpmtx/oxlint-config`
+covers from `qpmatrix-packages`' old `@qpmtx/eslint-config` +
+`@qpmtx/eslint-plugin-architecture` pair, and what it does not.
 Owner ruling for this repo (2026-09-05): oxlint instead of eslint.
 `eslint-config` and `eslint-plugin-architecture` are retired, not ported;
 every eslint dependency is gone from this workspace.
@@ -38,7 +38,7 @@ every eslint dependency is gone from this workspace.
 `packages/oxlint-config/react.json` (extends `base.json`) re-expresses
 `eslint-config`'s `react.ts` — not used by this repo's own `.oxlintrc.json`
 (same as the old root `eslint.config.ts`, which only ever loaded `base`;
-`react.ts` was for consuming apps, not for `@qpmatrix/ui`'s own source):
+`react.ts` was for consuming apps, not for `@qpmtx/ui`'s own source):
 
 - `react/jsx-boolean-value`, `react/no-array-index-key`, `react/no-danger`
   (warn), `react/no-unstable-nested-components`, `react/self-closing-comp`.
@@ -51,7 +51,7 @@ every eslint dependency is gone from this workspace.
 - `no-restricted-imports`, banning `@mui/*`, `@emotion/*` and
   `@base-ui/react` from application code — the same app-boundary rule
   `react.ts` enforced (a primitive imported straight into an app is
-  unstyled, untokenised, and outside `@qpmatrix/ui`'s accessibility
+  unstyled, untokenised, and outside `@qpmtx/ui`'s accessibility
   gates).
 
 ## GAPS — no oxlint equivalent (documented, not dropped)
@@ -72,7 +72,7 @@ every eslint dependency is gone from this workspace.
 ObjectExpression > Property[key.value!=/^--/]` — banned inline
      `style={{ ... }}` except CSS custom-property passthrough
      (`style={{ "--gap": value }}`), since a `style` object bypasses
-     `@qpmatrix/tokens` and the registry's hardcoded-colour checks.
+     `@qpmtx/tokens` and the registry's hardcoded-colour checks.
 
    oxlint's `jsPlugins` mechanism (alpha as of 1.81.0 — "not subject to
    semver" per its own schema) could host a custom rule implementing
@@ -81,16 +81,15 @@ ObjectExpression > Property[key.value!=/^--/]` — banned inline
    swap that must not itself become a source of new findings. A future
    leg can pick this up once `jsPlugins` is stable.
 
-3. **`@qpmatrix/eslint-plugin-architecture`'s `no-cross-module-import`.**
+3. **`@qpmtx/eslint-plugin-architecture`'s `no-cross-module-import`.**
    A custom ESLint rule (`packages/eslint-plugin-architecture` in
    `qpmatrix-packages`, retired — not ported to this repo, which has no
    `src/modules/<feature>/` layout to enforce anyway): forbids reaching
    into another feature module's internal files, requiring imports to
    go through that module's `index.ts` barrel. This is API-service
-   layering logic (ADR-001 / architecture.md §3 rule 3), not a UI/tokens/
-   client-package concern — `@qpmatrix/ui`, `@qpmatrix/tokens` and
-   `@qpmatrix/query-fetcher` have no `modules/` directory for it to
-   apply to. Same `jsPlugins`-is-alpha reasoning as #2 applies if an
+   layering logic (ADR-001 / architecture.md §3 rule 3), not a UI/tokens
+   concern — `@qpmtx/ui` and `@qpmtx/tokens` have no `modules/`
+   directory for it to apply to. Same `jsPlugins`-is-alpha reasoning as #2 applies if an
    estate API-service repo ever needs an oxlint port of this rule.
 
 None of these three were silently dropped: each is either enforced by a

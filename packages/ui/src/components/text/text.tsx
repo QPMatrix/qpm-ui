@@ -9,7 +9,7 @@ import { qpDefaultTextElement, qpTextClampClass, qpTextFontClass } from "./text.
  * QPText — every piece of text in a QPMatrix surface.
  *
  * The kit's whole type ramp is one prop. `variant` selects a step from
- * @qpmatrix/tokens (`display-lg` … `caption`, plus `code` and the `metric-*`
+ * @qpmtx/tokens (`display-lg` … `caption`, plus `code` and the `metric-*`
  * dashboard figures), and each step carries size, line-height, tracking and
  * weight together — so a heading cannot be half-styled, and a designer
  * changing the ramp changes it in the tokens rather than in fifty files.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 /**
- * preview-registry — browse what @qpmatrix/ui actually distributes.
+ * preview-registry — browse what @qpmtx/ui actually distributes.
  *
  * `registry:validate` tells you the registry is *consistent*. It cannot tell
  * you whether it is *right*: whether an item's accessibility status is honest,
@@ -46,7 +46,7 @@ import {
 } from "../src/registry/utils/project-shadcn";
 import { knownDefectsOf, type QpRegistryItem } from "../src/registry/schemas/registry-item.schema";
 
-const REGISTRY_NAME = "@qpmatrix/ui";
+const REGISTRY_NAME = "@qpmtx/ui";
 const REGISTRY_HOMEPAGE = "https://github.com/QPMatrix/qpm-ui";
 
 /**

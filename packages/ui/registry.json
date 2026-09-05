@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "@qpmatrix/ui",
+  "name": "@qpmtx/ui",
   "homepage": "https://github.com/QPMatrix/qpm-ui",
   "items": [
     {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "description": "Base UI accordion primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "description": "Base UI accordion primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 4 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -35,7 +35,7 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "Base UI alert dialog primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 12 symbol(s).",
+      "description": "Base UI alert dialog primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 12 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -49,7 +49,7 @@
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "Aspect Ratio",
-      "description": "Base UI aspect ratio primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "description": "Base UI aspect ratio primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 1 symbol(s).",
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
         {
@@ -62,7 +62,7 @@
       "name": "attachment",
       "type": "registry:ui",
       "title": "Attachment",
-      "description": "Base UI attachment primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "description": "Base UI attachment primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 9 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -76,7 +76,7 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "Base UI avatar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI avatar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -104,7 +104,7 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
-      "description": "Base UI breadcrumb primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "description": "Base UI breadcrumb primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 7 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -118,7 +118,7 @@
       "name": "bubble",
       "type": "registry:ui",
       "title": "Bubble",
-      "description": "Base UI bubble primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "description": "Base UI bubble primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 4 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -146,7 +146,7 @@
       "name": "button-group",
       "type": "registry:ui",
       "title": "Button Group",
-      "description": "Base UI button group primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "description": "Base UI button group primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 4 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/separator"],
       "files": [
@@ -160,7 +160,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "description": "Base UI calendar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "description": "Base UI calendar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s).",
       "dependencies": ["lucide-react", "react-day-picker"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -187,7 +187,7 @@
       "name": "carousel",
       "type": "registry:ui",
       "title": "Carousel",
-      "description": "Base UI carousel primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "description": "Base UI carousel primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 7 symbol(s).",
       "dependencies": ["embla-carousel-react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -201,7 +201,7 @@
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",
-      "description": "Base UI chart primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI chart primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "dependencies": ["recharts"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -255,7 +255,7 @@
       "name": "cn",
       "type": "registry:lib",
       "title": "Cn",
-      "description": "Tailwind class merge helper: the single styling escape hatch every @qpmatrix/ui component runs `className` through.",
+      "description": "Tailwind class merge helper: the single styling escape hatch every @qpmtx/ui component runs `className` through.",
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
@@ -268,7 +268,7 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "description": "Base UI collapsible primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "description": "Base UI collapsible primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -282,7 +282,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "Base UI combobox primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 16 symbol(s).",
+      "description": "Base UI combobox primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 16 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": [
         "QPMatrix/qpm-ui/button",
@@ -300,7 +300,7 @@
       "name": "command",
       "type": "registry:ui",
       "title": "Command",
-      "description": "Base UI command primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "description": "Base UI command primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 9 symbol(s).",
       "dependencies": ["cmdk", "lucide-react"],
       "registryDependencies": [
         "QPMatrix/qpm-ui/cn",
@@ -348,7 +348,7 @@
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
-      "description": "Base UI context menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "description": "Base UI context menu primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 15 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -376,7 +376,7 @@
       "name": "direction",
       "type": "registry:ui",
       "title": "Direction",
-      "description": "Base UI direction primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "description": "Base UI direction primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -390,7 +390,7 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "description": "Base UI drawer primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 11 symbol(s).",
+      "description": "Base UI drawer primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 11 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -404,7 +404,7 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "title": "Dropdown Menu",
-      "description": "Base UI dropdown menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "description": "Base UI dropdown menu primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 15 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -418,7 +418,7 @@
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "description": "Base UI empty primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI empty primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "dependencies": ["class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -475,7 +475,7 @@
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
-      "description": "Base UI hover card primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "description": "Base UI hover card primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -529,7 +529,7 @@
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
-      "description": "Base UI input group primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI input group primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "dependencies": ["class-variance-authority"],
       "registryDependencies": [
         "QPMatrix/qpm-ui/button",
@@ -548,7 +548,7 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input Otp",
-      "description": "Base UI input otp primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "description": "Base UI input otp primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 4 symbol(s).",
       "dependencies": ["input-otp", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -562,7 +562,7 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
-      "description": "Base UI item primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 10 symbol(s).",
+      "description": "Base UI item primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 10 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/separator"],
       "files": [
@@ -576,7 +576,7 @@
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
-      "description": "Base UI kbd primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "description": "Base UI kbd primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s).",
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
         {
@@ -602,7 +602,7 @@
       "name": "marker",
       "type": "registry:ui",
       "title": "Marker",
-      "description": "Base UI marker primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "description": "Base UI marker primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 4 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -616,7 +616,7 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
-      "description": "Base UI menubar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 16 symbol(s).",
+      "description": "Base UI menubar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 16 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/dropdown-menu"],
       "files": [
@@ -630,7 +630,7 @@
       "name": "message",
       "type": "registry:ui",
       "title": "Message",
-      "description": "Base UI message primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI message primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
         {
@@ -669,7 +669,7 @@
       "name": "message-scroller",
       "type": "registry:ui",
       "title": "Message Scroller",
-      "description": "Base UI message scroller primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "description": "Base UI message scroller primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 9 symbol(s).",
       "dependencies": ["@shadcn/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -764,7 +764,7 @@
       "name": "native-select",
       "type": "registry:ui",
       "title": "Native Select",
-      "description": "Base UI native select primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "description": "Base UI native select primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s).",
       "dependencies": ["lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -778,7 +778,7 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "title": "Navigation Menu",
-      "description": "Base UI navigation menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "description": "Base UI navigation menu primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 9 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -843,7 +843,7 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "Base UI pagination primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "description": "Base UI pagination primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 7 symbol(s).",
       "dependencies": ["lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -857,7 +857,7 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "description": "Base UI popover primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "description": "Base UI popover primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 6 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -897,7 +897,7 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "Base UI progress primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 5 symbol(s).",
+      "description": "Base UI progress primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 5 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -940,7 +940,7 @@
       "name": "questionnaire",
       "type": "registry:ui",
       "title": "Questionnaire",
-      "description": "Base UI questionnaire primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "description": "Base UI questionnaire primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 15 symbol(s).",
       "dependencies": ["@shadcn/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -968,7 +968,7 @@
       "name": "resizable",
       "type": "registry:ui",
       "title": "Resizable",
-      "description": "Base UI resizable primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "description": "Base UI resizable primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 3 symbol(s).",
       "dependencies": ["react-resizable-panels"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -1008,7 +1008,7 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
-      "description": "Base UI scroll area primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "description": "Base UI scroll area primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 2 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -1106,7 +1106,7 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "Base UI sheet primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 8 symbol(s).",
+      "description": "Base UI sheet primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 8 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [
@@ -1120,7 +1120,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "Base UI sidebar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 24 symbol(s).",
+      "description": "Base UI sidebar primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 24 symbol(s).",
       "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
       "registryDependencies": [
         "QPMatrix/qpm-ui/button",
@@ -1156,7 +1156,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Base UI slider primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "description": "Base UI slider primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 1 symbol(s).",
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -1170,7 +1170,7 @@
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
-      "description": "Base UI spinner primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "description": "Base UI spinner primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 1 symbol(s).",
       "dependencies": ["lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
@@ -1250,7 +1250,7 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "Base UI table primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 8 symbol(s).",
+      "description": "Base UI table primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 8 symbol(s).",
       "registryDependencies": ["QPMatrix/qpm-ui/cn"],
       "files": [
         {
@@ -1316,7 +1316,7 @@
       "type": "registry:lib",
       "title": "Theme Contract",
       "description": "Server-driven theme contract: approved modes and accents, selection narrowing, and the DOM attributes that apply a selection.",
-      "dependencies": ["@qpmatrix/tokens"],
+      "dependencies": ["@qpmtx/tokens"],
       "files": [
         {
           "path": "src/lib/theme.ts",
@@ -1328,7 +1328,7 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "Base UI toast primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 13 symbol(s).",
+      "description": "Base UI toast primitive, installed from shadcn/ui and bound to @qpmtx/tokens. Exports 13 symbol(s).",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
       "files": [

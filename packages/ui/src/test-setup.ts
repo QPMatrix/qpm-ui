@@ -1,5 +1,5 @@
 /**
- * DOM test environment bootstrap for @qpmatrix/ui.
+ * DOM test environment bootstrap for @qpmtx/ui.
  *
  * `bun test` does not read a workspace-root bunfig.toml preload here (there
  * isn't one, and this package's WRITE SET does not include the repo root
@@ -28,7 +28,7 @@ if (typeof document === "undefined") {
 
 /**
  * Deterministic motion teardown (QPMSEC-433, PR #1 gate round 4): the
- * hosted runner failed `@qpmatrix/ui test` with "2 errors" — `bun test`'s
+ * hosted runner failed `@qpmtx/ui test` with "2 errors" — `bun test`'s
  * "Unhandled error between tests" — `AbortError: The animation was
  * canceled.`, thrown from happy-dom's `Animation.cancel` via motion-dom's
  * `NativeAnimation.stop`. Root cause: motion-dom prefers the real Web
@@ -56,7 +56,7 @@ if (typeof document === "undefined") {
  * plain mutable object re-exported from `motion-utils` through
  * `framer-motion` (`export { MotionGlobalConfig } from "motion-utils"`)
  * and then through `motion/react` (`export * from "framer-motion"`) —
- * `@qpmatrix/ui` already depends on `motion` directly, so importing it
+ * `@qpmtx/ui` already depends on `motion` directly, so importing it
  * from `motion/react` reaches for a package this repo already declares,
  * not a transitive one. Imported dynamically, after DOM registration,
  * for the same static-import-ordering reason documented above (`motion`'s

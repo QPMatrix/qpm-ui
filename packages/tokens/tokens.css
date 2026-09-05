@@ -1,5 +1,5 @@
 /* ============================================================
-   @qpmatrix/tokens — QPMatrix Design System CSS tokens
+   @qpmtx/tokens — QPMatrix Design System CSS tokens
    Verbatim transcription of the owner's design source:
      six :root{} blocks (dark = default) + [data-theme="light"]
      override block + qp-* keyframes/utility classes + the
