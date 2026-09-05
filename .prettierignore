@@ -1,0 +1,23 @@
+node_modules
+dist
+build
+coverage
+.cache
+.next
+.wrangler
+.turbo
+storybook-static
+*.tsbuildinfo
+bun.lock
+
+# repo-instructions generated files — never hand-edited, and not reformatted
+# (instructions.py owns their exact byte content; re-running `sync` is how
+# they change, not `prettier --write`).
+AGENTS.md
+CLAUDE.md
+INSTRUCTIONS.md
+
+# Verbatim design-token CSS transcribed from the source repo — must stay
+# byte-exact, Prettier would rewrite hex-case/whitespace (QPM-36, carried
+# over from qpmatrix-packages).
+packages/tokens/tokens.css

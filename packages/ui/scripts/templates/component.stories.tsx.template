@@ -1,0 +1,70 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { __COMPONENT_NAME__ } from "./__COMPONENT_KEBAB__";
+
+/**
+ * Storybook is the component's PREVIEW surface and its second accessibility
+ * gate: `@storybook/addon-a11y` runs axe against every story on render, and
+ * `.storybook/preview.ts` mounts the real `styles/qpmatrix.css`, so what you
+ * see here is what an app gets — same tokens, same cascade, same dark/light
+ * switch (toolbar → Theme).
+ *
+ * Every story must be reachable by keyboard alone and must pass the a11y panel
+ * with zero violations before the component is registered.
+ */
+
+const meta = {
+  title: "Components/__COMPONENT_NAME__",
+  component: __COMPONENT_NAME__,
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  argTypes: {
+    // TODO(scaffold): one control per prop a designer or engineer would want to
+    // drive from the panel. Controls are how "it accepts props" is *proven*.
+    label: { control: "text" },
+    tone: { control: "select", options: ["neutral", "accent"] },
+    size: { control: "select", options: ["sm", "md", "lg"] },
+  },
+} satisfies Meta<typeof __COMPONENT_NAME__>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    label: "__COMPONENT_TITLE__",
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    label: "__COMPONENT_TITLE__",
+    tone: "accent",
+  },
+};
+
+export const Sizes: Story = {
+  args: { label: "__COMPONENT_TITLE__" },
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      <__COMPONENT_NAME__ {...args} size="sm" />
+      <__COMPONENT_NAME__ {...args} size="md" />
+      <__COMPONENT_NAME__ {...args} size="lg" />
+    </div>
+  ),
+};
+
+/**
+ * QPMatrix ships Arabic and Hebrew apps. Because copy is a prop and spacing
+ * uses logical properties, the same component serves RTL with no fork.
+ */
+export const RightToLeft: Story = {
+  args: {
+    label: "نص عربي",
+  },
+  render: (args) => (
+    <div dir="rtl">
+      <__COMPONENT_NAME__ {...args} />
+    </div>
+  ),
+};

@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/prettier-config" },
+    { "path": "./packages/tokens" },
+    { "path": "./packages/query-fetcher" },
+    { "path": "./packages/ui" }
+  ]
+}

@@ -1,0 +1,372 @@
+/*
+ * @qpmatrix/ui — Tailwind v4 + shadcn theme layer.
+ *
+ * Import ONCE at the app root:
+ *
+ *   @import "@qpmatrix/ui/css";
+ *
+ * This file is the ADAPTER described in docs/architecture/shadcn-registry.md.
+ * It does not define a single colour, size, or duration of its own — every
+ * value below is an alias onto a semantic role in @qpmatrix/tokens, which
+ * stays the canonical token architecture. shadcn's variable names
+ * (--background, --primary, --ring, ...) are a *consumption vocabulary* so
+ * upstream shadcn/Base UI components drop in unmodified; they are not the
+ * source of truth and must never be given literal values here.
+ *
+ * ---------------------------------------------------------------------------
+ * IMPORT ORDER MATTERS. `@import "tailwindcss"` puts Tailwind's own theme
+ * variables inside `@layer theme`. `@qpmatrix/tokens/css` is UNLAYERED, and
+ * unlayered declarations beat layered ones in the CSS cascade regardless of
+ * source order. That is why Tailwind's `--radius-sm|md|lg|xl`, `--font-sans`
+ * and `--font-mono` namespaces are deliberately NOT redeclared below: the
+ * utilities Tailwind generates already resolve `var(--radius-md)` /
+ * `var(--font-sans)`, and @qpmatrix/tokens' unlayered values win. So
+ * `rounded-md` IS `--radius-md` (8px) and `font-sans` IS the QPMatrix sans
+ * stack, with zero duplication. Re-declaring them in `@theme` here would
+ * create a `var()` reference cycle and silently blank the property.
+ * ---------------------------------------------------------------------------
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@qpmatrix/tokens/css";
+
+/*
+ * QPMatrix is dark-first: @qpmatrix/tokens' `:root` block IS the dark theme and
+ * `[data-theme="light"]` overrides it. shadcn ships `.dark`-class dark mode, so
+ * the `dark:` variant is redefined to mean "not inside a light subtree".
+ *
+ * Components should rarely need `dark:` at all — every alias below points at a
+ * token that already flips under `[data-theme="light"]`, so light mode is
+ * automatic and this file has no second colour block. `dark:` exists only so
+ * unmodified upstream shadcn components keep behaving.
+ */
+@custom-variant dark (&:not([data-theme="light"] *));
+
+/*
+ * shadcn semantic names -> @qpmatrix/tokens semantic roles.
+ * Unlayered on purpose (see import-order note above).
+ */
+:root {
+  /* Surfaces */
+  --background: var(--bg-canvas);
+  --foreground: var(--fg-primary);
+  --card: var(--surface-primary);
+  --card-foreground: var(--fg-primary);
+  --popover: var(--surface-secondary);
+  --popover-foreground: var(--fg-primary);
+  --surface: var(--surface-secondary);
+  --surface-foreground: var(--fg-primary);
+
+  /* Actions */
+  /*
+   * --primary is the FILLED brand surface — buttons, badges, checked
+   * checkboxes, progress bars, selected calendar days, selection highlight.
+   * shadcn pairs it with --primary-foreground everywhere.
+   *
+   * It maps to `brand-strong`, NOT `brand-primary`: brand-foreground on
+   * brand-primary measures 4.04:1, below 1.4.3's 4.5:1 for normal text, and
+   * axe confirmed that failing across ten primitives in a real browser.
+   * brand-strong measures 5.45:1 dark and 7.94:1 light.
+   *
+   * `brand-primary` remains the brand TEXT colour — see the `link` Button
+   * variant, which sets `text-brand-primary` explicitly (4.68:1 dark on the
+   * canvas). Fills and text genuinely need different shades: brand-strong as
+   * text on the canvas drops to 3.48:1.
+   */
+  --primary: var(--brand-strong);
+  --primary-foreground: var(--brand-foreground);
+  --secondary: var(--surface-tertiary);
+  --secondary-foreground: var(--fg-primary);
+  --muted: var(--surface-tertiary);
+  --muted-foreground: var(--fg-muted);
+  --accent: var(--surface-interactive);
+  --accent-foreground: var(--fg-primary);
+  --destructive: var(--status-error);
+  --destructive-foreground: var(--fg-primary);
+
+  /* Lines */
+  --border: var(--border-default);
+  /*
+   * --input is the CONTROL BOUNDARY, and SC 1.4.11 requires it at 3:1 because
+   * it is what tells a user where the input is. `border-default` measures
+   * 1.43:1 (dark) / 1.48:1 (light) against surface-primary and cannot serve
+   * here; `border-interactive` measures 3.15:1 / 5.70:1 and does.
+   *
+   * --border above stays on `border-default` on purpose: it draws decorative
+   * container edges (cards, separators) where the surface change already
+   * delineates the region, which SC 1.4.11 does not cover.
+   */
+  --input: var(--border-interactive);
+  --ring: var(--border-focus);
+
+  /* Data visualisation — the five hues @qpmatrix/tokens already defines. */
+  --chart-1: var(--violet-500);
+  --chart-2: var(--cyan-500);
+  --chart-3: var(--blue-500);
+  --chart-4: var(--green-500);
+  --chart-5: var(--amber-500);
+
+  /* Sidebar shell */
+  --sidebar: var(--surface-primary);
+  --sidebar-foreground: var(--fg-primary);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--brand-foreground);
+  --sidebar-accent: var(--surface-interactive);
+  --sidebar-accent-foreground: var(--fg-primary);
+  --sidebar-border: var(--border-subtle);
+  --sidebar-ring: var(--border-focus);
+}
+
+/*
+ * `inline` keeps these out of `:root` — the utility gets `var(--background)`
+ * directly, so the single alias block above stays the only place a shadcn name
+ * is bound to a QPMatrix token.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /*
+   * QPMatrix status + signal roles, exposed as first-class Tailwind colours so
+   * components write `bg-status-success-bg text-status-success` instead of
+   * arbitrary-value classes. These names do NOT exist in upstream shadcn.
+   */
+  --color-status-success: var(--status-success);
+  --color-status-success-bg: var(--status-success-bg);
+  --color-status-warning: var(--status-warning);
+  --color-status-warning-bg: var(--status-warning-bg);
+  --color-status-error: var(--status-error);
+  --color-status-error-bg: var(--status-error-bg);
+  --color-status-info: var(--status-info);
+  --color-status-info-bg: var(--status-info-bg);
+  --color-status-offline: var(--status-offline);
+  --color-status-offline-bg: var(--status-offline-bg);
+  --color-signal-live: var(--signal-live);
+  --color-signal-connected: var(--signal-connected);
+  --color-signal-processing: var(--signal-processing);
+
+  /* Foreground ramp beyond shadcn's two-step foreground/muted-foreground. */
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-disabled: var(--fg-disabled);
+  --color-fg-inverse: var(--fg-inverse);
+
+  /* Surface ramp. */
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-tertiary: var(--surface-tertiary);
+  --color-surface-interactive: var(--surface-interactive);
+  --color-surface-selected: var(--surface-selected);
+  --color-surface-disabled: var(--surface-disabled);
+
+  /* Border ramp. */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-border-interactive: var(--border-interactive);
+  --color-border-selected: var(--border-selected);
+  --color-border-focus: var(--border-focus);
+
+  /* Brand ramp. */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-foreground: var(--brand-foreground);
+
+  /* Elevation, exposed as `shadow-elevation-*`. */
+  --shadow-elevation-flat: var(--elevation-flat);
+  --shadow-elevation-raised: var(--elevation-raised);
+  --shadow-elevation-interactive: var(--elevation-interactive);
+  --shadow-elevation-popover: var(--elevation-popover);
+  --shadow-elevation-menu: var(--elevation-menu);
+  --shadow-elevation-dialog: var(--elevation-dialog);
+  --shadow-elevation-drawer: var(--elevation-drawer);
+  --shadow-elevation-critical: var(--elevation-critical);
+
+  /*
+   * Typography, exposed as `text-display-lg`, `text-h1`, `text-body-sm`,
+   * `text-label`, `text-metric-lg`, `text-code`, …
+   *
+   * Tailwind v4's `--text-*` namespace takes an optional `--line-height`,
+   * `--letter-spacing` and `--font-weight` sub-key alongside the size, so ONE
+   * utility carries the whole type style. That is the point: `text-h2` cannot
+   * be applied without also getting h2's line-height, tracking and weight, so
+   * a heading can no longer be half-styled. Components must use these rather
+   * than Tailwind's built-in `text-sm`/`text-2xl` scale, which knows nothing
+   * about the QPMatrix type ramp.
+   */
+  --text-display-lg: var(--text-display-lg-size);
+  --text-display-lg--line-height: var(--text-display-lg-lh);
+  --text-display-lg--letter-spacing: var(--text-display-lg-tracking);
+  --text-display-lg--font-weight: var(--text-display-lg-weight);
+
+  --text-display-md: var(--text-display-md-size);
+  --text-display-md--line-height: var(--text-display-md-lh);
+  --text-display-md--letter-spacing: var(--text-display-md-tracking);
+  --text-display-md--font-weight: var(--text-display-md-weight);
+
+  --text-h1: var(--text-h1-size);
+  --text-h1--line-height: var(--text-h1-lh);
+  --text-h1--letter-spacing: var(--text-h1-tracking);
+  --text-h1--font-weight: var(--text-h1-weight);
+
+  --text-h2: var(--text-h2-size);
+  --text-h2--line-height: var(--text-h2-lh);
+  --text-h2--letter-spacing: var(--text-h2-tracking);
+  --text-h2--font-weight: var(--text-h2-weight);
+
+  --text-h3: var(--text-h3-size);
+  --text-h3--line-height: var(--text-h3-lh);
+  --text-h3--letter-spacing: var(--text-h3-tracking);
+  --text-h3--font-weight: var(--text-h3-weight);
+
+  --text-h4: var(--text-h4-size);
+  --text-h4--line-height: var(--text-h4-lh);
+  --text-h4--letter-spacing: var(--text-h4-tracking);
+  --text-h4--font-weight: var(--text-h4-weight);
+
+  --text-body-lg: var(--text-body-lg-size);
+  --text-body-lg--line-height: var(--text-body-lg-lh);
+  --text-body-lg--letter-spacing: var(--text-body-lg-tracking);
+  --text-body-lg--font-weight: var(--text-body-lg-weight);
+
+  --text-body: var(--text-body-size);
+  --text-body--line-height: var(--text-body-lh);
+  --text-body--letter-spacing: var(--text-body-tracking);
+  --text-body--font-weight: var(--text-body-weight);
+
+  --text-body-sm: var(--text-body-sm-size);
+  --text-body-sm--line-height: var(--text-body-sm-lh);
+  --text-body-sm--letter-spacing: var(--text-body-sm-tracking);
+  --text-body-sm--font-weight: var(--text-body-sm-weight);
+
+  --text-label-lg: var(--text-label-lg-size);
+  --text-label-lg--line-height: var(--text-label-lg-lh);
+  --text-label-lg--letter-spacing: var(--text-label-lg-tracking);
+  --text-label-lg--font-weight: var(--text-label-lg-weight);
+
+  --text-label: var(--text-label-size);
+  --text-label--line-height: var(--text-label-lh);
+  --text-label--letter-spacing: var(--text-label-tracking);
+  --text-label--font-weight: var(--text-label-weight);
+
+  --text-label-sm: var(--text-label-sm-size);
+  --text-label-sm--line-height: var(--text-label-sm-lh);
+  --text-label-sm--letter-spacing: var(--text-label-sm-tracking);
+  --text-label-sm--font-weight: var(--text-label-sm-weight);
+
+  --text-caption: var(--text-caption-size);
+  --text-caption--line-height: var(--text-caption-lh);
+  --text-caption--letter-spacing: var(--text-caption-tracking);
+  --text-caption--font-weight: var(--text-caption-weight);
+
+  --text-code: var(--text-code-size);
+  --text-code--line-height: var(--text-code-lh);
+  --text-code--letter-spacing: var(--text-code-tracking);
+  --text-code--font-weight: var(--text-code-weight);
+
+  --text-metric-lg: var(--text-metric-lg-size);
+  --text-metric-lg--line-height: var(--text-metric-lg-lh);
+  --text-metric-lg--letter-spacing: var(--text-metric-lg-tracking);
+  --text-metric-lg--font-weight: var(--text-metric-lg-weight);
+
+  --text-metric-compact: var(--text-metric-compact-size);
+  --text-metric-compact--line-height: var(--text-metric-compact-lh);
+  --text-metric-compact--letter-spacing: var(--text-metric-compact-tracking);
+  --text-metric-compact--font-weight: var(--text-metric-compact-weight);
+
+  /*
+   * Font families, exposed as `font-display` / `font-mono` / `font-arabic` /
+   * `font-hebrew`. `--font-sans` is deliberately NOT redeclared here: it is
+   * already the unlayered @qpmatrix/tokens value, and re-pointing it at itself
+   * inside `@theme inline` would create a `var()` reference cycle (see the
+   * header comment on import order).
+   */
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-arabic: var(--font-arabic);
+  --font-hebrew: var(--font-hebrew);
+
+  /*
+   * Motion, exposed as `duration-*` and `ease-*`.
+   *
+   * These are the SAME values `src/motion/` hands to Motion, which is what
+   * keeps a CSS transition and a JS-driven animation on the same surface
+   * feeling like one system rather than two that nearly agree.
+   */
+  --ease-standard: var(--ease-standard);
+  --ease-out: var(--ease-out);
+  --ease-in: var(--ease-in);
+  --ease-inout: var(--ease-inout);
+
+  --animate-duration-instant: var(--duration-instant);
+  --animate-duration-fast: var(--duration-fast);
+  --animate-duration-standard: var(--duration-standard);
+  --animate-duration-slow: var(--duration-slow);
+  --animate-duration-ambient: var(--duration-ambient);
+  --animate-duration-flow: var(--duration-flow);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  /*
+   * Focus is never removed, only replaced (docs/standards/accessibility.md,
+   * "Focus standard"). `:focus-visible` uses the same --border-focus token the
+   * contrast checker asserts at >= 3:1 against every approved surface.
+   */
+  :focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+}

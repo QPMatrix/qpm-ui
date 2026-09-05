@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "builtin": true
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.wrangler/**",
+    "**/.turbo/**",
+    "**/.cache/**",
+    "**/.githooks/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/*.generated.*",
+    "**/drizzle/meta/**"
+  ],
+  "rules": {
+    "curly": "error",
+    "eqeqeq": "error",
+    "no-alert": "error",
+    "no-debugger": "error",
+    "no-duplicate-imports": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+
+    "typescript/consistent-type-exports": "error",
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-confusing-void-expression": "error",
+    "typescript/no-deprecated": "warn",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-unnecessary-type-assertion": "error",
+    "typescript/no-unsafe-argument": "error",
+    "typescript/no-unsafe-assignment": "error",
+    "typescript/no-unsafe-call": "error",
+    "typescript/no-unsafe-member-access": "error",
+    "typescript/no-unsafe-return": "error",
+    "typescript/prefer-nullish-coalescing": "error",
+    "typescript/prefer-optional-chain": "error",
+    "typescript/require-await": "error",
+    "typescript/return-await": "error",
+    "typescript/switch-exhaustiveness-check": "error",
+
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
+    "import/no-cycle": "error",
+    "import/no-duplicates": "error",
+    "import/no-self-import": "error"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.config.{js,mjs,cjs,ts,mts,cts}",
+        "**/scripts/**/*.{ts,js,mjs}",
+        "**/tests/fixtures/**/*.{ts,tsx}"
+      ],
+      "rules": {
+        "typescript/no-confusing-void-expression": "off",
+        "typescript/no-deprecated": "off",
+        "typescript/no-floating-promises": "off",
+        "typescript/no-misused-promises": "off",
+        "typescript/no-unnecessary-type-assertion": "off",
+        "typescript/no-unsafe-argument": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-call": "off",
+        "typescript/no-unsafe-member-access": "off",
+        "typescript/no-unsafe-return": "off",
+        "typescript/prefer-nullish-coalescing": "off",
+        "typescript/prefer-optional-chain": "off",
+        "typescript/require-await": "off",
+        "typescript/return-await": "off",
+        "typescript/switch-exhaustiveness-check": "off"
+      }
+    },
+    {
+      // Scoped to *.test.{ts,tsx} only (haiku review round 1, finding 2,
+      // 2026-09-05) — never widened to the whole package. A handful of
+      // tests do `await import("<workspace-package-name>")` to assert a
+      // package's OWN public export shape by consuming it exactly the way
+      // an external consumer would (packages/tokens/tests/tokens.test.ts,
+      // packages/ui/src/index.test.ts). TypeScript can type a dynamic
+      // `import()` expression from its resolved module's declarations, but
+      // that resolution is only as good as whatever's built on disk at
+      // lint time — the whole point of the test is asserting the
+      // PUBLISHED shape, which is exactly the moving target `./check`'s
+      // `ensure_build` step (see the `check` script) exists to pin down,
+      // not something a lint rule should race against. These five rules
+      // are the ones an `any`-typed dynamic-import result can trip; no
+      // other rule is touched, and non-test source in the same package
+      // (or any file this glob doesn't match) still enforces them fully.
+      "files": ["**/*.test.{ts,tsx}"],
+      "rules": {
+        "typescript/no-unsafe-argument": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-call": "off",
+        "typescript/no-unsafe-member-access": "off",
+        "typescript/no-unsafe-return": "off"
+      }
+    }
+  ]
+}

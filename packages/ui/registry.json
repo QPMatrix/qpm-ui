@@ -1,0 +1,1422 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "@qpmatrix/ui",
+  "homepage": "https://github.com/QPMatrix/qpm-ui",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Base UI accordion primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert surface with title, description, and an optional trailing action slot, in default and destructive variants.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Base UI alert dialog primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 12 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Base UI aspect ratio primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Base UI attachment primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Base UI avatar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact status/label badge rendered through Base UI's render prop, so it can become any element.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Base UI breadcrumb primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Base UI bubble primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Base UI button with the QPMatrix variant and size scale.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Base UI button group primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/separator"],
+      "files": [
+        {
+          "path": "src/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Base UI calendar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "dependencies": ["lucide-react", "react-day-picker"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card shell with header, title, description, action, content, and footer sub-components.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Base UI carousel primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "dependencies": ["embla-carousel-react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Base UI chart primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat-panel",
+      "type": "registry:ui",
+      "title": "Chat Panel",
+      "description": "Conversation layout: named region, scrollable message log, footer slot.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/separator"],
+      "files": [
+        {
+          "path": "src/components/chat-panel/chat-panel.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/chat-panel/chat-panel.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/chat-panel/chat-panel.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/chat-panel/chat-panel.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Base UI checkbox with checked, unchecked, and indeterminate states.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "Cn",
+      "description": "Tailwind class merge helper: the single styling escape hatch every @qpmatrix/ui component runs `className` through.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Base UI collapsible primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Base UI combobox primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 16 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/button",
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/input-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Base UI command primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "dependencies": ["cmdk", "lucide-react"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/dialog",
+        "QPMatrix/qpm-ui/input-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "composer",
+      "type": "registry:ui",
+      "title": "Composer",
+      "description": "Chat message input with label, hint/error wiring and Enter-to-send.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/button",
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/textarea"
+      ],
+      "files": [
+        {
+          "path": "src/components/composer/composer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/composer/composer.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/composer/composer.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/composer/composer.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Base UI context menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Base UI modal dialog with backdrop, close button, and header/footer sub-components.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Base UI direction primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Base UI drawer primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 11 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Base UI dropdown menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Base UI empty primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form field scaffolding: label, description, error, group, set, legend, and separator parts that wire labelling and validation messaging together.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/label",
+        "QPMatrix/qpm-ui/separator"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "heading",
+      "type": "registry:ui",
+      "title": "Heading",
+      "description": "A heading whose document-outline level is a stated prop, never inferred from its size.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/text"],
+      "files": [
+        {
+          "path": "src/components/heading/heading.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/heading/heading.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/heading/heading.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/heading/heading.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Base UI hover card primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "Icon Button",
+      "description": "Square icon-only button composing ui/button, with a required accessible name.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/icon-button/icon-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/icon-button/icon-button.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/icon-button/icon-button.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/icon-button/icon-button.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Base UI single-line text input.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Base UI input group primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/button",
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/input",
+        "QPMatrix/qpm-ui/textarea"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Base UI input otp primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "dependencies": ["input-otp", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Base UI item primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 10 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/separator"],
+      "files": [
+        {
+          "path": "src/components/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Base UI kbd primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Form label bound to its control, with disabled-state styling.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Base UI marker primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 4 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Base UI menubar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 16 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/dropdown-menu"],
+      "files": [
+        {
+          "path": "src/components/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Base UI message primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-bubble",
+      "type": "registry:ui",
+      "title": "Message Bubble",
+      "description": "A single chat message, named by its author for assistive technology.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/message-bubble/message-bubble.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/message-bubble/message-bubble.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/message-bubble/message-bubble.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/message-bubble/message-bubble.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "Base UI message scroller primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "dependencies": ["@shadcn/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "metric-card",
+      "type": "registry:ui",
+      "title": "Metric Card",
+      "description": "Labelled dashboard metric with an optional trend and loading state.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/card",
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/skeleton"
+      ],
+      "files": [
+        {
+          "path": "src/components/metric-card/metric-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/metric-card/metric-card.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/metric-card/metric-card.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/metric-card/metric-card.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "motion",
+      "type": "registry:ui",
+      "title": "Motion",
+      "description": "Animate an element in and out where it stands, with reduced-motion handling.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/motion-core"],
+      "files": [
+        {
+          "path": "src/components/motion/motion.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/motion/motion.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/motion/motion.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/motion/motion.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "motion-core",
+      "type": "registry:lib",
+      "title": "Motion Core",
+      "description": "The QPMatrix motion vocabulary: token durations, easings, springs, named variants and the reduced-motion reducer.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "src/lib/motion/motion-core.constants.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/motion/motion-core.elements.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/motion/motion-core.types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/motion/motion-core.utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Base UI native select primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Base UI navigation menu primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 9 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "page-container",
+      "type": "registry:ui",
+      "title": "Page Container",
+      "description": "The measure a page is written inside: reading width and vertical rhythm.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/motion"],
+      "files": [
+        {
+          "path": "src/components/page-container/page-container.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-container/page-container.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-container/page-container.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-container/page-container.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "page-transition",
+      "type": "registry:ui",
+      "title": "Page Transition",
+      "description": "Cross-fade a whole route, holding the outgoing page until it has left.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/motion-core"],
+      "files": [
+        {
+          "path": "src/components/page-transition/page-transition.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-transition/page-transition.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-transition/page-transition.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/page-transition/page-transition.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Base UI pagination primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 7 symbol(s).",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Base UI popover primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 6 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "product-badge",
+      "type": "registry:ui",
+      "title": "Product Badge",
+      "description": "Brand chip naming a QPMatrix product surface, with a token-role tone.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/badge", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/product-badge/product-badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/product-badge/product-badge.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/product-badge/product-badge.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/product-badge/product-badge.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Base UI progress primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 5 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "prose",
+      "type": "registry:ui",
+      "title": "Prose",
+      "description": "The surface authored Markdown/MDX is rendered on, styled from tokens.",
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/heading",
+        "QPMatrix/qpm-ui/text"
+      ],
+      "files": [
+        {
+          "path": "src/components/prose/prose.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/prose/prose.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/prose/prose.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/prose/prose.utils.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "description": "Base UI questionnaire primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 15 symbol(s).",
+      "dependencies": ["@shadcn/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/questionnaire.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Base UI radio group and radio item with roving focus across the group.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Base UI resizable primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 3 symbol(s).",
+      "dependencies": ["react-resizable-panels"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "reveal",
+      "type": "registry:ui",
+      "title": "Reveal",
+      "description": "Animate an element in as it scrolls into view, once by default.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/motion-core"],
+      "files": [
+        {
+          "path": "src/components/reveal/reveal.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/reveal/reveal.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/reveal/reveal.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/reveal/reveal.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Base UI scroll area primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 2 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section",
+      "description": "A titled block of a page that is a landmark only when it has an accessible name.",
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/heading",
+        "QPMatrix/qpm-ui/reveal",
+        "QPMatrix/qpm-ui/text"
+      ],
+      "files": [
+        {
+          "path": "src/components/section/section.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/section/section.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/section/section.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/section/section.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "description": "Single-select joined segment row built on ui/toggle-group.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/toggle-group"],
+      "files": [
+        {
+          "path": "src/components/segmented-control/segmented-control.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/segmented-control/segmented-control.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/segmented-control/segmented-control.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/segmented-control/segmented-control.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Base UI select with trigger, positioner, popup, item, group, and separator parts.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Horizontal or vertical rule built on Base UI's separator primitive.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Base UI sheet primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 8 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Base UI sidebar primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 24 symbol(s).",
+      "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/button",
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/input",
+        "QPMatrix/qpm-ui/separator",
+        "QPMatrix/qpm-ui/sheet",
+        "QPMatrix/qpm-ui/skeleton",
+        "QPMatrix/qpm-ui/tooltip",
+        "QPMatrix/qpm-ui/use-mobile"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading placeholder block that mirrors the shape of the content it replaces.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Base UI slider primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Base UI spinner primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 1 symbol(s).",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger",
+      "type": "registry:ui",
+      "title": "Stagger",
+      "description": "Orchestrate children so they arrive in sequence.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/motion-core"],
+      "files": [
+        {
+          "path": "src/components/stagger/stagger.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/stagger/stagger.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/stagger/stagger.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/stagger/stagger.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-indicator",
+      "type": "registry:ui",
+      "title": "Status Indicator",
+      "description": "Status dot paired with a mandatory textual label, optionally announced.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/status-indicator/status-indicator.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/status-indicator/status-indicator.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/status-indicator/status-indicator.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/status-indicator/status-indicator.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Base UI switch for immediate on/off settings.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Base UI table primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 8 symbol(s).",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Base UI tabs with list, trigger, and panel parts and roving focus.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "title": "Text",
+      "description": "Every piece of text in a QPMatrix surface: the whole type ramp as one prop.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/text/text.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/text/text.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/text/text.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/text/text.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input with the same field styling as `input`.",
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "theme-contract",
+      "type": "registry:lib",
+      "title": "Theme Contract",
+      "description": "Server-driven theme contract: approved modes and accents, selection narrowing, and the DOM attributes that apply a selection.",
+      "dependencies": ["@qpmatrix/tokens"],
+      "files": [
+        {
+          "path": "src/lib/theme.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Base UI toast primitive, installed from shadcn/ui and bound to @qpmatrix/tokens. Exports 13 symbol(s).",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Base UI two-state toggle button.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Base UI toggle group with single or multiple selection and roving focus.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn", "QPMatrix/qpm-ui/toggle"],
+      "files": [
+        {
+          "path": "src/components/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Base UI tooltip with provider, trigger, positioner, and popup parts.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typing-indicator",
+      "type": "registry:ui",
+      "title": "Typing Indicator",
+      "description": "Animated typing affordance backed by a polite live region.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/typing-indicator/typing-indicator.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/typing-indicator/typing-indicator.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/typing-indicator/typing-indicator.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/typing-indicator/typing-indicator.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use Mobile",
+      "description": "Viewport media-query hook backing the sidebar's mobile arrangement.",
+      "files": [
+        {
+          "path": "src/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+import { cva } from "class-variance-authority";
+
+import type { __COMPONENT_NAME__Tone } from "./__COMPONENT_KEBAB__.types";
+
+/**
+ * __COMPONENT_NAME__ — class maps and fixed values.
+ *
+ * Everything in this file is a CONSTANT: cva class maps, token-role lookups,
+ * and the fallback strings a caller may override. Nothing here renders and
+ * nothing here holds state, which is the point — the component file stays
+ * readable as markup, and a designer changing a token role edits one small
+ * file instead of scrolling past JSX.
+ *
+ * Rules for this file:
+ *   - Token roles only (`bg-surface-*`, `text-fg-*`, `border-border-*`,
+ *     `text-status-*`, `bg-brand-*`). No hex, no `rgb()`, no `dark:` colour
+ *     forks — light mode already follows from `[data-theme="light"]`.
+ *   - Logical properties for direction (`ms-*`/`me-*`/`ps-*`/`pe-*`,
+ *     `start-*`/`end-*`). QPMatrix ships Arabic and Hebrew apps.
+ *   - `satisfies Record<Union, string>` on every variant map, so adding a
+ *     member to the union in `.types.ts` fails the build until it is styled.
+ *   - Exported, always. A consumer composing these classes onto their own
+ *     element is a supported use; a module-private map makes that impossible.
+ */
+
+/**
+ * Fallback copy.
+ *
+ * @qpmatrix/ui ships no product strings, so this exists only for the
+ * screen-reader-only text a caller might reasonably forget. It is English and
+ * it is ALWAYS overridable by a prop — a default a caller cannot replace is a
+ * localisation bug waiting to happen.
+ */
+export const __COMPONENT_CONST__DEFAULT_LABELS = {
+  // TODO(scaffold): delete this object if the component has no such string.
+  busy: "Busy",
+} as const;
+
+export const __COMPONENT_CAMEL__Variants = cva("__BASE_CLASSES__", {
+  variants: {
+    // TODO(scaffold): rename `tone` to this component's real variant axis, or
+    // delete it if there is none. Keep the `satisfies` clause either way.
+    tone: {
+      neutral: "bg-surface-secondary text-fg-primary",
+      accent: "bg-brand-subtle text-brand-primary",
+    } satisfies Record<__COMPONENT_NAME__Tone, string>,
+    size: {
+      sm: "gap-1 text-xs",
+      md: "gap-1.5 text-sm",
+      lg: "gap-2 text-base",
+    },
+  },
+  defaultVariants: {
+    tone: "neutral",
+    size: "md",
+  },
+});

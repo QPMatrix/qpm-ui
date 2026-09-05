@@ -1,1 +1,7 @@
 .cache/
+node_modules/
+dist/
+storybook-static/
+coverage/
+*.tsbuildinfo
+bun-error*.log

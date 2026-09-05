@@ -1,0 +1,248 @@
+/* ============================================================
+   @qpmatrix/tokens — QPMatrix Design System CSS tokens
+   Verbatim transcription of the owner's design source:
+     six :root{} blocks (dark = default) + [data-theme="light"]
+     override block + qp-* keyframes/utility classes + the
+     prefers-reduced-motion guard.
+   Do not hand-edit — regenerate from the live design source per
+   packages/.agents/skills/tokens/SKILL.md. Values must stay
+   byte-exact with the owner's export. This file is excluded from
+   Prettier (see .prettierignore) so formatting never rewrites it.
+   ============================================================ */
+
+/* ---- Block 1 — Raw color ramps, gradients, glow palette, semantic tokens (DARK MODE / default :root) (byte offset 2044460) ---- */
+:root{
+  /* Exactly the ramp from the brand prompt. 700/600/500 are the prompt's border + text greys. */
+  --graphite-0:#FFFFFF;--graphite-50:#F8FAFC;--graphite-100:#F1F5F9;--graphite-200:#E2E8F0;
+  --graphite-300:#CBD5E1;--graphite-400:#94A3B8;--graphite-500:#64748B;--graphite-600:#46536A;
+  --graphite-700:#2B3442;--graphite-800:#222A36;--graphite-850:#1A202B;
+  --graphite-900:#121722;--graphite-950:#0D1117;--graphite-1000:#070A0F;
+
+  --violet-300:#C4B5FD;--violet-400:#A78BFA;--violet-500:#8B5CF6;--violet-600:#7C3AED;
+  --violet-700:#6426C7;--violet-800:#4C1D95;--violet-900:#32106D;--violet-950:#210B4B;
+
+  --cyan-300:#67E8F9;--cyan-400:#22D3EE;--cyan-500:#06B6D4;--cyan-600:#0891B2;
+  --cyan-700:#0E7490;--cyan-800:#155E75;--cyan-900:#083344;
+
+  --blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;
+
+  --green-400:#4ADE94;--green-500:#2FBF71;--green-600:#1F9C58;
+  --amber-400:#FFC24D;--amber-500:#F5A623;--amber-600:#CC8412;
+  --red-400:#FF7285;--red-500:#F0475B;--red-600:#C8283C;
+
+  /* ===== Approved gradients (the ONLY gradients — from the brand prompt) ===== */
+  --gradient-brand:linear-gradient(135deg,#7C3AED 0%,#8B5CF6 38%,#22D3EE 100%); /* @kind color */
+  --gradient-surface:linear-gradient(145deg,#1A202B 0%,#0D1117 55%,#070A0F 100%); /* @kind color */
+  --gradient-violet:linear-gradient(135deg,#32106D 0%,#6426C7 50%,#A78BFA 100%); /* @kind color */
+  --gradient-hero-glow:radial-gradient(60% 60% at 50% 0%,rgba(124,58,237,0.30) 0%,rgba(34,211,238,0.10) 45%,rgba(7,10,15,0) 80%); /* @kind color */
+  --gradient-card-selected:linear-gradient(180deg,rgba(139,92,246,0.16) 0%,rgba(139,92,246,0.02) 100%); /* @kind color */
+
+  /* ===== Glow palette (from the brand prompt) ===== */
+  --glow-violet:rgba(124,58,237,0.45); /* @kind color */
+  --glow-violet-strong:rgba(139,92,246,0.65); /* @kind color */
+  --glow-cyan:rgba(34,211,238,0.40); /* @kind color */
+  --glow-blue:rgba(59,130,246,0.30); /* @kind color */
+  --glow-white:rgba(248,250,252,0.12); /* @kind color */
+
+  /* ===== Semantic tokens — DARK MODE (primary brand expression, default) ===== */
+  --bg-canvas:var(--graphite-1000);--bg-subtle:var(--graphite-950);--bg-elevated:var(--graphite-900);
+  --bg-overlay:rgba(7,10,15,0.75);--bg-inverse:var(--graphite-50);
+
+  --surface-primary:var(--graphite-900);--surface-secondary:var(--graphite-850);--surface-tertiary:var(--graphite-800);
+  --surface-interactive:var(--graphite-800);--surface-selected:rgba(139,92,246,0.14);--surface-disabled:var(--graphite-850);
+
+  --fg-primary:var(--graphite-50);--fg-secondary:var(--graphite-300);--fg-muted:var(--graphite-400);
+  --fg-subtle:var(--graphite-500);/* 3.4:1 — placeholders & decorative ONLY, never readable text */--fg-inverse:var(--graphite-950);--fg-disabled:var(--graphite-600);
+
+  --border-subtle:var(--graphite-700);--border-default:var(--graphite-700);--border-strong:var(--graphite-600);
+  --border-interactive:var(--violet-600);--border-selected:var(--violet-500);--border-focus:var(--violet-400);
+
+  --brand-primary:var(--violet-500);--brand-strong:var(--violet-600);--brand-subtle:rgba(139,92,246,0.12);
+  --brand-foreground:var(--graphite-50);--brand-glow:var(--glow-violet);
+
+  --signal-live:var(--cyan-400);--signal-processing:var(--violet-400);--signal-connected:var(--cyan-500);
+
+  --status-success:var(--green-500);--status-warning:var(--amber-500);--status-error:var(--red-500);
+  --status-info:var(--blue-500);--status-offline:var(--graphite-500);
+
+  --status-success-bg:rgba(47,191,113,0.12);--status-warning-bg:rgba(245,166,35,0.12);
+  --status-error-bg:rgba(240,71,91,0.12);--status-info-bg:rgba(59,130,246,0.12);--status-offline-bg:rgba(100,116,139,0.14);
+}
+
+/* ---- Block 2 — Typography (font families, weights, full type scale, script adjustments) (byte offset 2050288) ---- */
+:root{
+  --font-display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"IBM Plex Sans","IBM Plex Sans Arabic","IBM Plex Sans Hebrew",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --font-arabic:"IBM Plex Sans Arabic","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-hebrew:"IBM Plex Sans Hebrew","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  /* weights */
+  --weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+
+  /* ---------- TYPE SCALE ---------- size / line-height / weight / tracking ---------- */
+  --text-display-lg-size:64px;--text-display-lg-lh:1.05;--text-display-lg-weight:600;--text-display-lg-tracking:-0.02em;
+  --text-display-md-size:44px;--text-display-md-lh:1.10;--text-display-md-weight:600;--text-display-md-tracking:-0.015em;
+
+  --text-h1-size:34px;--text-h1-lh:1.18;--text-h1-weight:600;--text-h1-tracking:-0.01em;
+  --text-h2-size:27px;--text-h2-lh:1.22;--text-h2-weight:600;--text-h2-tracking:-0.01em;
+  --text-h3-size:22px;--text-h3-lh:1.28;--text-h3-weight:600;--text-h3-tracking:0em;
+  --text-h4-size:18px;--text-h4-lh:1.32;--text-h4-weight:600;--text-h4-tracking:0em;
+
+  --text-body-lg-size:17px;--text-body-lg-lh:1.60;--text-body-lg-weight:400;--text-body-lg-tracking:0em;
+  --text-body-size:15px;--text-body-lh:1.60;--text-body-weight:400;--text-body-tracking:0em;
+  --text-body-sm-size:13px;--text-body-sm-lh:1.55;--text-body-sm-weight:400;--text-body-sm-tracking:0em;
+
+  --text-label-lg-size:15px;--text-label-lg-lh:1.30;--text-label-lg-weight:500;--text-label-lg-tracking:0em;
+  --text-label-size:13px;--text-label-lh:1.30;--text-label-weight:500;--text-label-tracking:0.005em;
+  --text-label-sm-size:12px;--text-label-sm-lh:1.30;--text-label-sm-weight:500;--text-label-sm-tracking:0.01em;
+
+  --text-caption-size:12px;--text-caption-lh:1.40;--text-caption-weight:400;--text-caption-tracking:0.01em;
+  --text-code-size:13px;--text-code-lh:1.60;--text-code-weight:400;--text-code-tracking:0em;
+
+  --text-metric-lg-size:40px;--text-metric-lg-lh:1.00;--text-metric-lg-weight:600;--text-metric-lg-tracking:-0.01em;
+  --text-metric-compact-size:22px;--text-metric-compact-lh:1.10;--text-metric-compact-weight:600;--text-metric-compact-tracking:-0.005em;
+
+  /* ---------- SCRIPT ADJUSTMENTS ----------
+     Arabic and Hebrew have taller x-height and no capital forms: they read smaller
+     at the same px, and Arabic needs more leading for its descenders/diacritics. */
+  --script-arabic-size-adjust:1.06;   /* multiply Latin px by this for Arabic */
+  --script-arabic-lh-adjust:1.12; /* @kind other */
+  --script-hebrew-size-adjust:1.02;
+  --script-hebrew-lh-adjust:1.06; /* @kind other */
+}
+
+/* ---- Block 3 — Spacing scale + layout tokens (page gutter, section spacing, card padding, nav, content widths) (byte offset 2054096) ---- */
+:root{
+  --space-0:0px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+  --space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;
+
+  /* comfortable = marketing/docs, compact = operational dashboards — never reuse comfortable inside dense tables */
+  --page-gutter-comfortable:var(--space-8);--page-gutter-compact:var(--space-5);
+  --section-spacing-comfortable:var(--space-24);--section-spacing-compact:var(--space-10);
+  --card-padding-comfortable:var(--space-6);--card-padding-compact:var(--space-4);
+  --form-field-spacing:var(--space-4);--table-row-height-comfortable:52px;--table-row-height-compact:36px;
+  --nav-height:60px;--nav-rail-width:240px;--nav-rail-width-collapsed:64px;
+
+  --content-width-marketing:1200px;--content-width-docs:840px;--content-width-dashboard:1440px;
+}
+
+/* ---- Block 4 — Border radius scale (byte offset 2054976) ---- */
+:root{
+  --radius-none:0px;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-full:999px;
+  /* usage: sm = tags/small inputs/code chips · md = buttons/inputs/compact cards · lg = primary cards/dialogs/panels
+     xl = marketing sections/hero artwork · full = avatars/status dots. Infra/technical components skew toward sm/md. */
+}
+
+/* ---- Block 5 — Elevation (box-shadow) presets + glow/shadow effects (byte offset 2055338) ---- */
+:root{
+  /* depth = surface contrast + hairline border + restrained ambient light */
+  --elevation-flat:none;
+  --elevation-interactive:0 1px 2px rgba(0,0,0,0.35);
+  --elevation-raised:0 4px 14px rgba(0,0,0,0.40);
+  --elevation-sticky-nav:0 1px 0 var(--border-subtle);
+  --elevation-menu:0 10px 30px rgba(0,0,0,0.50),0 0 0 1px var(--border-subtle);
+  --elevation-popover:0 10px 30px rgba(0,0,0,0.50),0 0 0 1px var(--border-subtle);
+  --elevation-drawer:-10px 0 40px rgba(0,0,0,0.55);
+  --elevation-dialog:0 24px 64px rgba(0,0,0,0.62),0 0 0 1px var(--border-subtle);
+  --elevation-critical:0 24px 64px rgba(0,0,0,0.66),0 0 0 1px var(--status-error);
+
+  /* glow — logos, hero artwork, active nodes, live indicators, AI processing, focus. NOT every button. */
+  --glow-brand-subtle:0 0 0 1px var(--border-interactive),0 0 18px var(--glow-violet);
+  --glow-brand-medium:0 0 0 1px var(--border-selected),0 0 32px var(--glow-violet-strong);
+  --glow-brand-hero:0 0 60px var(--glow-violet-strong),0 0 120px var(--glow-violet);
+  --glow-signal:0 0 14px var(--glow-cyan);
+  --glow-signal-strong:0 0 26px var(--glow-cyan),0 0 60px rgba(34,211,238,0.18);
+  --glow-focus:0 0 0 2px var(--bg-canvas),0 0 0 4px var(--border-focus),0 0 18px var(--glow-violet);
+  --glow-success:0 0 14px rgba(47,191,113,0.34);
+  --glow-error:0 0 14px rgba(240,71,91,0.34);
+  --glow-white-edge:inset 0 1px 0 var(--glow-white);
+}
+
+/* ---- Block 6 — Motion (durations, easings, framer-motion spring mirror), breakpoints, z-index scale (byte offset 2056758) ---- */
+:root{
+  /* durations — slow, precise, professional (never playful) */
+  --duration-instant:80ms; /* @kind other */
+  --duration-fast:160ms; /* @kind other */
+  --duration-standard:280ms; /* @kind other */
+  --duration-slow:450ms; /* @kind other */
+  --duration-ambient:2400ms; /* @kind other */
+  --duration-flow:3600ms; /* @kind other */
+
+  /* easings — architectural, no overshoot, no bounce */
+  --ease-standard:cubic-bezier(0.22,1,0.36,1); /* @kind other */
+  --ease-out:cubic-bezier(0.16,1,0.3,1); /* @kind other */
+  --ease-in:cubic-bezier(0.4,0,1,1); /* @kind other */
+  --ease-inout:cubic-bezier(0.65,0,0.35,1); /* @kind other */
+
+  /* framer-motion mirror values — keep JS and CSS in sync */
+  --spring-stiffness:260; /* @kind other */
+  --spring-damping:30; /* @kind other */
+
+  --breakpoint-mobile:480px;--breakpoint-tablet:768px;--breakpoint-laptop:1024px;--breakpoint-desktop:1440px;--breakpoint-wide:1920px;
+
+  --z-nav:100; /* @kind other */
+  --z-dropdown:200; /* @kind other */
+  --z-drawer:300; /* @kind other */
+  --z-overlay:400; /* @kind other */
+  --z-dialog:500; /* @kind other */
+  --z-toast:600; /* @kind other */
+  --z-critical:700; /* @kind other */
+}
+
+/* ---- LIGHT MODE semantic token overrides (byte offset 2048248) ---- */
+[data-theme="light"]{
+  --bg-canvas:var(--graphite-100);--bg-subtle:var(--graphite-50);--bg-elevated:var(--graphite-0);
+  --bg-overlay:rgba(13,17,23,0.40);--bg-inverse:var(--graphite-950);
+
+  --surface-primary:var(--graphite-0);--surface-secondary:var(--graphite-100);--surface-tertiary:var(--graphite-200);
+  --surface-interactive:var(--graphite-200);--surface-selected:rgba(124,58,237,0.08);--surface-disabled:var(--graphite-200);
+
+  --fg-primary:var(--graphite-950);--fg-secondary:var(--graphite-800);--fg-muted:var(--graphite-600);
+  --fg-subtle:var(--graphite-500);--fg-inverse:var(--graphite-50);--fg-disabled:var(--graphite-400);
+
+  --border-subtle:var(--graphite-200);--border-default:var(--graphite-300);--border-strong:var(--graphite-400);
+  --border-interactive:var(--violet-600);--border-selected:var(--violet-600);--border-focus:var(--violet-600);
+
+  --brand-primary:var(--violet-600);--brand-strong:var(--violet-700);--brand-subtle:rgba(124,58,237,0.08);
+  --brand-foreground:var(--graphite-0);--brand-glow:rgba(124,58,237,0.20);
+
+  --signal-live:var(--cyan-600);--signal-processing:var(--violet-600);--signal-connected:var(--cyan-700);
+
+  --status-success:var(--green-600);--status-warning:var(--amber-600);--status-error:var(--red-600);
+  --status-info:var(--blue-600);--status-offline:var(--graphite-500);
+
+  --status-success-bg:rgba(31,156,88,0.10);--status-warning-bg:rgba(204,132,18,0.10);
+  --status-error-bg:rgba(200,40,60,0.10);--status-info-bg:rgba(37,99,235,0.10);--status-offline-bg:rgba(100,116,139,0.10);
+}
+
+/* ---- Keyframes + motion utility classes + reduced-motion guard (byte offset 2057964) ---- */
+/* ===== Signature QPMatrix keyframes — the system's living layer ===== */
+/* status pulse: live workers, active pipelines */
+@keyframes qp-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.88)}}
+/* halo: expanding ring behind a live indicator */
+@keyframes qp-halo{0%{transform:scale(.6);opacity:.65}100%{transform:scale(2.4);opacity:0}}
+/* data flow: a light travelling along a connection path or border */
+@keyframes qp-flow{0%{background-position:-200% 0}100%{background-position:200% 0}}
+/* edge sweep: thin illuminated edge crossing a surface on hover/mount */
+@keyframes qp-sweep{0%{transform:translateX(-110%)}100%{transform:translateX(210%)}}
+/* breathe: ambient glow intensity on brand marks and hero artwork */
+@keyframes qp-breathe{0%,100%{opacity:.45;filter:blur(24px)}50%{opacity:.9;filter:blur(30px)}}
+/* orbit: slow rotation for node/topology motifs (matches the logo's orbit ring) */
+@keyframes qp-orbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+/* rise: mount entrance — small lift + fade, never a slide-across */
+@keyframes qp-rise{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
+/* shimmer: skeleton loading */
+@keyframes qp-shimmer{0%{background-position:-320px 0}100%{background-position:320px 0}}
+/* processing scan: a bar sweeping a panel while a job runs */
+@keyframes qp-scan{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
+
+.qp-anim-rise{animation:qp-rise var(--duration-standard) var(--ease-standard) both}
+.qp-anim-pulse{animation:qp-pulse var(--duration-ambient) var(--ease-inout) infinite}
+.qp-anim-breathe{animation:qp-breathe var(--duration-flow) var(--ease-inout) infinite}
+.qp-anim-orbit{animation:qp-orbit 14s linear infinite}
+.qp-anim-flow{background-size:200% 100%;animation:qp-flow var(--duration-flow) linear infinite}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

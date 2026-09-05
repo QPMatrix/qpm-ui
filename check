@@ -1,18 +1,162 @@
 #!/bin/sh
-# Starter gate from repo birth — EXTEND ME as the repo grows content.
-# Hook = CI = this file (parity rule). Fetch BEFORE check, ALWAYS
-# (QPMSEC-436 review round 2, finding 2): a fresh clone carries no
-# .cache/ (gitignored), so instructions.py itself does not exist on
-# disk until scripts/qp-skills-fetch.sh vendors it — this order is the
-# only one that can ever work, and a fetch failure surfaces as that
-# script's own clear git error, never a Python stack trace for a file
-# that is not there yet. --require-sources (finding 4): CI must never
-# silently accept the qpsb-agents local-stand-in fallback — a laptop
-# path cannot exist on a runner anyway, so this turns a silent gap into
-# a clear, named failure instead.
+# Gate for qpm-ui — EXTENDED past the repo-birth starter as packages
+# landed (QPMSEC-433). Hook = CI = this file (parity rule). Fetch BEFORE
+# check, ALWAYS (QPMSEC-436 review round 2, finding 2): a fresh clone
+# carries no .cache/ (gitignored), so instructions.py itself does not
+# exist on disk until scripts/qp-skills-fetch.sh vendors it — this order
+# is the only one that can ever work, and a fetch failure surfaces as
+# that script's own clear git error, never a Python stack trace for a
+# file that is not there yet. --require-sources (finding 4): CI must
+# never silently accept the qpsb-agents local-stand-in fallback — a
+# laptop path cannot exist on a runner anyway, so this turns a silent
+# gap into a clear, named failure instead.
 set -e
 sh scripts/qp-skills-fetch.sh
 sh scripts/qp-agents-fetch.sh
 python3 .cache/qp-skills/skills/repo-instructions/scripts/instructions.py check . --require-sources
-find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -exec sh -n {} +
+find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './node_modules/*' -not -path './packages/*/node_modules/*' -exec sh -n {} +
+
+# Stages (QPMSEC-433 ENVELOPE: fmt|lint|typecheck|test|build, no image —
+# this repo has no Dockerfile). `./check <stage>` runs exactly that
+# stage; `./check` with no argument runs every stage in the order below
+# (repo-gates-and-hooks rule 12). The reusable ts-gate.yml caller
+# (.github/workflows/ci.yml) calls `./check fmt`, `./check lint` and
+# `./check test` as three parallel jobs — never `./check typecheck` or
+# `./check build` by name — each in its OWN fresh runner checkout, so
+# every stage must be self-sufficient from a clean clone, not just the
+# aggregate `./check` run.
+#
+# EVERY stage below needs the workspace already built, not only
+# test/build (haiku review round 1, finding 1, 2026-09-05): every
+# workspace package's `package.json` "exports" points consumers at
+# "./dist", which is how Bun's module resolution ALSO resolves a
+# workspace dependency for a plain TS/JS import — not just at runtime.
+# Two more places hit this beyond the test suite:
+#   - `fmt`: the root `prettier.config.ts` does `export { default } from
+#     "@qpmatrix/prettier-config"`, which fails to resolve
+#     ("Cannot find package") until that package's dist/index.js exists.
+#   - `typecheck`: the root `tsc --build` compiles every package
+#     including `@qpmatrix/tokens`'s own test suite, which does `await
+#     import("@qpmatrix/tokens")` to assert the package's public export
+#     shape — a self-reference that resolves through node_modules (not
+#     a tsc project reference), so it needs tokens' own already-built
+#     `dist/index.d.ts` on disk before tsc starts, which a from-scratch
+#     `tsc --build` cannot produce for itself in the same pass.
+# `ensure_build` is therefore an unconditional prerequisite for every
+# stage that isn't `build` itself. `tsc --build`/`bun run build` are
+# both incremental and idempotent, so calling `ensure_build` before a
+# stage that has ALREADY been built costs a fast no-op recheck, not a
+# rebuild.
+#
+# `build` itself (root `package.json`'s "build" script) runs every
+# package's own `build` script in EXPLICIT dependency order — tokens,
+# then the three tooling configs, then query-fetcher, then ui — chained
+# with `&&`, never `bun --filter='*' run build`. That plain filter form
+# was this repo's original approach and PASSED LOCALLY (QPMSEC-433 round
+# 3, PR #1 gate): a fresh hosted runner still failed
+# `src/lib/theme.ts(1,35): error TS2307: Cannot find module
+# '@qpmatrix/tokens'` building `ui`, because `bun --filter='*'`'s
+# per-package execution order is not a topological-by-workspace-
+# dependency guarantee — a local session's leftover `dist/` from an
+# earlier run masked the gap every time it was tried by hand. The
+# DEEPER bug this also fixed: `packages/ui/tsconfig.build.json` (the
+# file `ui`'s `build` script actually invokes) had no `"references"` of
+# its own — `extends` does NOT propagate TypeScript's `references`
+# field, so `tsconfig.json`'s reference to `../tokens/tsconfig.build.json`
+# never reached the build-time config, and `tsc --build` had zero
+# knowledge it needed to build `tokens` first; it just tried ordinary
+# node_modules resolution and failed whenever tokens' dist didn't
+# already exist. Fixed at both layers: `tsconfig.build.json` now
+# repeats the reference explicitly (so `tsc --build` on that file alone
+# is correct from any starting state, independent of invocation order),
+# and this script's own build order removes the non-determinism
+# entirely rather than depending on tsc alone to save it every time.
+stage="${1:-all}"
+
+# `bun --filter='*' run build`/`run test` hard-error ("No workspace
+# packages matched the filter") when packages/ is empty — true only for
+# this repo's own bootstrap commit (workspace scaffold lands before any
+# package does, QPMSEC-433 commit 1). A no-package tree genuinely has
+# nothing to build or test; guard rather than let that honest state
+# fail the gate.
+has_packages() {
+  for pkg in packages/*/package.json; do
+    if [ -f "$pkg" ]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+ensure_build() {
+  if has_packages; then
+    bun run build
+  fi
+}
+
+run_fmt() {
+  ensure_build
+  bun run fmt
+}
+
+run_lint() {
+  ensure_build
+  bun run lint
+}
+
+run_typecheck() {
+  ensure_build
+  bun run typecheck
+}
+
+run_build() {
+  if has_packages; then
+    bun run build
+  else
+    echo "check: no workspace packages yet, nothing to build"
+  fi
+}
+
+run_test() {
+  ensure_build
+  if has_packages; then
+    bun run test
+  else
+    echo "check: no workspace packages yet, nothing to test"
+  fi
+}
+
+case "$stage" in
+  fmt)
+    run_fmt
+    ;;
+  lint)
+    run_lint
+    ;;
+  typecheck)
+    run_typecheck
+    ;;
+  build)
+    run_build
+    ;;
+  test)
+    run_test
+    ;;
+  all)
+    run_fmt
+    run_lint
+    run_typecheck
+    run_build
+    if has_packages; then
+      bun run test
+    else
+      echo "check: no workspace packages yet, nothing to test"
+    fi
+    ;;
+  *)
+    echo "unknown stage: $stage (expected one of: fmt lint typecheck build test)" >&2
+    exit 1
+    ;;
+esac
+
 echo "check: green"

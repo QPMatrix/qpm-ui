@@ -1,0 +1,34 @@
+{
+  "name": "@qpmatrix/tokens",
+  "version": "0.3.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QPMatrix/qpm-ui.git"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "tokens.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./css": "./tokens.css"
+  },
+  "devDependencies": {
+    "@qpmatrix/tokens": "workspace:*",
+    "@qpmatrix/typescript-config": "workspace:*",
+    "@types/bun": "^1.4.0"
+  },
+  "scripts": {
+    "build": "bun --bun tsc --build tsconfig.build.json --pretty false",
+    "test": "bun test"
+  }
+}

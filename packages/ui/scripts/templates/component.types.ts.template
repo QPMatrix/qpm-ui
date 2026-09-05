@@ -1,0 +1,49 @@
+import type { VariantProps } from "class-variance-authority";
+import type { ComponentProps, ReactNode } from "react";
+
+import type { __COMPONENT_CAMEL__Variants } from "./__COMPONENT_KEBAB__.constants";
+__PRIMITIVE_TYPE_IMPORT__
+/**
+ * __COMPONENT_NAME__ — public type surface.
+ *
+ * This file is the component's API documentation. Every prop carries a TSDoc
+ * comment because `react-docgen-typescript` feeds those comments straight into
+ * the Storybook autodocs table — the doc comment here IS what a consumer reads.
+ *
+ * The import of `__COMPONENT_CAMEL__Variants` is `import type`, and the
+ * constants file imports the unions below the same way. Both directions are
+ * erased at compile time, so the pair is a *type* cycle only — there is no
+ * runtime import cycle to worry about.
+ */
+
+/** TODO(scaffold): the component's variant axis, or delete with its cva map. */
+export type __COMPONENT_NAME__Tone = "neutral" | "accent";
+
+export interface __COMPONENT_NAME__Props
+  extends Omit<__PROPS_BASE__, "children" | "className">,
+    VariantProps<typeof __COMPONENT_CAMEL__Variants> {
+  /**
+   * TODO(scaffold): the accessible, user-visible label.
+   *
+   * REQUIRED and never defaulted: @qpmatrix/ui ships no product copy. The app
+   * owns translation and passes resolved text in, so a translator never opens
+   * this package.
+   */
+  label: string;
+  /** TODO(scaffold): the component's content, or delete if it renders none. */
+  children?: ReactNode;
+  /**
+   * Narrowed from Base UI's `string | ((state) => string)` to a plain string:
+   * `cn()` merges class *values*, not class-producing callbacks. Use it for
+   * layout (margin, width, grid placement) — colour and typography come from
+   * the token roles in `.constants.ts`.
+   */
+  className?: string | undefined;
+}
+
+/**
+ * Kept exported even when unused inside the package: a consumer writing a
+ * wrapper needs the same `ComponentProps` base this component derives from,
+ * and re-deriving it at the call site is how two definitions drift apart.
+ */
+export type __COMPONENT_NAME__Element = ComponentProps<"div">;

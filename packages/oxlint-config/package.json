@@ -1,0 +1,29 @@
+{
+  "name": "@qpmatrix/oxlint-config",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QPMatrix/qpm-ui.git"
+  },
+  "files": [
+    "base.json",
+    "react.json"
+  ],
+  "exports": {
+    "./base.json": "./base.json",
+    "./react.json": "./react.json"
+  },
+  "peerDependencies": {
+    "oxlint": ">=1.0.0"
+  },
+  "devDependencies": {
+    "oxlint": "^1.81.0"
+  },
+  "scripts": {
+    "build": "echo 'No build required for oxlint-config'",
+    "test": "bun test"
+  }
+}
