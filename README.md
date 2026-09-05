@@ -1,11 +1,11 @@
 # qpm-ui
 
 The QPMatrix UI monorepo: `@qpmtx/ui` (the shadcn/Base UI-source
-component registry), `@qpmtx/tokens` (the OKLCH design tokens it's
-built on), `@qpmtx/query-fetcher` (the typed TanStack Query client),
-and the shared `@qpmtx/typescript-config` / `@qpmtx/prettier-config`
-/ `@qpmtx/oxlint-config` tooling packages every one of them builds
-against. Public, Bun-only, oxlint-linted — see [`INSTRUCTIONS.md`](./INSTRUCTIONS.md)
+component registry) and `@qpmtx/tokens` (the OKLCH design tokens it's
+built on), plus the shared `@qpmtx/typescript-config` /
+`@qpmtx/prettier-config` / `@qpmtx/oxlint-config` tooling packages
+every one of them builds against. Public, Bun-only, oxlint-linted —
+see [`INSTRUCTIONS.md`](./INSTRUCTIONS.md)
 for the full governing-skills roster (`ts-craft`, `docs-craft`,
 `repo-gates-and-hooks`, `release-and-publish`, and the estate base set).
 
@@ -16,7 +16,7 @@ Every consumer-facing package publishes to **npmjs.org, public, under the
 registry, so there's no `.npmrc` to add and no token to configure:
 
 ```sh
-bun add @qpmtx/ui @qpmtx/tokens @qpmtx/query-fetcher
+bun add @qpmtx/ui @qpmtx/tokens
 ```
 
 (A monorepo-root git install — `bun add github:QPMatrix/qpm-ui#<tag>` —
@@ -36,8 +36,7 @@ reference `packages/<name>` by path) rather than the install line above.
 
 See each package's own README for its full API:
 [`packages/ui`](./packages/ui/README.md),
-[`packages/tokens`](./packages/tokens/README.md),
-[`packages/query-fetcher`](./packages/query-fetcher/README.md).
+[`packages/tokens`](./packages/tokens/README.md).
 
 ## Quickstart
 

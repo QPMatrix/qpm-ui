@@ -74,7 +74,7 @@ jobs:
       - name: Publish every package (dependency order)
         run: |
           set -e
-          for pkg in typescript-config prettier-config oxlint-config tokens query-fetcher ui; do
+          for pkg in typescript-config prettier-config oxlint-config tokens ui; do
             echo "==> publishing @qpmtx/$pkg"
             (cd "packages/$pkg" && bun publish --access public --tolerate-republish)
           done

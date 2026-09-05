@@ -15,7 +15,7 @@
     "fmt:write": "bun --bun prettier . --write",
     "lint": "bun --bun oxlint --type-aware -c .oxlintrc.json .",
     "typecheck": "bun --bun tsc --build --pretty false",
-    "build": "bun run --filter '@qpmtx/tokens' build && bun run --filter '@qpmtx/typescript-config' build && bun run --filter '@qpmtx/prettier-config' build && bun run --filter '@qpmtx/oxlint-config' build && bun run --filter '@qpmtx/query-fetcher' build && bun run --filter '@qpmtx/ui' build",
+    "build": "bun run --filter '@qpmtx/tokens' build && bun run --filter '@qpmtx/typescript-config' build && bun run --filter '@qpmtx/prettier-config' build && bun run --filter '@qpmtx/oxlint-config' build && bun run --filter '@qpmtx/ui' build",
     "test": "bun --filter='*' run test",
     "clean": "rm -rf packages/*/dist packages/*/*.tsbuildinfo *.tsbuildinfo"
   },

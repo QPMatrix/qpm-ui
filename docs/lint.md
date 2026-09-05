@@ -87,10 +87,9 @@ ObjectExpression > Property[key.value!=/^--/]` — banned inline
    `src/modules/<feature>/` layout to enforce anyway): forbids reaching
    into another feature module's internal files, requiring imports to
    go through that module's `index.ts` barrel. This is API-service
-   layering logic (ADR-001 / architecture.md §3 rule 3), not a UI/tokens/
-   client-package concern — `@qpmtx/ui`, `@qpmtx/tokens` and
-   `@qpmtx/query-fetcher` have no `modules/` directory for it to
-   apply to. Same `jsPlugins`-is-alpha reasoning as #2 applies if an
+   layering logic (ADR-001 / architecture.md §3 rule 3), not a UI/tokens
+   concern — `@qpmtx/ui` and `@qpmtx/tokens` have no `modules/`
+   directory for it to apply to. Same `jsPlugins`-is-alpha reasoning as #2 applies if an
    estate API-service repo ever needs an oxlint port of this rule.
 
 None of these three were silently dropped: each is either enforced by a

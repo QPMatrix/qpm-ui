@@ -50,8 +50,8 @@ find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './
 #
 # `build` itself (root `package.json`'s "build" script) runs every
 # package's own `build` script in EXPLICIT dependency order — tokens,
-# then the three tooling configs, then query-fetcher, then ui — chained
-# with `&&`, never `bun --filter='*' run build`. That plain filter form
+# then the three tooling configs, then ui — chained with `&&`, never
+# `bun --filter='*' run build`. That plain filter form
 # was this repo's original approach and PASSED LOCALLY (QPMSEC-433 round
 # 3, PR #1 gate): a fresh hosted runner still failed
 # `src/lib/theme.ts(1,35): error TS2307: Cannot find module
