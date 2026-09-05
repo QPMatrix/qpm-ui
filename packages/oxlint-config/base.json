@@ -82,6 +82,31 @@
         "typescript/return-await": "off",
         "typescript/switch-exhaustiveness-check": "off"
       }
+    },
+    {
+      // Scoped to *.test.{ts,tsx} only (haiku review round 1, finding 2,
+      // 2026-09-05) — never widened to the whole package. A handful of
+      // tests do `await import("<workspace-package-name>")` to assert a
+      // package's OWN public export shape by consuming it exactly the way
+      // an external consumer would (packages/tokens/tests/tokens.test.ts,
+      // packages/ui/src/index.test.ts). TypeScript can type a dynamic
+      // `import()` expression from its resolved module's declarations, but
+      // that resolution is only as good as whatever's built on disk at
+      // lint time — the whole point of the test is asserting the
+      // PUBLISHED shape, which is exactly the moving target `./check`'s
+      // `ensure_build` step (see the `check` script) exists to pin down,
+      // not something a lint rule should race against. These five rules
+      // are the ones an `any`-typed dynamic-import result can trip; no
+      // other rule is touched, and non-test source in the same package
+      // (or any file this glob doesn't match) still enforces them fully.
+      "files": ["**/*.test.{ts,tsx}"],
+      "rules": {
+        "typescript/no-unsafe-argument": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-call": "off",
+        "typescript/no-unsafe-member-access": "off",
+        "typescript/no-unsafe-return": "off"
+      }
     }
   ]
 }
