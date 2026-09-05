@@ -48,6 +48,22 @@
 # `bun publish --help` lists no such option) — npm's provenance/Sigstore
 # attestation is an `npm publish` feature Bun does not yet implement.
 # Named here rather than silently omitted; revisit when Bun ships it.
+#
+# QPMSEC-433 npmauth fix (2026-09-05, run 33977564623, tag v1.1.1):
+# `bun publish` printed `Authenticate your account at (press ENTER
+# to open in browser): https://www.npmjs.com/auth/cli/…` then died
+# on `404 …/-/v1/done` — bun's `--auth-type=web` OTP flow (default),
+# started only after the registry ACCEPTS a publish with a valid
+# token: the token WAS sent, npmjs.org just demanded a second factor
+# the granular token isn't exempt from. Confirmed locally with a
+# FAKE token (never real): `~/.npmrc` + workspace-ROOT `.npmrc` are
+# honoured; a package-dir `.npmrc` is ignored in a workspace
+# (`--verbose`: `ignore [default:.npmrc] .npmrc`); `NPM_CONFIG_TOKEN`
+# is honoured; no `--token` flag exists (`bun publish --help`). Fix:
+# `NPM_CONFIG_TOKEN` over a dotfile, `--auth-type=legacy` so an OTP
+# challenge fails fast/readable instead of hanging on the
+# closed-stdin web flow, plus a pre-publish `bun pm whoami` (proves
+# the token authenticates — not that a 2FA-gated publish succeeds).
 name: release
 
 on:
@@ -106,14 +122,21 @@ jobs:
         run: git config --global url."https://x-access-token:${QPMATRIX_TOKEN}@github.com/QPMatrix/".insteadOf "https://github.com/QPMatrix/"
       - name: ./check (the same gate the PR that landed this ran)
         run: ./check
-      - name: Configure npmjs.org auth
+      # Proves the token authenticates — NOT that a publish will be
+      # allowed. npmjs.org can still 2FA-challenge the actual write
+      # (see the fix note above); this only rules out "no/wrong token".
+      - name: Verify npmjs.org token authenticates
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -e
+          echo "npmjs.org identity: $(bun pm whoami)"
       - name: Publish every package (dependency order)
+        env:
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           set -e
           for pkg in typescript-config prettier-config oxlint-config tokens ui; do
             echo "==> publishing @qpmtx/$pkg"
-            (cd "packages/$pkg" && bun publish --access public --tolerate-republish)
+            (cd "packages/$pkg" && bun publish --access public --tolerate-republish --auth-type=legacy)
           done
