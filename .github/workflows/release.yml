@@ -1,0 +1,80 @@
+# Publish every package in this workspace to npmjs.org, PUBLIC, under the
+# @qpmatrix scope — owner decision, 2026-09-05 (haiku review round 1,
+# finding 3, superseding this repo's earlier GitHub-Packages plan). NEVER
+# runs on push to main: only a manual dispatch or a `v*` tag, and only when
+# the `NPM_TOKEN` secret actually exists — the owner has not yet created
+# the npmjs.org @qpmatrix org or minted that secret (OWNER-REQUIRED item
+# 44), so this workflow is wired but inert until they do. No commit to
+# this repo can make it fire on its own.
+#
+# `check-secret` exists because a job/step `if:` cannot safely reference
+# `secrets.*` directly (GitHub Actions does not evaluate secrets in `if:`
+# expressions the way it does env vars) — the standard pattern is a
+# preliminary step that reads the secret into an env var, tests it, and
+# writes a job output every later job gates on.
+#
+# Every `uses:` below is pinned by commit SHA with its tag as a trailing
+# comment, the same verified-live pins ci.yml's ts-gate.yml caller uses
+# (repo-gates-and-hooks rule 8): checkout@v7.0.1, setup-bun@v2.2.0.
+#
+# `bun publish` has no `--provenance` flag as of Bun 1.4.0 (verified:
+# `bun publish --help` lists no such option) — npm's provenance/Sigstore
+# attestation is an `npm publish` feature Bun does not yet implement.
+# Named here rather than silently omitted; revisit when Bun ships it.
+name: release
+
+on:
+  workflow_dispatch: {}
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check-secret:
+    runs-on: ubuntu-latest
+    outputs:
+      has-token: ${{ steps.check.outputs.has-token }}
+    steps:
+      - name: Check NPM_TOKEN is set
+        id: check
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -n "$NPM_TOKEN" ]; then
+            echo "has-token=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-token=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::NPM_TOKEN is not set — publish skipped (OWNER-REQUIRED item 44: owner must create the npmjs.org @qpmatrix org and mint this secret)."
+          fi
+
+  publish:
+    needs: check-secret
+    if: needs.check-secret.outputs.has-token == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+      - name: bun install
+        run: bun install --frozen-lockfile
+      - name: ./check (the same gate the PR that landed this ran)
+        run: ./check
+      - name: Configure npmjs.org auth
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - name: Publish every package (dependency order)
+        run: |
+          set -e
+          for pkg in typescript-config prettier-config oxlint-config tokens query-fetcher ui; do
+            echo "==> publishing @qpmatrix/$pkg"
+            (cd "packages/$pkg" && bun publish --access public --tolerate-republish)
+          done

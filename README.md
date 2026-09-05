@@ -11,17 +11,31 @@ for the full governing-skills roster (`ts-craft`, `docs-craft`,
 
 ## Install (no token required)
 
-Every package here is distributed git-native — pin a repo tag with Bun,
-no npm, no registry credential:
+Every consumer-facing package publishes to **npmjs.org, public, under the
+`@qpmatrix` scope** (owner decision, 2026-09-05) — the default public
+registry, so there's no `.npmrc` to add and no token to configure:
 
 ```sh
-bun add github:QPMatrix/qpm-ui#v1.1.0
+bun add @qpmatrix/ui @qpmatrix/tokens @qpmatrix/query-fetcher
 ```
 
-That installs the whole workspace tarball; a consumer that only wants one
-package still adds the same tag and imports only what it needs (Bun
-resolves `packages/*` from the workspace root). See each package's own
-README for its install line and API: [`packages/ui`](./packages/ui/README.md),
+(A monorepo-root git install — `bun add github:QPMatrix/qpm-ui#<tag>` —
+does **not** yield these as separately importable packages; the root
+`package.json` is `"private": true` and ships nothing itself. Always
+install the individual `@qpmatrix/*` packages by name, from the registry
+above.)
+
+**Publishing is not live yet — gated on OWNER-REQUIRED item 44.** The
+`release` workflow (`.github/workflows/release.yml`) only runs on a
+manual dispatch or a `v*` tag, and only when the `NPM_TOKEN` secret
+exists; neither the npmjs.org `@qpmatrix` org nor that secret has been
+created yet, so no version of any package in this repo is on the
+registry until the owner does both. Until then, consume this repo from
+a worktree/checkout directly (`bun install` at the repo root, then
+reference `packages/<name>` by path) rather than the install line above.
+
+See each package's own README for its full API:
+[`packages/ui`](./packages/ui/README.md),
 [`packages/tokens`](./packages/tokens/README.md),
 [`packages/query-fetcher`](./packages/query-fetcher/README.md).
 
@@ -38,7 +52,7 @@ bun install
 
 - [`docs/lint.md`](./docs/lint.md) — what `@qpmatrix/oxlint-config` covers
   from the old `eslint-config`/`eslint-plugin-architecture` pair, and the
-  two rules that have no oxlint equivalent yet (named as GAPS, not
+  three rules that have no oxlint equivalent yet (named as GAPS, not
   silently dropped).
 
 The gate is `./check`; the pre-commit hook and CI run exactly it

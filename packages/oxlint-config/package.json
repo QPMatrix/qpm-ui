@@ -2,8 +2,7 @@
   "name": "@qpmatrix/oxlint-config",
   "version": "0.1.0",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "repository": {
     "type": "git",
