@@ -15,7 +15,34 @@
 #
 # Every `uses:` below is pinned by commit SHA with its tag as a trailing
 # comment, the same verified-live pins ci.yml's ts-gate.yml caller uses
-# (repo-gates-and-hooks rule 8): checkout@v7.0.1, setup-bun@v2.2.0.
+# (repo-gates-and-hooks rule 8): checkout@v7.0.1, setup-bun@v2.2.0,
+# create-github-app-token@v3.2.0.
+#
+# `./check` vendors the PRIVATE repos qpsb-skills/qpsb-agents over plain
+# `git clone https://github.com/QPMatrix/...` (scripts/qp-skills-fetch.sh,
+# scripts/qp-agents-fetch.sh) with no credentials of its own — ci.yml's
+# reusable ts-gate.yml caller covers this with a mint-token step before
+# every job that runs `./check <stage>` (`private-deps:
+# qpsb-agents,qpsb-skills`); this hand-written release workflow never
+# had the equivalent, so `publish`'s `./check` step failed
+# `fatal: could not read Username for 'https://github.com'` on the
+# v1.1.0 tag run (2026-09-05, repo-birth's own manual-tail note #5
+# predicted exactly this). Fixed the same way, inline, since `publish`
+# cannot become a ts-gate.yml call (publishing needs its own job): mint
+# an app-installation token scoped to just those two repos, then point
+# git at it via `insteadOf` — copied from ts-gate.yml's own
+# format-lint/test job steps (`gh api
+# repos/QPMatrix/qpm-gh-workflows/contents/.github/workflows/ts-gate.yml
+# ?ref=v0.1.1`, verified live 2026-09-05).
+#
+# One deliberate deviation from create-github-app-token's OLDER `app-id`
+# input: ts-gate.yml itself uses `client-id`, not `app-id` — `app-id` is
+# the deprecated input name (repo-gates-and-hooks rule 7: a deprecation
+# warning in the log is a failure, not noise) — so this step matches the
+# verified-current reference exactly (`QPASSISTANCE_CLIENT_ID`, which
+# exists on this repo alongside the older `QPASSISTANCE_APP_ID`), rather
+# than reintroducing a deprecated input this repo's own reference gate
+# already moved off of.
 #
 # `bun publish` has no `--provenance` flag as of Bun 1.4.0 (verified:
 # `bun publish --help` lists no such option) — npm's provenance/Sigstore
@@ -65,6 +92,18 @@ jobs:
           bun-version-file: package.json
       - name: bun install
         run: bun install --frozen-lockfile
+      - name: Mint QPMatrix installation token
+        id: qpmatrix-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ secrets.QPASSISTANCE_CLIENT_ID }}
+          private-key: ${{ secrets.QPASSISTANCE_PRIVATE_KEY }}
+          owner: QPMatrix
+          repositories: qpsb-agents,qpsb-skills
+      - name: Configure git auth for QPMatrix
+        env:
+          QPMATRIX_TOKEN: ${{ steps.qpmatrix-token.outputs.token }}
+        run: git config --global url."https://x-access-token:${QPMATRIX_TOKEN}@github.com/QPMatrix/".insteadOf "https://github.com/QPMatrix/"
       - name: ./check (the same gate the PR that landed this ran)
         run: ./check
       - name: Configure npmjs.org auth
