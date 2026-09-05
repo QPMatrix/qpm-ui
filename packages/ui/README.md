@@ -8,10 +8,11 @@ underneath, Tailwind v4 on top, [Motion](https://motion.dev) for animation, and
 every colour, size and duration resolved from `@qpmatrix/tokens` through the
 adapter in `styles/qpmatrix.css`.
 
-Raw `@mui/*`, `@emotion/*`, `@base-ui/react` and `motion/react` imports are
-lint-banned in application code (see `packages/eslint-config/react.ts`): a
-primitive imported straight into an app is unstyled, untokenised, and outside
-the accessibility gates this package applies.
+Raw `@mui/*`, `@emotion/*` and `@base-ui/react` imports are lint-banned in
+application code (see [`@qpmatrix/oxlint-config`'s `react.json`](../oxlint-config/react.json),
+`../../docs/lint.md`): a primitive imported straight into an app is
+unstyled, untokenised, and outside the accessibility gates this package
+applies.
 
 **83 registry items** — 61 shadcn/Base UI primitives, 19 QPMatrix components,
 and the shared library modules. 165 Storybook stories.
@@ -95,15 +96,16 @@ components strip transforms and keep only a cross-fade, so nothing is lost.
 The package is also a **shadcn source registry**, so an app that needs to _edit_
 a component can copy it instead of importing it.
 
-> **This repository is PRIVATE, so the GitHub address form does not work yet.**
-> shadcn resolves `owner/repo/item` by fetching `raw.githubusercontent.com`
-> **unauthenticated**, which 404s for a private repo. Verified:
-> `curl .../QPMatrix/qpm-ui/main/registry.json` → `404`, while the
-> authenticated API returns the same file. The manifest is correct — only the
-> transport is blocked. Making the repository public is the only change needed.
+This repository is **public** (QPMSEC-433), so the GitHub address form
+works directly — shadcn resolves `owner/repo/item` by fetching
+`raw.githubusercontent.com` unauthenticated, which now succeeds:
 
-Until then, serve the registry and install from it by URL. This is the path
-proven end-to-end (13 components, 62 files, all 121 imports resolving):
+```sh
+bunx --bun shadcn@latest add QPMatrix/qpm-ui/metric-card
+```
+
+A locally-served registry (useful for previewing an unreleased item
+before it's pushed) still works the same way it always did:
 
 ```sh
 # in this repo
@@ -117,12 +119,6 @@ bun run --filter @qpmatrix/ui registry:preview -- --namespace @qp
 
 ```sh
 bunx --bun shadcn@latest add @qp/metric-card
-```
-
-Once the repository is public, the address form works with no other change:
-
-```sh
-bunx --bun shadcn@latest add QPMatrix/qpm-ui/metric-card
 ```
 
 Browse what ships, with install commands, token dependencies and accessibility
@@ -152,9 +148,11 @@ bun run a11y:contrast                      # every colour pair, both themes
 bun run a11y:contract                      # keyboard/focus contract
 ```
 
-Never hand-write a component folder — `bun run scaffold` emits the seven-file
-layout, the registry item and both barrels correctly by construction. See
-`.agents/skills/qp-component-scaffold/SKILL.md`.
+Never hand-write a component folder — `bun run scaffold` emits the
+seven-file layout, the registry item and both barrels correctly by
+construction (`bun run scaffold -- --list` shows every archetype and
+composable primitive; `scripts/scaffold-component.ts` is the source of
+truth for what it generates).
 
 ## The rules
 
