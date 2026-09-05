@@ -1,0 +1,18 @@
+# Gate = the estate's shared PR-only quality gate (ADR-031,
+# QPMSEC-570) — QPMatrix/qpm-gh-workflows/.github/workflows/ts-gate.yml.
+# Pinned ref verified live at wire-gate/birth time: v0.1.1
+name: ci
+on:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  gate:
+    uses: QPMatrix/qpm-gh-workflows/.github/workflows/ts-gate.yml@v0.1.1
+    with:
+      private-deps: qpsb-agents,qpsb-skills
+    secrets: inherit
