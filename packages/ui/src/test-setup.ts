@@ -26,6 +26,50 @@ if (typeof document === "undefined") {
   GlobalRegistrator.register();
 }
 
+/**
+ * Deterministic motion teardown (QPMSEC-433, PR #1 gate round 4): the
+ * hosted runner failed `@qpmatrix/ui test` with "2 errors" — `bun test`'s
+ * "Unhandled error between tests" — `AbortError: The animation was
+ * canceled.`, thrown from happy-dom's `Animation.cancel` via motion-dom's
+ * `NativeAnimation.stop`. Root cause: motion-dom prefers the real Web
+ * Animations API when the environment appears to support it (happy-dom
+ * does implement `Element.animate()`), so an animated component leaves a
+ * REAL, asynchronous `Animation` object running on unmount; that object's
+ * eventual `.cancel()` — scheduled on requestAnimationFrame's callback
+ * queue, not synchronous with the test's own `cleanup()` — can fire after
+ * the test that started it has already finished, landing the resulting
+ * rejection nowhere bun:test can attribute it to. This never reproduced
+ * on the machine this fix was written on (animations finish before
+ * cleanup runs on a fast box); it does not need to reproduce here to be
+ * a real bug, since it is a race whose window only widens under load —
+ * the hosted runner hit it, and a slower or busier machine will too.
+ *
+ * `MotionGlobalConfig.skipAnimations = true` fixes this categorically
+ * rather than narrowing the race: read `motion-dom`'s own
+ * `animation/interfaces/motion-value.mjs`, EVERY animation checks
+ * `MotionGlobalConfig.instantAnimations || MotionGlobalConfig.skipAnimations
+ * || …` before it ever decides between the native-WAAPI and JS animation
+ * implementations, and `shouldSkip` short-circuits straight to
+ * `makeAnimationInstant()` (forces `duration = 0`) when it's set — no
+ * native `Animation` object, and therefore no async `.cancel()`, is ever
+ * created for the rest of this test run. `MotionGlobalConfig` is a
+ * plain mutable object re-exported from `motion-utils` through
+ * `framer-motion` (`export { MotionGlobalConfig } from "motion-utils"`)
+ * and then through `motion/react` (`export * from "framer-motion"`) —
+ * `@qpmatrix/ui` already depends on `motion` directly, so importing it
+ * from `motion/react` reaches for a package this repo already declares,
+ * not a transitive one. Imported dynamically, after DOM registration,
+ * for the same static-import-ordering reason documented above (`motion`'s
+ * module graph does its own environment feature-detection at import
+ * time, so it must not evaluate before `document` exists). Set once,
+ * globally, for the lifetime of the whole `bun test` process — this
+ * module is import-cached across every `*.test.tsx` file that imports
+ * it, so the flag is live before any test file's own `render()` call,
+ * not just the first one to import this module.
+ */
+const { MotionGlobalConfig } = await import("motion/react");
+MotionGlobalConfig.skipAnimations = true;
+
 // jest-dom matchers (toBeInTheDocument, toBeChecked, toHaveAttribute, ...).
 // Type declarations for these are merged into bun:test's Matchers interface
 // in matchers.d.ts (declaration merging, see Bun's testing-library docs).
