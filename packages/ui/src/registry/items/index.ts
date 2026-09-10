@@ -31,6 +31,7 @@ import { field } from "./field";
 import { heading } from "./heading";
 import { hoverCard } from "./hover-card";
 import { iconButton } from "./icon-button";
+import { icons } from "./icons";
 import { input } from "./input";
 import { inputGroup } from "./input-group";
 import { inputOtp } from "./input-otp";
@@ -129,6 +130,7 @@ export const QP_REGISTRY_ITEMS: readonly QpRegistryItem[] = [
   heading,
   hoverCard,
   iconButton,
+  icons,
   input,
   inputGroup,
   inputOtp,
@@ -215,6 +217,7 @@ export {
   heading,
   hoverCard,
   iconButton,
+  icons,
   input,
   inputGroup,
   inputOtp,
