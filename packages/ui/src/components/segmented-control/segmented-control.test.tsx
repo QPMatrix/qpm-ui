@@ -171,4 +171,79 @@ describe("QPSegmentedControl", () => {
     expect(getByRole("button", { name: "Month" })).toHaveAttribute("aria-pressed", "true");
     expect(getByRole("group", { name: "Range" }).className).toContain("w-full");
   });
+
+  describe("segmentWidth", () => {
+    // Regression coverage for QPMSEC-787: `QPSegmentedControl` forced
+    // `flex-1` on every segment regardless of label length, so with unequal
+    // labels ("Chat" through "Live Team Activity") every segment claimed the
+    // same fraction of the track and the longer labels printed on top of
+    // their neighbours. happy-dom has no layout engine, so the overlap
+    // itself cannot be measured here (see the keyboard test above for the
+    // same limit) — what IS provable in this environment is the class
+    // contract that produces or removes the forced equal share, which is
+    // exactly what the desktop's own workaround (`itemClassName="flex-none
+    // whitespace-nowrap"`) had to fight before this prop existed.
+    const unequalLabelItems: QPSegmentedControlItem[] = [
+      { value: "chat", label: "Chat" },
+      { value: "status", label: "Status" },
+      { value: "activity", label: "Live Team Activity" },
+    ];
+
+    test("defaults to auto: no segment is forced to an equal share", () => {
+      const { getAllByRole } = render(
+        <QPSegmentedControl aria-label="Range" items={unequalLabelItems} defaultValue="chat" />,
+      );
+
+      for (const segment of getAllByRole("button")) {
+        expect(segment.className).not.toContain("flex-1");
+      }
+    });
+
+    test("segmentWidth is unnecessary to opt in to: passing it explicitly is a no-op for auto", () => {
+      const { getAllByRole } = render(
+        <QPSegmentedControl
+          aria-label="Range"
+          items={unequalLabelItems}
+          defaultValue="chat"
+          segmentWidth="auto"
+        />,
+      );
+
+      for (const segment of getAllByRole("button")) {
+        expect(segment.className).not.toContain("flex-1");
+      }
+    });
+
+    test('segmentWidth="equal" restores the pre-existing forced equal share', () => {
+      const { getAllByRole } = render(
+        <QPSegmentedControl
+          aria-label="Range"
+          items={unequalLabelItems}
+          defaultValue="chat"
+          segmentWidth="equal"
+        />,
+      );
+
+      for (const segment of getAllByRole("button")) {
+        expect(segment.className).toContain("flex-1");
+      }
+    });
+
+    test("itemClassName still merges after the segmentWidth variant", () => {
+      const { getAllByRole } = render(
+        <QPSegmentedControl
+          aria-label="Range"
+          items={unequalLabelItems}
+          defaultValue="chat"
+          segmentWidth="equal"
+          itemClassName="whitespace-nowrap"
+        />,
+      );
+
+      for (const segment of getAllByRole("button")) {
+        expect(segment.className).toContain("flex-1");
+        expect(segment.className).toContain("whitespace-nowrap");
+      }
+    });
+  });
 });

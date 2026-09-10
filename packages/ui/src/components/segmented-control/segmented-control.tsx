@@ -33,6 +33,11 @@ import {
  *
  * The one behaviour added on top of the primitive is *single-select,
  * never-empty* semantics; see `qpNextSegmentedValue` in `.utils.ts`.
+ *
+ * `segmentWidth` defaults to `"auto"` (content-sized segments); pass
+ * `"equal"` only when every label is a similar length (QPMSEC-787 — a fixed
+ * `flex-1` share on every segment let a longer label overprint its
+ * neighbours).
  */
 export function QPSegmentedControl({
   items,
@@ -43,6 +48,7 @@ export function QPSegmentedControl({
   variant,
   className,
   itemClassName,
+  segmentWidth,
   ...props
 }: QPSegmentedControlProps) {
   const sizeKey = qpResolveSegmentedControlSize(size);
@@ -81,7 +87,7 @@ export function QPSegmentedControl({
           data-slot="segmented-control-item"
           value={item.value}
           disabled={item.disabled ?? false}
-          className={cn(qpSegmentedControlItemVariants(), itemClassName)}
+          className={cn(qpSegmentedControlItemVariants({ segmentWidth }), itemClassName)}
         >
           {item.label}
         </ToggleGroupItem>

@@ -48,7 +48,28 @@ export const qpSegmentedControlVariants = cva("", {
   },
 });
 
-/** Per-segment chrome, including the selected (pressed) treatment. */
+/**
+ * Per-segment chrome, including the selected (pressed) treatment and track
+ * width.
+ *
+ * `segmentWidth: "auto"` adds no width class at all: the primitive already
+ * gives every item `shrink-0` (see `ui/toggle-group`), so an unstyled segment
+ * already sizes to its own label. `"equal"` is the ONLY variant that forces a
+ * share (`flex-1`) — restoring this component's original behaviour, which
+ * overlapped unequal labels because every segment claimed the same width
+ * regardless of content (QPMSEC-787).
+ */
 export const qpSegmentedControlItemVariants = cva(
-  "flex-1 aria-pressed:bg-surface-selected aria-pressed:text-fg-primary",
+  "aria-pressed:bg-surface-selected aria-pressed:text-fg-primary",
+  {
+    variants: {
+      segmentWidth: {
+        auto: "",
+        equal: "flex-1",
+      },
+    },
+    defaultVariants: {
+      segmentWidth: "auto",
+    },
+  },
 );
