@@ -14,8 +14,8 @@ application code (see [`@qpmtx/oxlint-config`'s `react.json`](../oxlint-config/r
 unstyled, untokenised, and outside the accessibility gates this package
 applies.
 
-**83 registry items** — 61 shadcn/Base UI primitives, 19 QPMatrix components,
-and the shared library modules. 165 Storybook stories.
+**84 registry items** — 61 shadcn/Base UI primitives, 19 QPMatrix components,
+and the shared library modules. 189 Storybook stories.
 
 ## Install
 
@@ -33,6 +33,16 @@ Then, **once, at the app root**:
 
 That pulls in Tailwind, shadcn's variants and `@qpmtx/tokens` in the order
 the cascade requires. Do **not** import `@qpmtx/tokens/css` separately.
+
+**Nothing else is required to get the kit's own utility classes generated.**
+`styles/qpmatrix.css` ships its own `@source "../dist"` line, so every class
+this package's components emit from their own markup (`max-w-5xl`,
+`rounded-xl`, `bg-card`, the whole type ramp, …) reaches your build without
+you adding an `@source` for `node_modules/@qpmtx/ui` yourself — Tailwind v4's
+automatic source detection ignores `node_modules` by default, and this line
+overrides that for exactly this package (QPMSEC-787: before this line
+existed, a consuming app had to discover and add that line by hand, or every
+`@qpmtx/ui` component rendered as an unstyled box).
 
 ## Using it
 

@@ -29,6 +29,14 @@ import { qpHasSectionHeader, qpSectionLevel, qpSectionNaming } from "./section.u
  *      heading and no `label` gets you a plain `<div>` instead.
  *   2. The heading's outline level is a prop, never inferred from its size.
  *
+ * The content slot (`data-slot="section-content"`) has no class of its own
+ * unless `contentClassName` gives it one — the section's root is already a
+ * flex column (`qpSectionVariants`), so a caller that needs its child to fill
+ * the remaining height passes `contentClassName="min-h-0 flex-1"` rather than
+ * reaching around the component (QPMSEC-787: without this seam a scrolling
+ * panel had to become a SIBLING of its section instead of a child, because
+ * there was no way to make the content slot itself grow).
+ *
  * `reveal` animates the section in as the reader reaches it, which is what
  * makes a long page feel alive rather than pre-assembled. It degrades to a
  * cross-fade under `prefers-reduced-motion` automatically.
@@ -53,6 +61,7 @@ export function QPSection({
   align = "start",
   reveal = false,
   className,
+  contentClassName,
   children,
   ...props
 }: QPSectionProps) {
@@ -117,7 +126,11 @@ export function QPSection({
   const content = (
     <>
       {header}
-      {isRenderable(children) ? <div data-slot="section-content">{children}</div> : null}
+      {isRenderable(children) ? (
+        <div data-slot="section-content" className={contentClassName}>
+          {children}
+        </div>
+      ) : null}
     </>
   );
 

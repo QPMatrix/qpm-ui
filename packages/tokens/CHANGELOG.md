@@ -1,5 +1,17 @@
 # @qpmtx/tokens
 
+## 0.4.0
+
+### Minor Changes
+
+- Adds `brand/` — the QPMatrix brand mark (`qpmatrix-mark.png`), the two
+  horizontal lockups (`qpmatrix-lockup-dark.png` / `-light.png`), and a
+  favicon set generated from the mark (16/32 PNG, a 180px Apple touch icon, a
+  512px PWA icon, and a multi-resolution `favicon.ico`). See
+  [`docs/brand.md`](../../docs/brand.md) for the palette-token mapping,
+  clear-space rule, do-nots, and provenance. No token values changed
+  (QPMSEC-787).
+
 ## 0.3.0
 
 ### Minor Changes

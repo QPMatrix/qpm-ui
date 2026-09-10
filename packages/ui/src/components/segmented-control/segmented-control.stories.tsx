@@ -15,6 +15,7 @@ const meta = {
     loopFocus: { control: "boolean" },
     value: { control: "text" },
     defaultValue: { control: "text" },
+    segmentWidth: { control: "inline-radio", options: ["auto", "equal"] },
   },
 } satisfies Meta<typeof QPSegmentedControl>;
 
@@ -85,6 +86,42 @@ export const Vertical: Story = {
     items: rangeItems,
     defaultValue: "month",
     orientation: "vertical",
+  },
+};
+
+const unequalLabelItems = [
+  { value: "chat", label: "Chat" },
+  { value: "status", label: "Status" },
+  { value: "activity", label: "Live Team Activity" },
+  { value: "approvals", label: "Approval Inbox" },
+];
+
+/**
+ * `segmentWidth` defaults to `"auto"`, so unequal labels are never forced
+ * into the same width — each segment sizes to its own content. This is the
+ * fix for QPMSEC-787: with the pre-existing `"equal"` behaviour, a six-tab
+ * strip running "Chat" through "Live Team Activity" gave every tab the same
+ * one-sixth share, and the longer labels printed on top of their neighbours.
+ */
+export const UnequalLabels: Story = {
+  args: {
+    "aria-label": "Section",
+    items: unequalLabelItems,
+    defaultValue: "chat",
+  },
+};
+
+/**
+ * `segmentWidth="equal"` restores the original forced equal-share track —
+ * compare against `UnequalLabels` above: the same items, only the width
+ * strategy differs, and here the longest label spills past its segment.
+ */
+export const UnequalLabelsEqualWidth: Story = {
+  args: {
+    "aria-label": "Section",
+    items: unequalLabelItems,
+    defaultValue: "chat",
+    segmentWidth: "equal",
   },
 };
 

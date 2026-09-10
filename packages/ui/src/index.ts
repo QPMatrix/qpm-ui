@@ -593,6 +593,7 @@ export * from "./components/typing-indicator";
 // ---------------------------------------------------------------------------
 export { cn, isRenderable } from "./lib/utils";
 export * from "./lib/motion";
+export * from "./lib/icons";
 export {
   isApprovedThemeSelection,
   QP_ACCENT_TOKEN_ROLES,

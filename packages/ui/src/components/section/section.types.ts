@@ -68,4 +68,15 @@ export interface QPSectionProps
   /** Section content. */
   children?: ReactNode;
   className?: string | undefined;
+  /**
+   * Classes for the content slot (`data-slot="section-content"`). The slot
+   * carries no class of its own, so this is the only handle a caller has on
+   * it.
+   *
+   * The section's root is already a flex column, so this is the seam for a
+   * child that must fill the remaining height — `contentClassName="min-h-0
+   * flex-1"` — without reaching around the component or promoting that child
+   * to a sibling of the section.
+   */
+  contentClassName?: string | undefined;
 }

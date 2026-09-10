@@ -116,6 +116,12 @@ Never hand-transcribe a new hex/px value from a mockup. See
 `packages/.agents/skills/tokens/SKILL.md` for the read-live-source-first rule
 and the exact steps to add a token (CSS + TS + test together).
 
+## Brand assets
+
+`brand/` ships the QPMatrix mark, the two lockups, and a favicon set
+generated from the mark. See [`docs/brand.md`](../../docs/brand.md) for the
+palette-token mapping, clear-space rule, do-nots, and provenance.
+
 ## Validation
 
 ```sh

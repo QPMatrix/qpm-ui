@@ -19,6 +19,7 @@ const meta = {
     surface: { control: "select", options: ["none", "subtle", "raised", "brand"] },
     align: { control: "select", options: ["start", "center"] },
     reveal: { control: "boolean" },
+    contentClassName: { control: "text" },
   },
 } satisfies Meta<typeof QPSection>;
 
@@ -108,4 +109,32 @@ export const Revealed: Story = {
  */
 export const Unnamed: Story = {
   args: { children: body },
+};
+
+/**
+ * `contentClassName` gives the content slot a handle to grow, so a scrolling
+ * panel can stay a CHILD of the section instead of becoming a sibling of it
+ * (QPMSEC-787). The outer wrapper here fixes a height purely to make the
+ * effect visible; the section itself does not need one.
+ */
+export const FillsAvailableHeight: Story = {
+  args: {
+    heading: "Transcript",
+    level: 2,
+    contentClassName: "min-h-0 flex-1 overflow-y-auto",
+    children: (
+      <div className="flex flex-col gap-2">
+        {Array.from({ length: 30 }, (_, index) => (
+          <QPText key={index} tone="secondary">
+            Message {index + 1}
+          </QPText>
+        ))}
+      </div>
+    ),
+  },
+  render: (args) => (
+    <div className="flex h-80 flex-col rounded-xl ring-1 ring-border-subtle">
+      <QPSection {...args} className="min-h-0 flex-1 px-4" />
+    </div>
+  ),
 };

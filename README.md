@@ -53,6 +53,9 @@ bun install
   from the old `eslint-config`/`eslint-plugin-architecture` pair, and the
   three rules that have no oxlint equivalent yet (named as GAPS, not
   silently dropped).
+- [`docs/brand.md`](./docs/brand.md) — the QPMatrix mark, lockups and
+  favicon set in `packages/tokens/brand`: palette-token mapping, clear-space
+  rule, do-nots, and provenance.
 
 The gate is `./check`; the pre-commit hook and CI run exactly it
 (`repo-gates-and-hooks` parity rule). `./check` fetches the pinned

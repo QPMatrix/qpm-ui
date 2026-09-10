@@ -512,6 +512,19 @@
       ]
     },
     {
+      "name": "icons",
+      "type": "registry:lib",
+      "title": "Icons",
+      "description": "`lucide-react`, already a dependency of this package, re-exported as one tree-shakeable `QPIcon` namespace.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "src/lib/icons.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
