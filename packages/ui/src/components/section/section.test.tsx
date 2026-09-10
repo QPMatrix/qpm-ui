@@ -95,6 +95,29 @@ describe("QPSection", () => {
     expect(node?.className).toContain("py-16");
   });
 
+  test("contentClassName reaches the content slot, letting a child fill height", () => {
+    // Regression coverage for QPMSEC-787: with no handle on the content
+    // slot, a child that needed to fill the section's remaining height had
+    // to become a SIBLING of the section instead — `contentClassName` is the
+    // seam that removes that workaround.
+    const { container } = render(
+      <QPSection label="Panel" contentClassName="min-h-0 flex-1">
+        content
+      </QPSection>,
+    );
+
+    const contentSlot = container.querySelector('[data-slot="section-content"]');
+    expect(contentSlot?.className).toContain("min-h-0");
+    expect(contentSlot?.className).toContain("flex-1");
+  });
+
+  test("contentClassName is optional and leaves the content slot unclassed by default", () => {
+    const { container } = render(<QPSection label="Bare">content</QPSection>);
+
+    const contentSlot = container.querySelector('[data-slot="section-content"]');
+    expect(contentSlot?.className).toBe("");
+  });
+
   test("reveal still renders a named region", () => {
     const { getByRole } = render(
       <QPSection heading="Revealed" level={2} reveal>
