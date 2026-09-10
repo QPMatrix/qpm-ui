@@ -33,6 +33,33 @@
 @import "@qpmtx/tokens/css";
 
 /*
+ * Tailwind v4's automatic source detection ignores `node_modules` outright —
+ * that is by design for a consumer's OWN app code, but it also means every
+ * utility class this package's OWN components spell in their own markup
+ * (`max-w-5xl`, `rounded-xl`, `bg-card`, the whole type ramp, ...) never
+ * reaches a consumer's generated stylesheet unless that consumer adds an
+ * `@source` for this package themselves (QPMSEC-787: a consumer's app
+ * rendered every @qpmtx/ui component as an unstyled box — 32 KB of generated
+ * CSS instead of 263 KB — until it added exactly the line below, by hand, in
+ * its OWN stylesheet).
+ *
+ * Declaring it HERE instead removes that step for every consumer at once:
+ * `@source` resolves relative to the stylesheet it appears in, not to
+ * whichever file eventually `@import`s that stylesheet, so this always
+ * points at THIS package's own `dist/` — `packages/ui/dist` in this
+ * workspace, `node_modules/@qpmtx/ui/dist` once published — regardless of
+ * where the app that eventually imports `@qpmtx/ui/css` lives. `dist/`, not
+ * `src/`, because `dist/` is what actually ships to npm consumers (`src/` is
+ * excluded from the published `files`); the compiled `.js` still contains
+ * every class name as a literal string, which is all Tailwind's scanner
+ * needs. Covered by `src/qpmatrix-css.integration.test.ts`, which builds a
+ * real Tailwind pipeline against a throwaway consumer fixture and asserts a
+ * kit-only utility class is present in the generated CSS with NOTHING added
+ * on the consumer's side.
+ */
+@source "../dist";
+
+/*
  * QPMatrix is dark-first: @qpmtx/tokens' `:root` block IS the dark theme and
  * `[data-theme="light"]` overrides it. shadcn ships `.dark`-class dark mode, so
  * the `dark:` variant is redefined to mean "not inside a light subtree".
