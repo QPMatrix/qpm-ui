@@ -3,6 +3,8 @@ import type { Transition, Variants } from "motion/react";
 import {
   QP_DURATION,
   QP_EASE,
+  QP_REDUCED_MOTION_ATTRIBUTE,
+  QP_REDUCED_MOTION_ATTRIBUTE_VALUE,
   QP_STAGGER,
   QP_TRANSITION,
   QP_VARIANTS,
@@ -109,6 +111,40 @@ export function qpResolveVariants(
 ): Variants {
   const base = QP_VARIANTS[variant];
   return shouldReduceMotion === true ? qpReduceVariants(base) : { ...base };
+}
+
+/**
+ * Does `root` carry the in-app reduced-motion override
+ * (`QPDisplayPreferences`'s `data-qp-reduced-motion="reduce"`)?
+ *
+ * A plain, unsubscribed DOM read — `useQpRootReducedMotion` (in
+ * `./motion-core.hooks`) is what a component renders with, since that also
+ * reacts to the attribute changing after mount. This is the pure half, kept
+ * testable without `renderHook`. Returns `false` with no document (SSR),
+ * matching the "assume motion is fine until told otherwise" default the
+ * OS-level query also uses before hydration.
+ */
+export function qpHasRootReducedMotionOverride(root: Document | undefined): boolean {
+  if (root === undefined) {
+    return false;
+  }
+  return (
+    root.documentElement.getAttribute(QP_REDUCED_MOTION_ATTRIBUTE) ===
+    QP_REDUCED_MOTION_ATTRIBUTE_VALUE
+  );
+}
+
+/**
+ * Combine the OS-level `prefers-reduced-motion` result with the in-app root
+ * override: either one asking for less motion is enough to strip it. Never
+ * lets the root override turn reduced motion back OFF — an accessibility
+ * setting the OS already granted is not this component's to revoke.
+ */
+export function qpEffectiveReducedMotion(
+  osPreference: boolean | null,
+  rootOverride: boolean,
+): boolean {
+  return rootOverride || osPreference === true;
 }
 
 /**

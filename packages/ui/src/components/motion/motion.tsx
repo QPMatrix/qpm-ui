@@ -4,9 +4,10 @@ import { useReducedMotion } from "motion/react";
 
 import { cn } from "../../lib/utils";
 import { qpMotionElement } from "../../lib/motion/motion-core.elements";
+import { useQpRootReducedMotion } from "../../lib/motion/motion-core.hooks";
 import { QP_MOTION_DEFAULT_ELEMENT, QP_MOTION_DEFAULT_VARIANT } from "./motion.constants";
 import type { QPMotionProps } from "./motion.types";
-import { qpResolveTransition, qpResolveVariants } from "./motion.utils";
+import { qpEffectiveReducedMotion, qpResolveTransition, qpResolveVariants } from "./motion.utils";
 
 /**
  * QPMotion — animate an element in (and out) where it stands.
@@ -39,7 +40,7 @@ export function QPMotion({
   children,
   ...props
 }: QPMotionProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = qpEffectiveReducedMotion(useReducedMotion(), useQpRootReducedMotion());
   const Component = qpMotionElement(as);
 
   return (

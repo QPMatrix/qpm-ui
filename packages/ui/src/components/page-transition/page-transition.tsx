@@ -4,7 +4,12 @@ import { AnimatePresence, useReducedMotion } from "motion/react";
 
 import { cn } from "../../lib/utils";
 import { qpMotionElement } from "../../lib/motion/motion-core.elements";
-import { qpResolveTransition, qpResolveVariants } from "../../lib/motion/motion-core.utils";
+import { useQpRootReducedMotion } from "../../lib/motion/motion-core.hooks";
+import {
+  qpEffectiveReducedMotion,
+  qpResolveTransition,
+  qpResolveVariants,
+} from "../../lib/motion/motion-core.utils";
 import {
   QP_PAGE_TRANSITION_DURATION,
   QP_PAGE_TRANSITION_VARIANT,
@@ -37,7 +42,7 @@ export function QPPageTransition({
   children,
   ...props
 }: QPPageTransitionProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = qpEffectiveReducedMotion(useReducedMotion(), useQpRootReducedMotion());
   const Component = qpMotionElement(as);
 
   return (

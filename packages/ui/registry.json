@@ -359,6 +359,36 @@
       ]
     },
     {
+      "name": "copy-field",
+      "type": "registry:ui",
+      "title": "Copy Field",
+      "description": "A read-only value with a copy button and a polite live-region status.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/field",
+        "QPMatrix/qpm-ui/input-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/copy-field/copy-field.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/copy-field/copy-field.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/copy-field/copy-field.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/copy-field/copy-field.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
@@ -382,6 +412,39 @@
       "files": [
         {
           "path": "src/components/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "display-preferences",
+      "type": "registry:ui",
+      "title": "Display Preferences",
+      "description": "Text size, reduced motion and colour scheme controls, persisted per viewer.",
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/field",
+        "QPMatrix/qpm-ui/label",
+        "QPMatrix/qpm-ui/motion-core",
+        "QPMatrix/qpm-ui/segmented-control",
+        "QPMatrix/qpm-ui/switch",
+        "QPMatrix/qpm-ui/theme-contract"
+      ],
+      "files": [
+        {
+          "path": "src/components/display-preferences/display-preferences.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/display-preferences/display-preferences.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/display-preferences/display-preferences.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/display-preferences/display-preferences.utils.ts",
           "type": "registry:ui"
         }
       ]
@@ -764,6 +827,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "src/lib/motion/motion-core.hooks.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "src/lib/motion/motion-core.types.ts",
           "type": "registry:lib"
         },
@@ -1032,6 +1099,36 @@
       ]
     },
     {
+      "name": "secret-input",
+      "type": "registry:ui",
+      "title": "Secret Input",
+      "description": "A password-style input with a visibility toggle, wired into the kit's field.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "QPMatrix/qpm-ui/cn",
+        "QPMatrix/qpm-ui/field",
+        "QPMatrix/qpm-ui/input-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/secret-input/secret-input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/secret-input/secret-input.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/secret-input/secret-input.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/secret-input/secret-input.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "section",
       "type": "registry:ui",
       "title": "Section",
@@ -1241,6 +1338,32 @@
         },
         {
           "path": "src/components/status-indicator/status-indicator.utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:ui",
+      "title": "Steps",
+      "description": "Ordered progress steps: label, optional description, completed/current/upcoming state.",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "registryDependencies": ["QPMatrix/qpm-ui/button", "QPMatrix/qpm-ui/cn"],
+      "files": [
+        {
+          "path": "src/components/steps/steps.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/steps/steps.types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/steps/steps.constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/steps/steps.utils.ts",
           "type": "registry:ui"
         }
       ]
