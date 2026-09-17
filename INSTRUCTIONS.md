@@ -9,23 +9,23 @@ No catalog entry was reachable for `qpm-ui` at sync time — add `qp-architectur
 ## Governing ADRs
 - none on record in the catalog snapshot
 
-## Skills mounted (pinned at qp-skills@fb8306a319dbb95aece78f37e3272466045fd0fd)
-- spec-driven-delivery@1.2.0 — base set — every estate repo
-- worker-dispatch@1.7.0 — base set — every estate repo
-- estate-conventions@1.5.0 — base set — every estate repo
-- code-craft@1.7.0 — base set — every estate repo
-- qa-craft@1.0.0 — base set — every estate repo
-- secrets-and-tenancy@1.1.0 — base set — every estate repo
-- observability-conformance@1.0.0 — base set — every estate repo
-- prompt-injection-defense@1.0.0 — base set — every estate repo
-- docs-craft@1.3.0 — base set — every estate repo
-- repo-gates-and-hooks@1.11.1 — base set — every estate repo
-- board-discipline@2.3.0 — base set — every estate repo
-- spec-development@1.1.0 — base set — every estate repo
-- spec-review@1.1.0 — base set — every estate repo
-- ts-craft@1.1.0 — package.json present
+## Skills mounted (pinned at qpai-skills@244e6770eab34e548e7fc5de7b572537706de1c5)
+- spec-driven-delivery@2.0.0 — base set — every estate repo
+- worker-dispatch@2.3.0 — base set — every estate repo
+- estate-conventions@2.0.0 — base set — every estate repo
+- code-craft@4.1.0 — base set — every estate repo
+- qa-craft@3.0.0 — base set — every estate repo
+- secrets-and-tenancy@2.0.0 — base set — every estate repo
+- observability-conformance@2.0.0 — base set — every estate repo
+- prompt-injection-defense@2.0.0 — base set — every estate repo
+- docs-craft@3.3.0 — base set — every estate repo
+- repo-gates-and-hooks@2.1.1 — base set — every estate repo
+- board-discipline@3.0.0 — base set — every estate repo
+- spec-development@2.0.0 — base set — every estate repo
+- spec-review@2.0.0 — base set — every estate repo
+- ts-craft@4.2.0 — package.json present
 
-## Agents mounted (pinned at qpsb-agents@git:https://github.com/QPMatrix/qpsb-agents@1e2b6d2e7bdb7a3d3d5e25be372c48f1ab14494b)
+## Agents mounted (pinned at qpai-skills@244e6770eab34e548e7fc5de7b572537706de1c5)
 - code-review@0.1 — base — advisory pre-review on every repo
 - spec-runtime-bindings@0.1 — base — binds spec-development/spec-review to the runtime
 - reviewer@0.1 — base — the spec-development per-task adversarial review stage
