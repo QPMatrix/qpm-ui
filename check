@@ -7,13 +7,16 @@
 # is the only one that can ever work, and a fetch failure surfaces as
 # that script's own clear git error, never a Python stack trace for a
 # file that is not there yet. --require-sources (finding 4): CI must
-# never silently accept the qpsb-agents local-stand-in fallback — a
-# laptop path cannot exist on a runner anyway, so this turns a silent
-# gap into a clear, named failure instead.
+# never silently accept a local-stand-in fallback — a laptop path
+# cannot exist on a runner anyway, so this turns a silent gap into a
+# clear, named failure instead. Skills AND agents both vendor from the
+# single qpai-skills checkout now (QPAI-182: qpsb-agents and
+# qpsb-skills are both gone — "Repository not found" — qpai-skills'
+# repo-instructions skill links both `skills/` and `agents/` out of
+# the same pinned clone, so there is exactly one fetch script, not two).
 set -e
 sh scripts/qp-skills-fetch.sh
-sh scripts/qp-agents-fetch.sh
-python3 .cache/qp-skills/skills/repo-instructions/scripts/instructions.py check . --require-sources
+python3 .cache/qpai-skills/skills/repo-instructions/scripts/instructions.py check . --require-sources
 find . -name '*.sh' -not -path './.git/*' -not -path './.cache/*' -not -path './node_modules/*' -not -path './packages/*/node_modules/*' -exec sh -n {} +
 
 # Stages (QPMSEC-433 ENVELOPE: fmt|lint|typecheck|test|build, no image —

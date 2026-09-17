@@ -14,5 +14,5 @@ jobs:
   gate:
     uses: QPMatrix/qpm-gh-workflows/.github/workflows/ts-gate.yml@v0.2.0
     with:
-      private-deps: qpsb-agents,qpsb-skills
+      private-deps: qpai-skills
     secrets: inherit
