@@ -4,7 +4,8 @@ import { useReducedMotion } from "motion/react";
 
 import { cn } from "../../lib/utils";
 import { qpMotionElement } from "../../lib/motion/motion-core.elements";
-import { qpStaggerVariants } from "../../lib/motion/motion-core.utils";
+import { useQpRootReducedMotion } from "../../lib/motion/motion-core.hooks";
+import { qpEffectiveReducedMotion, qpStaggerVariants } from "../../lib/motion/motion-core.utils";
 import { QP_STAGGER_DEFAULT } from "./stagger.constants";
 import type { QPStaggerProps } from "./stagger.types";
 import { qpStaggerTrigger } from "./stagger.utils";
@@ -39,7 +40,7 @@ export function QPStagger({
   children,
   ...props
 }: QPStaggerProps & { amount?: number }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = qpEffectiveReducedMotion(useReducedMotion(), useQpRootReducedMotion());
   const Component = qpMotionElement(as);
 
   return (

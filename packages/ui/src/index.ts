@@ -571,6 +571,8 @@ export {
 // ---------------------------------------------------------------------------
 export * from "./components/chat-panel";
 export * from "./components/composer";
+export * from "./components/copy-field";
+export * from "./components/display-preferences";
 export * from "./components/heading";
 export * from "./components/icon-button";
 export * from "./components/message-bubble";
@@ -581,10 +583,12 @@ export * from "./components/page-transition";
 export * from "./components/product-badge";
 export * from "./components/prose";
 export * from "./components/reveal";
+export * from "./components/secret-input";
 export * from "./components/section";
 export * from "./components/segmented-control";
 export * from "./components/stagger";
 export * from "./components/status-indicator";
+export * from "./components/steps";
 export * from "./components/text";
 export * from "./components/typing-indicator";
 

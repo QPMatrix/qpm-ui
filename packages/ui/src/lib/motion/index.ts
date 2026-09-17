@@ -14,5 +14,6 @@
  */
 export * from "./motion-core.constants";
 export * from "./motion-core.elements";
+export * from "./motion-core.hooks";
 export type * from "./motion-core.types";
 export * from "./motion-core.utils";

@@ -10,6 +10,7 @@ export const motionCore: QpRegistryItem = {
   files: [
     { path: "packages/ui/src/lib/motion/motion-core.constants.ts" },
     { path: "packages/ui/src/lib/motion/motion-core.elements.ts" },
+    { path: "packages/ui/src/lib/motion/motion-core.hooks.ts" },
     { path: "packages/ui/src/lib/motion/motion-core.types.ts" },
     { path: "packages/ui/src/lib/motion/motion-core.utils.ts" },
   ],
@@ -27,7 +28,7 @@ export const motionCore: QpRegistryItem = {
     keyboardTested: false,
     focusManaged: false,
     notes:
-      "Non-rendering module, but it is where the accessibility guarantee of the whole motion system lives: `qpReduceVariants` strips every transform and size change from a variant set under `prefers-reduced-motion: reduce`, keeping only opacity so a cross-fade still signals arrival without vestibular motion (SC 2.3.3). Its behaviour is asserted directly in the motion components' tests rather than only through rendering.",
+      'Non-rendering module, but it is where the accessibility guarantee of the whole motion system lives: `qpReduceVariants` strips every transform and size change from a variant set under `prefers-reduced-motion: reduce`, keeping only opacity so a cross-fade still signals arrival without vestibular motion (SC 2.3.3). `useQpRootReducedMotion` (motion-core.hooks.ts) additionally lets an app opt every motion component into reduced motion via a root DOM attribute (`data-qp-reduced-motion="reduce"`), combined with the OS query through `qpEffectiveReducedMotion` — see the `display-preferences` item, which writes that attribute. Its behaviour is asserted directly in the motion components\' tests rather than only through rendering.',
   },
   supportedPlatforms: ["web"],
   tags: ["motion", "utility"],

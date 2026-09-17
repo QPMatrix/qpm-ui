@@ -217,3 +217,17 @@ export const QP_VIEWPORT = {
   once: true,
   amount: 0.2,
 } as const;
+
+/**
+ * Root attribute an app's own display-preferences control writes to opt every
+ * QPMatrix motion component into reduced motion, on top of the OS-level
+ * `prefers-reduced-motion` query `useReducedMotion()` already reads.
+ *
+ * Modelled on `data-theme` from `../theme.ts`: one DOM attribute, no provider
+ * to mount, settable server-side or by a client control alike. Written by
+ * `QPDisplayPreferences` and read by `useQpRootReducedMotion` below.
+ */
+export const QP_REDUCED_MOTION_ATTRIBUTE = "data-qp-reduced-motion";
+
+/** The attribute value that means "reduce". Any other value, or its absence, does not override. */
+export const QP_REDUCED_MOTION_ATTRIBUTE_VALUE = "reduce";

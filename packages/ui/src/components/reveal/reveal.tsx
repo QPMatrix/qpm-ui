@@ -4,7 +4,12 @@ import { useReducedMotion } from "motion/react";
 
 import { cn } from "../../lib/utils";
 import { qpMotionElement } from "../../lib/motion/motion-core.elements";
-import { qpResolveTransition, qpResolveVariants } from "../../lib/motion/motion-core.utils";
+import { useQpRootReducedMotion } from "../../lib/motion/motion-core.hooks";
+import {
+  qpEffectiveReducedMotion,
+  qpResolveTransition,
+  qpResolveVariants,
+} from "../../lib/motion/motion-core.utils";
 import { QP_REVEAL_DEFAULT_AMOUNT, QP_REVEAL_DEFAULT_VARIANT } from "./reveal.constants";
 import type { QPRevealProps } from "./reveal.types";
 import { qpRevealViewport } from "./reveal.utils";
@@ -34,7 +39,7 @@ export function QPReveal({
   children,
   ...props
 }: QPRevealProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = qpEffectiveReducedMotion(useReducedMotion(), useQpRootReducedMotion());
   const Component = qpMotionElement(as);
 
   return (

@@ -14,8 +14,8 @@ application code (see [`@qpmtx/oxlint-config`'s `react.json`](../oxlint-config/r
 unstyled, untokenised, and outside the accessibility gates this package
 applies.
 
-**84 registry items** — 61 shadcn/Base UI primitives, 19 QPMatrix components,
-and the shared library modules. 189 Storybook stories.
+**88 registry items** — 61 shadcn/Base UI primitives, 23 QPMatrix components,
+and the shared library modules. 211 Storybook stories.
 
 ## Install
 
@@ -89,14 +89,14 @@ import { resolveThemeSelection, themeAttributes } from "@qpmtx/ui";
 
 ## What's inside
 
-| Area                | What                                                                                                                                                             |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Primitives** (61) | `QPButton`, `QPDialog`, `QPTable`, `QPSheet`, `QPSidebar`, `QPCommand`, `QPCalendar`, `QPChart`, …                                                               |
-| **Components** (19) | `QPIconButton`, `QPMetricCard`, `QPChatPanel`, `QPComposer`, `QPMessageBubble`, `QPSegmentedControl`, `QPStatusIndicator`, `QPProductBadge`, `QPTypingIndicator` |
-| **Typography**      | `QPText` (16-step ramp), `QPHeading` (outline level is a required prop)                                                                                          |
-| **Layout**          | `QPPageContainer`, `QPSection`                                                                                                                                   |
-| **Content**         | `QPProse` + `qpMdxComponents` for Markdown/MDX                                                                                                                   |
-| **Motion**          | `QPMotion`, `QPReveal`, `QPStagger`, `QPPageTransition`, plus the token-bound vocabulary in `src/lib/motion`                                                     |
+| Area                | What                                                                                                                                                                                                                                |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Primitives** (61) | `QPButton`, `QPDialog`, `QPTable`, `QPSheet`, `QPSidebar`, `QPCommand`, `QPCalendar`, `QPChart`, …                                                                                                                                  |
+| **Components** (23) | `QPIconButton`, `QPMetricCard`, `QPChatPanel`, `QPComposer`, `QPMessageBubble`, `QPSegmentedControl`, `QPStatusIndicator`, `QPProductBadge`, `QPTypingIndicator`, `QPSteps`, `QPSecretInput`, `QPCopyField`, `QPDisplayPreferences` |
+| **Typography**      | `QPText` (16-step ramp), `QPHeading` (outline level is a required prop)                                                                                                                                                             |
+| **Layout**          | `QPPageContainer`, `QPSection`                                                                                                                                                                                                      |
+| **Content**         | `QPProse` + `qpMdxComponents` for Markdown/MDX                                                                                                                                                                                      |
+| **Motion**          | `QPMotion`, `QPReveal`, `QPStagger`, `QPPageTransition`, plus the token-bound vocabulary in `src/lib/motion`                                                                                                                        |
 
 Every animation degrades under `prefers-reduced-motion: reduce` — the motion
 components strip transforms and keep only a cross-fade, so nothing is lost.
